@@ -1,2 +1,3 @@
-class EnvDate < ActiveRecord::Base
+class EnvData < ActiveRecord::Base
+
 end
