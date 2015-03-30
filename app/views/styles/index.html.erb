@@ -1,0 +1,24 @@
+<h1>Styles#index</h1>
+<p>Find me in app/views/styles/index.html.erb</p>
+<br><br>
+<%= form_tag(styles_show_path, class:"form-inline") do %>
+
+
+<!-- <form class="form-inline" role="form"> -->
+  <div class="form-group form-inline">
+    <h3>Change location</h3>
+    <br>
+    <%= label_tag :location,nil, class: "control-label" %>
+    <%= text_field_tag(:location, nil, placeholder: "e.g., San Francisco, CA or 94101", class: "form-control",  size: 50, autofocus: true) %><button class="btn btn-info">Change</button>
+  </div>
+<% end %>  
+<!-- </form> -->
+
+
+
+<br><br>
+
+<%= link_to "Create a new style", styles_new_path %>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script> -->
+
+
