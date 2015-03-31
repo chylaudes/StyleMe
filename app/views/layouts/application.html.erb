@@ -1,22 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>StyleMe</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+ <%= render "partials/header" %>
+ <%= render 'layouts/messages' %>    
+ <%= yield %>        
+ <%= render "partials/footer" %>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-</head>
-<body>
-  <div class="container">
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-  <!-- ljzfbalmd -->
-  <%= yield %>
-  
-  </div>
-</body>
-</html>
