@@ -1,6 +1,6 @@
 <h3>Hello <span style="color:blue;"><%= @user.first_name %>,</span> Here is what we suggest for you today!</h3><br>
 
-<%= form_for @user, url: styles_path(@user) do |f| %>
+<%= form_for @user, url: styles_path(@user), id:"saveStyleForm" do |f| %>
 
 <!-- url: [@user, @whatever] -->
 

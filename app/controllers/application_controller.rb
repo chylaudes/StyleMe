@@ -8,8 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    binding.pry
-    styles_path(@user)
+    styles_path
   end
 
   # Prevent CSRF attacks by raising an exception.

@@ -1,8 +1,10 @@
 $(document).ready(function () {
 
 //========= StyleMe ==============================//
+// if (window.location.pathname) {}
+//in a console do window.location.href
 
-var $showInfo = $("#showInfo");
+var $showInfo = $("#showInfo"); 
 
 //======== WEATHER UNDERGROUND API CALL ========================//
    var userLocation = $("div #location").text();
@@ -127,7 +129,7 @@ var $showInfo = $("#showInfo");
 
 
 
-   $("form").on("submit", function (event) {
+   $("#saveStyleForm").on("submit", function (event) {
      event.preventDefault();
 
      // var query = this.searchTerm.value;
