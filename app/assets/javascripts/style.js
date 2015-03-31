@@ -3,62 +3,34 @@ $(document).ready(function () {
 //========= StyleMe ==============================//
 
 var $showInfo = $("#showInfo");
+
 //======== WEATHER UNDERGROUND API CALL ========================//
-
-   $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/geolookup/conditions/q/CA/pleasanton.json", function(data) {                                     
-
+   var userLocation = $("div #location").text();
+   console.log('UserLoc:',userLocation);
+   $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/geolookup/conditions/q/CA/"+ userLocation +".json", function(data) {   
+   console.log("geolookup"); 
+   console.log(data);                                  
+    $("div #location").text('');
     $('#curTemp').append(data.current_observation.temp_f + " &#8457;");
-    $('#location').append("<strong>" + data.current_observation.display_location.full + "</strong>");
-
-
-
-    // var location = data['location']['city'];
-    // var temp_f = data["current_observation"]["temp_f"];
-    // $showInfo.append("<br><br><span style='font-weight: bold;color:red;'>GEOLOOKUP API</span><br><br>");
-    //  $showInfo.append(data);
-    // $showInfo.append(data.current_observation.local_time_rfc822 + "<br>");
-    // $showInfo.append(data.current_observation.temperature_string + "<br>");
-    // $showInfo.append("Current temperature in " + location + " is: " + temp_f +"<br>");
-    // $showInfo.append(data.current_observation.icon + "<br>");    
-    // $('#wIcon').append("<br><img src=" + data.current_observation.icon_url +"><br>");
-    // $showInfo.append("------------ end of geolookup --------------------<br><br>");
-     // console.log(data);    
+    $('#location').append("<strong>" + data.current_observation.display_location.full + "</strong>");  
    });
-
-   $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/forecast/q/CA/pleasanton.json", function(data) { 
-
+    
+   $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/forecast/q/CA/"+ userLocation +".json", function(data) { 
+   console.log("forecast"); 
+   console.log(data); 
     $('#curCond').append(data.forecast.simpleforecast.forecastday[0].conditions);
     $('#hiTemp').append(data.forecast.simpleforecast.forecastday[0].high.fahrenheit + " &#8457;");
     $('#loTemp').append(data.forecast.simpleforecast.forecastday[0].low.fahrenheit + " &#8457;");
     var $weatherIcon = data.forecast.simpleforecast.forecastday[0].icon_url;
-    $('#wIcon').append("<img src=" + $weatherIcon + ">");
-
-
-    // $showInfo.append("<br><span style='font-weight: bold;color:red;'>FORECAST API</span><br><br>");
-    // $showInfo.append(data);
-    // $showInfo.append("<br><strong>Weather UNDERGROUND</strong><br>");
-    // $showInfo.append("Current temperature in " + location + " is: " + temp_f +"<br>");
-    // $showInfo.append(data.current_observation.icon + "<br>");    
-    // $showInfo.append("------------ end of forecast --------------------<br><br>");   
-    // $showInfo.append(data.current_observation.display_location.full + "<br>");
-    // $showInfo.append("<br><img src=" + data.current_observation.icon_url +">");
-     // console.log(data);    
+    $('#wIcon').append("<img src=" + $weatherIcon + ">");  
    });
-
-   // var dress = "summer dress";
-   // $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&fts=" + dress + "&offset=0&limit=30&sort=Popular", function(data) {
-   //    $("#dress").append("<img src="+data.products[0].image.sizes.Large.url+">");
-   //    $("#dress").append("<img src="+data.products[1].image.sizes.Large.url+">");
-   //    $("#dress").append("<img src="+data.products[2].image.sizes.Large.url+">");
-   //    // $("#dress").append("<img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+" class='dress2'><img src="+data.products[2].image.sizes.Large.url+" class='dress3'>");
-   //    // console.log("dress");
-   //    // console.log(data);
-   // });
 
    var dress = "summer dress";
    var counter;
    
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&fts=" + dress + "&offset=0&limit=30&sort=Popular", function(data) {
+    console.log("dress"); 
+   console.log(data);    
       $("#dress").append("<img src="+data.products[0].image.sizes.Large.url+">");
       $("#dress").append("<img src="+data.products[1].image.sizes.Large.url+">");
       $("#dress").append("<img src="+data.products[2].image.sizes.Large.url+">");
@@ -79,6 +51,8 @@ var $showInfo = $("#showInfo");
 
    var top = "summer top";
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&fts=" + top + "&offset=0&limit=30&sort=Popular", function(data) {
+        console.log("top"); 
+   console.log(data); 
       $("#top").append("<img src="+data.products[0].image.sizes.Large.url+">");
       $("#top").append("<img src="+data.products[1].image.sizes.Large.url+">");
       $("#top").append("<img src="+data.products[2].image.sizes.Large.url+">");
@@ -104,6 +78,8 @@ var $showInfo = $("#showInfo");
 
    var bottom = "pants";
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&fts=" + bottom + "&offset=0&limit=30&sort=Popular", function(data) {
+        console.log("bottom"); 
+   console.log(data); 
       $("#bottom").append("<img src="+data.products[0].image.sizes.Large.url+">");
       $("#bottom").append("<img src="+data.products[1].image.sizes.Large.url+">");
       $("#bottom").append("<img src="+data.products[2].image.sizes.Large.url+">");
@@ -198,8 +174,42 @@ var $showInfo = $("#showInfo");
    //    $results.append("Data:"+data);
    // });
     
+   // var dress = "summer dress";
+   // $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&fts=" + dress + "&offset=0&limit=30&sort=Popular", function(data) {
+   //    $("#dress").append("<img src="+data.products[0].image.sizes.Large.url+">");
+   //    $("#dress").append("<img src="+data.products[1].image.sizes.Large.url+">");
+   //    $("#dress").append("<img src="+data.products[2].image.sizes.Large.url+">");
+   //    // $("#dress").append("<img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+" class='dress2'><img src="+data.products[2].image.sizes.Large.url+" class='dress3'>");
+   //    // console.log("dress");
+   //    // console.log(data);
+   // });
+
     // $('.carousel').carousel({
     //     interval: 3000
     // });
+
+
+  // $('button').on('click', '.save_style',function (e) { 
+  //   e.preventDefault(); 
+  //   var formURL = $("#search").attr("data-url");
+  //   // var title = $(this).parent().find($('.tr-title')).text();
+  //   // var artist = $(this).parent().find($('.tr-artist')).text();
+  //   var postData = spResult[title($(this))+artist($(this))];
+  //   console.log(postData.preview_url);
+  //   $.ajax({
+  //     url : formURL,
+  //     type: "POST",
+  //     data : {track: {spotify_track_id: postData.id, title: postData.name, track_uri: postData.uri, artist: postData.artists[0].name}},
+  //     success:function(data, textStatus, jqXHR) 
+  //     {
+  //       location.reload();
+  //         //data: return data from server
+  //         // data
+  //     }
+  //      });
+  //   // $('#results ul').empty();    
+  // });
+
+
 
 });

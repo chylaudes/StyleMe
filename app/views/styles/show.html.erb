@@ -1,11 +1,13 @@
-<h3><span style="color:blue;"><%= @user.first_name %>,</span> Here is what we suggest for you today!</h3><br>
+<h3>Hello <span style="color:blue;"><%= @user.first_name %>,</span> Here is what we suggest for you today!</h3><br>
 
+<%= form_for @user, url: styles_path(@user) do |f| %>
+<!-- url: [@user, @whatever] -->
 <div class="row" id="weather">
   <div class="col-md-6 col-lg-6 col-sm-6">
     <div class="row">
       <!-- weather info -->
       <div id="weather">
-        <div class="col-md-3 col-lg-3 lead" id="location"></div> 
+        <div class="col-md-3 col-lg-3 lead" id="location"><%= @user.location %></div> 
         <div class="col-md-2 col-lg-1 col-sm-3">
           <div id="wIcon"></div>
         </div> 
@@ -38,10 +40,13 @@
         <div id="selectedDress"></div>
         <div id="selectedTop"></div>
         <br>
-        <div id="selectedBottom"></div>        
+        <div id="selectedBottom"></div> 
+        <br>
+        <div id="saveStyle"><%= f.submit "Save", class: "btn btn-info" %></div>                
       </div>
     </div>
   </div>
+<% end %>
 
   <!-- space btw two cols in Row -->
   <div class="col-md-1 col-lg-1"></div>
