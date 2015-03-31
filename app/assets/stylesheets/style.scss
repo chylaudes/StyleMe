@@ -1,15 +1,53 @@
+/*BODY*/
 a {
-  color: white;
+  color: black;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   font-size: 12px;
   font-weight: 500;
 }
+
+h2{
+color: black;
+text-transform: uppercase;
+
+}
+
+.field{
+  padding-top: 10px;
+}
+
+/*NAV BAR */
+
 .navbar-default .navbar-nav>li>a {
   color:white;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 12px;
+  font-weight: 500;
+  padding-top: 60px;
+}
+h1 {
+  font-family: "acta-display";
+}
+.navbar {
+  border:none;
+}
+.container-fluid {
+background-color: black;
+height: 110px;
+/*border-color: none;*/
+}
+.navbar-default .navbar-text {
+  color: white;
   padding-top: 60px;
 }
 
+.navbar-fixed-top {
+top: 0;
+/*border-width: 0 0 0px;*/
+}
+/*FOOTER*/
 footer.footer {
 background-color: black;
 color: white;
@@ -57,3 +95,7 @@ color: white;
     text-align: center;
 
  }
+
+
+
+
