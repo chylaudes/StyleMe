@@ -1,24 +1,120 @@
-<h1>Styles#index</h1>
-<p>Find me in app/views/styles/index.html.erb</p>
+<div class="row" id="weather">
+  <div class="col-md-6 col-lg-6 col-sm-6">
+    <div class="row">
+      <!-- weather info -->
+      <div id="weather">
+        <div class="col-md-3 col-lg-3 lead" id="location"></div> 
+        <div class="col-md-2 col-lg-1 col-sm-3">
+          <div id="wIcon"></div>
+        </div> 
+        <div class="col-md-3 col-lg-3 col-sm-4">
+          <div style="color:#f4b701" id="curTemp"></div>
+        </div>      
+        <div class="col-md-2 col-lg-2 col-sm-5">
+          <div id="curCond"></div>
+        </div> 
+        <div class="col-md-2 col-lg-2">
+          <span> Hi: 
+            <span id="hiTemp"></span>
+            <br>
+            Low:
+            <span id="loTemp"></span>    
+          </span>
+          <br>
+        </div> 
+      </div>
+
+      <div class="col-md-12 text-right">
+        <span style="color:blue;">Change your location</span>
+      </div>      
+      
+
+      <!-- picked style -->
+      <div>
+        
+        <h2>picked style</h2>
+        <div id="selectedDress"></div>
+        <div id="selectedTop"></div>
+        <br>
+        <div id="selectedBottom"></div>        
+      </div>
+    </div>
+  </div>
+
+  <!-- space btw two cols in Row -->
+  <div class="col-md-1 col-lg-1"></div>
+  
+  <!-- suggested style below -->
+  <div class="col-md-5 col-lg-5 col-sm-5" id="suggestedStyle">
+    <h2>Suggested styles</h2>
+    <span class="small">Click a outfit you like from below</span>
+    <br>
+    <div style="border-width: 1px; border-style: solid;">
+      <div class="styleHeader text-center" style="border-width: 1px; border-style: solid;">Dresses</div>
+      <div id="dress" style="border-width: 1px; border-style: solid;"></div>
+    </div>
+    <br>
+    <div style="border-width: 1px; border-style: solid;">
+      <div class="styleHeader text-center" style="border-width: 1px; border-style: solid;">Tops</div>
+      <div id="top" style="border-width: 1px; border-style: solid;"></div>
+    </div>
+    <br>
+    <div style="border-width: 1px; border-style: solid;">
+      <div class="styleHeader text-center" style="border-width: 1px; border-style: solid;">Bottom</div>
+      <div id="bottom" style="border-width: 1px; border-style: solid;"></div>
+    </div>
+    <br>
+    <div style="border-width: 1px; border-style: solid;">
+      <div class="styleHeader text-center" style="border-width: 1px; border-style: solid;">Accessories</div>
+      <div id="accessory" style="border-width: 1px; border-style: solid;"></div>
+    </div>    
+  </div>
+
+</div> <!-- end of weather row -->
+
 <br><br>
-<%= form_tag(styles_show_path, class:"form-inline") do %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- GOOGLE SEARCH PAGE -->
+<br><br>
+<!-- <%#= 
+form_tag(styles_show_path, class:"form-inline") do 
+  %> -->
 
 
 <!-- <form class="form-inline" role="form"> -->
-  <div class="form-group form-inline">
+<!--   <div class="form-group form-inline">
     <h3>Change location</h3>
     <br>
-    <%= label_tag :location,nil, class: "control-label" %>
-    <%= text_field_tag(:location, nil, placeholder: "e.g., San Francisco, CA or 94101", class: "form-control",  size: 50, autofocus: true) %><button class="btn btn-info">Change</button>
+    <%#= 
+    label_tag :location,nil, class: "control-label" 
+    %>
+    <%#= 
+    text_field_tag(:location, nil, placeholder: "e.g., San Francisco, CA or 94101", class: "form-control",  size: 50, autofocus: true) 
+    %>
+    <button class="btn btn-info">Change</button>
   </div>
-<% end %>  
+<%# 
+end 
+%>   -->
 <!-- </form> -->
-
-
-
 <br><br>
 
-<%= link_to "Create a new style", styles_new_path %>
+<%#= 
+link_to "Create a new style", styles_new_path 
+%>
 <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script> -->
 
 
