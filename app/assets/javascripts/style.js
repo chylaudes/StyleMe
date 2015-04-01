@@ -57,38 +57,57 @@ $(document).ready(function () {
 //
 // if (FORECAST >= clear) {
 //       if (sex === "F"){
-//cat=womens-accessories&fl=b4089&fl=b30810&fts=
+//      cat=womens-accessories&fl=b4089&fl=b30810&fts=
 //         cat = "womens-accessories";
 //         fl = "b4089&fl=b30810"
 //       }
-//     } else if (FORECAST = Rainning) {
-//cat=womens-accessories&fts=umbrella
+//     } else if (FORECAST = Raining) {
+//      cat=womens-accessories&fts=umbrella
 //         cat = "womens-accessories";
 //         fts ="umbrella";
 //       }
 //     } else if (FORECAST = Snowing) {
-// cat=womens-accessories&fl=b4089&fl=b30810
+//      cat=scarves&fl=b4486&fts=oversized
 //       if (sex === "F"){
+//         cat = "scarves";
+//         fts ="oversized";
+//         fl = "b4486&"
+//       }
+//        else {
+//        if (sex === "F"){
+//          cat=womens-accessories&fl=b4089&fl=b30810&fts=
+//          cat = "womens-accessories";
+//          fl = "b4089&fl=b30810"
+//        }
+//      }
+//MEN ACCESSORIES: (WATCHES)
+//MEN ACCESSORIES: (EVERYTHING)
+// if (FORECAST >= clear) {
+//       if (sex === "M){
+//      cat=womens-accessories&fl=b4089&fl=b30810&fts=
 //         cat = "womens-accessories";
-//         fts ="";
 //         fl = "b4089&fl=b30810"
 //       }
-//     } else if (FORECAST > 60) {
-//       if (sex === "F"){
-//         cat = "day-dresses";
-//         fts ="longsleeve";
+//     } else if (FORECAST = Raining) {
+//         if (sex === "M){
+//      cat=womens-accessories&fts=umbrella
+//         cat = "womens-accessories";
+//         fts ="umbrella";
 //       }
-//     } else if (FORECAST > 50) {
-//       if (sex === "F"){
-//         cat = "day-dresses";
-//         fts ="winter dress";
+//     } else if (FORECAST = Snowing) {
+//      cat=scarves&fl=b4486&fts=oversized
+//       if (sex === "M){
+//         cat = "scarves";
+//         fts ="oversized";
+//         fl = "b4486&"
 //       }
-//     } else {
-//       if (sex === "F"){
-//         cat = "day-dresses";
-//         fts = "winter dress";
-//       }
-//     }
+//        else {
+//        if (sex === "M){
+//          cat=womens-accessories&fl=b4089&fl=b30810&fts=
+//          cat = "womens-accessories";
+//          fl = "b4089&fl=b30810"
+//        }
+//      }
 
 //========= Get weather data from user database ===========================//
 

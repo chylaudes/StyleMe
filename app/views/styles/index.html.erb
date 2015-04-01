@@ -18,21 +18,19 @@
 
     <div class="col-md-1 col-lg-2">
       <span> Hi:
-
         <span id="hiTemp"></span>
         <br>
-        Low:
+        Low
         <span id="loTemp"></span>
-      </span>
+        </span>
       <br>
-
-    </div>
+      </div>
     <div class="col-md-3 col-lg-2 col-sm-5">
 
 <!-- GOOGLE SEARCH PAGE -->
   <div class="form-group form-inline">
     <input type="text" name="user_location" value="" placeholder=" e.g., San Francisco, CA or 94101" autofocus="true" size="30" id="user_location"><button class="btn btn-success" id="changeLoc">Change</button>
-  </div> 
+  </div>
     </div>
 </div>
 
@@ -41,10 +39,13 @@
       <!-- picked style -->
       <div>
 
-        <h2>picked style</h2>
-        <div id="selectedDress"></div><div id="selectedTop"></div><div id="selectedBottom"></div> <div id="selectedShoes"></div> 
+        <h2>Picked Style</h2>
+        <div id="selectedDress"></div>
+        <div id="selectedTop"></div>
+        <div id="selectedBottom"></div>
+        <div id="selectedShoes"></div>
         <div id="selectedAccessory1"></div>
-        <div id="selectedAccessory2"></div>        
+        <div id="selectedAccessory2"></div>
       </div>
     </div>
 
@@ -55,49 +56,84 @@
   <div class="col-md-7 col-lg-7 col-sm-7" id="suggestedStyle">
     <h2>Suggested styles</h2>
     <div id="gender"><%= @user.sex %></div>
-    <span class="small">Click a outfit you like from below</span>
+    <h5>Create your look!</h5>
 
   <% if @user.sex =='F' %>
     <br>
-    <div style="border-width: 1px; border-style: solid;">
-      <div class="styleHeader text-center" style="border-width: 1px; border-style: solid;">Dresses</div>
-      <div id="dress" style="border-width: 1px; border-style: solid;"></div>
-    </div>
-  <% end %>
-    <br>
-
-<!-- TOPS -->
-    <div style="border-width: 1px; border-style: solid;">
-      <div class="styleHeader text-center" style="border-width: 1px; border-style: solid;">Tops</div>
-      <div id="top" style="border-width: 1px; border-style: solid;"></div>
-    </div>
-    <br>
-<!-- BOTTOM -->    
-    <div style="border-width: 1px; border-style: solid;">
-      <div class="styleHeader text-center" style="border-width: 1px; border-style: solid;">Bottom</div>
-      <div id="bottom" style="border-width: 1px; border-style: solid;"></div>
-    </div>
-    <br>
-<!-- SHOES -->   
-    <div style="border-width: 1px; border-style: solid;">
-      <div class="styleHeader text-center" style="border-width: 1px; border-style: solid;">Shoes</div>
-      <div id="shoes" style="border-width: 1px; border-style: solid;"></div>
-    </div>
-    <br>
-<!-- ACCESSORY 1 -->      
-    <div style="border-width: 1px; border-style: solid;">
-      <div class="styleHeader text-center" style="border-width: 1px; border-style: solid;">Accessory</div>
-      <div id="accessory1" style="border-width: 1px; border-style: solid;"></div>
-    </div>    
-    <br>
-<!-- ACCESSORY 2 -->      
-    <div style="border-width: 1px; border-style: solid;">
-      <div class="styleHeader text-center" style="border-width: 1px; border-style: solid;">Accessory</div>
-      <div id="accessory2" style="border-width: 1px; border-style: solid;"></div>
-    </div>  
+<div class="drop-down"><!--  dress accordian  -->
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Dresses</a>
+        </h4>
+        </div> <!-- end of dress collapse up -->
+        <div id="collapseOne" class="panel-collapse collapse in">
+         <div class="panel-body" id="dress">
+                </div>
+            </div>
+        </div> <!-- end of dress collapse down -->
+            <br>
+<div class="panel panel-default"> <!-- tops collapse -->
+  <div class="panel-heading">
+    <h4 class="panel-title">
+    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">TOPS</a>
+    </h4>
   </div>
-
-</div> <!-- end of weather row -->
+    <div id="collapseTwo" class="panel-collapse collapse">
+      <div class="panel-body" id="tops">
+      </div>
+    </div>
+</div> <!-- end tops collapse -->
+<br>
+<div class="panel panel-default"> <!-- bottoms collapse -->
+  <div class="panel-heading">
+    <h4 class="panel-title">
+    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Bottoms</a>
+    </h4>
+  </div>
+    <div id="collapseThree" class="panel-collapse collapse">
+      <div class="panel-body" id="bottoms">
+      </div>
+    </div>
+</div> <!-- end bottoms collapse -->
+<br>
+<div class="panel panel-default"> <!-- Shoes collapse -->
+  <div class="panel-heading">
+    <h4 class="panel-title">
+    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Shoes</a>
+    </h4>
+  </div>
+    <div id="collapseFour" class="panel-collapse collapse">
+      <div class="panel-body" id="shoes">
+      </div>
+    </div>
+</div> <!-- end Shoes collapse -->
+<br>
+<div class="panel panel-default"> <!-- Accessory collapse -->
+  <div class="panel-heading">
+    <h4 class="panel-title">
+    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">Accessory</a>
+    </h4>
+  </div>
+    <div id="collapseFive" class="panel-collapse collapse">
+      <div class="panel-body" id="accessory1">
+      </div>
+    </div>
+</div> <!-- end Accessory collapse -->
+<br>
+<div class="panel panel-default"> <!-- Accessory 2 collapse -->
+  <div class="panel-heading">
+    <h4 class="panel-title">
+    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">Accessory #2</a>
+    </h4>
+  </div>
+    <div id="collapseFive" class="panel-collapse collapse">
+      <div class="panel-body" id="accessory2">
+      </div>
+    </div>
+</div> <!-- end Accessory 2 collapse -->
+  <% end %>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 
 
