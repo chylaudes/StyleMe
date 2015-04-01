@@ -1,46 +1,46 @@
 <h3>Hello <span style="color:blue;"><%= @user.first_name %>,</span> Here is what we suggest for you today!</h3><br>
 
 <%= form_for @user, url: styles_path(@user), id:"saveStyleForm" do |f| %>
-
+<div id="gender"> <%= @user.sex %></div>
 <!-- url: [@user, @whatever] -->
 
 <div class="row" id="weather">
   <!-- weather info -->
   <div id="weather">
-    <div class="col-md-3 col-lg-3 lead" id="location"><%= @user.location %></div> 
+    <div class="col-md-3 col-lg-3 lead" id="location"><%= @user.location %></div>
     <div class="col-md-2 col-lg-1 col-sm-3">
       <div id="wIcon"></div>
-    </div> 
+    </div>
     <div class="col-md-3 col-lg-3 col-sm-4">
       <div style="color:#f4b701" id="curTemp"></div>
-    </div>      
+    </div>
     <div class="col-md-2 col-lg-2 col-sm-5">
       <div id="curCond"></div>
-    </div> 
+    </div>
     <div class="col-md-2 col-lg-2">
-      <span> Hi: 
+      <span> Hi:
         <span id="hiTemp"></span>
         <br>
         Low:
-        <span id="loTemp"></span>    
+        <span id="loTemp"></span>
       </span>
       <br>
-    </div> 
-  </div>  
+    </div>
+  </div>
 </div>
 
 <div class="row">
-  <div class="col-md-4 col-lg-4 col-sm-4">      
+  <div class="col-md-4 col-lg-4 col-sm-4">
       <!-- picked style -->
       <div>
-        
+
         <h2>picked style</h2>
         <div id="selectedDress"></div>
         <div id="selectedTop"></div>
         <br>
-        <div id="selectedBottom"></div> 
+        <div id="selectedBottom"></div>
         <br>
-        <div id="saveStyle"><%= f.submit "Save this style", class: "btn btn-info" %></div>                
+        <div id="saveStyle"><%= f.submit "Save this style", class: "btn btn-info" %></div>
       </div>
     </div>
 
@@ -48,7 +48,7 @@
 
   <!-- space btw two cols in Row -->
   <div class="col-md-1 col-lg-1"></div>
-  
+
   <!-- suggested style below -->
   <div class="col-md-7 col-lg-7 col-sm-7" id="suggestedStyle">
     <h2>Suggested styles</h2>
@@ -72,7 +72,7 @@
     <div style="border-width: 1px; border-style: solid;">
       <div class="styleHeader text-center" style="border-width: 1px; border-style: solid;">Accessories</div>
       <div id="accessory" style="border-width: 1px; border-style: solid;"></div>
-    </div>    
+    </div>
   </div>
 
 </div> <!-- end of weather row -->
@@ -94,8 +94,8 @@
 
 <!-- GOOGLE SEARCH PAGE -->
 <br><br>
-<!-- <%#= 
-form_tag(styles_show_path, class:"form-inline") do 
+<!-- <%#=
+form_tag(styles_show_path, class:"form-inline") do
   %> -->
 
 
@@ -103,22 +103,22 @@ form_tag(styles_show_path, class:"form-inline") do
 <!--   <div class="form-group form-inline">
     <h3>Change location</h3>
     <br>
-    <%#= 
-    label_tag :location,nil, class: "control-label" 
+    <%#=
+    label_tag :location,nil, class: "control-label"
     %>
-    <%#= 
-    text_field_tag(:location, nil, placeholder: "e.g., San Francisco, CA or 94101", class: "form-control",  size: 50, autofocus: true) 
+    <%#=
+    text_field_tag(:location, nil, placeholder: "e.g., San Francisco, CA or 94101", class: "form-control",  size: 50, autofocus: true)
     %>
     <button class="btn btn-info">Change</button>
   </div>
-<%# 
-end 
+<%#
+end
 %>   -->
 <!-- </form> -->
 <br><br>
 
-<%#= 
-link_to "Create a new style", styles_new_path 
+<%#=
+link_to "Create a new style", styles_new_path
 %>
 <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script> -->
 
