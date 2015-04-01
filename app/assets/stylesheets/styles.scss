@@ -12,8 +12,8 @@
 
 #weather {overflow: hidden;}
 
-#weather DIV SPAN{ 
-  white-space: nowrap; 
+#weather DIV SPAN{
+  white-space: nowrap;
   display: inline-block;
   margin: 5px;
 }
@@ -38,6 +38,10 @@ div .styleHeader {
 }
 
 div #saveStyle {
+  display: none;
+}
+
+div #gender {
   display: none;
 }
 

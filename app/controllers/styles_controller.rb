@@ -8,6 +8,9 @@ class StylesController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def saved_style
+  end
+
   def new
   end
 

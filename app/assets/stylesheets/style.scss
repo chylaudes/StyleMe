@@ -25,7 +25,8 @@ text-transform: uppercase;
   letter-spacing: 0.2em;
   font-size: 12px;
   font-weight: 500;
-  padding-top: 60px;
+  padding-top: 40px;
+  height: 90px;
 }
 h1 {
   font-family: "acta-display";
@@ -35,12 +36,15 @@ h1 {
 }
 .container-fluid {
 background-color: black;
-height: 110px;
+height: 90px;
 /*border-color: none;*/
 }
 .navbar-default .navbar-text {
   color: white;
-  padding-top: 60px;
+  padding-top: 21px;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
 }
 
 .navbar-fixed-top {
