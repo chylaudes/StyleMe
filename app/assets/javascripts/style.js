@@ -1,27 +1,26 @@
 $(document).ready(function () {
 
 //========= StyleMe ==============================//
+// if (window.location.pathname) {}
+//in a console do window.location.href
 
 var $showInfo = $("#showInfo");
 var todayTemp, fts, cat;
 var sex = $("#gender").text();
 
 
-
 //======== WEATHER UNDERGROUND API CALL ========================//
    var userLocation = $("div #location").text();
-   console.log('UserLoc:',userLocation);
-   $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/geolookup/conditions/q/AK/fairbanks.json", function(data) {
-   console.log("geolookup");
-   console.log(data);
+   if (!userLocation){
+    userLocation = 'San Francisco';
+   }
+   $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/geolookup/conditions/q/CA/"+ userLocation +".json", function(data) {
     $("div #location").text('');
     $('#curTemp').append(data.current_observation.temp_f + " &#8457;");
-    $('#location').append("<strong>" + data.current_observation.display_location.full + "</strong>");
+    $('#location').append("<strong>" + data.current_observation.display_location.full + "</strong><br><a href='#' class='changeLoc'>Change Location</a>");
    });
 
    $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/forecast/q/CA/"+ userLocation +".json", function(data) {
-   console.log("forecast");
-   console.log(data);
     $('#curCond').append(data.forecast.simpleforecast.forecastday[0].conditions);
     $('#hiTemp').append(data.forecast.simpleforecast.forecastday[0].high.fahrenheit + " &#8457;");
     todayTemp = data.forecast.simpleforecast.forecastday[0].high.fahrenheit;
@@ -31,7 +30,6 @@ var sex = $("#gender").text();
     $('#wIcon').append("<img src=" + $weatherIcon + ">");
    });
 
-   var dress = "summer dress";
    var counter;
 
     if (sex === "F"){
@@ -55,10 +53,8 @@ var sex = $("#gender").text();
         fts = "winter dress";
       }
     }
-   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&fts=" + dress + "&offset=0&limit=30&sort=Popular", function(data) {
-    console.log("dress");
-   console.log(data);
-      $("#dress").append("<img src="+data.products[0].image.sizes.Large.url+">");
+
+   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&fts=" + dress + "&offset=0&limit=30&sort=Popular", function(data) {      $("#dress").append("<img src="+data.products[0].image.sizes.Large.url+">");
       $("#dress").append("<img src="+data.products[1].image.sizes.Large.url+">");
       $("#dress").append("<img src="+data.products[2].image.sizes.Large.url+">");
 
@@ -73,6 +69,7 @@ var sex = $("#gender").text();
         $("#selectedBottom").html("");
         $("#selectedDress").append("<br><h3>Dress</h3><br>");
         $("#selectedDress").append(this);
+        $("#saveStyle").show();
       });
     });
 
@@ -118,8 +115,6 @@ if (sex === "F"){
 //   }
 }
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ cat +"&fts=" + fts + "&offset=0&limit=30&sort=Popular", function(data) {
-        console.log("top");
-   console.log(data);
       $("#top").append("<img src="+data.products[0].image.sizes.Large.url+">");
       $("#top").append("<img src="+data.products[1].image.sizes.Large.url+">");
       $("#top").append("<img src="+data.products[2].image.sizes.Large.url+">");
@@ -132,16 +127,12 @@ if (sex === "F"){
         $("#top").append("<img src="+productIdx.image.sizes.Large.url+">");
         $("#selectedDress").html("");
         $("#selectedTop").html("");
-        $("#selectedTop").append("<br><h3>Top</h3><br>");
+        $("#selectedTop").append("<br><h3>Top</h3>");
         $("#selectedTop").append(this);
+        $("#saveStyle").show();
       });
 
    });
-
-   // top = 'spring green';
-   // $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat=womens-tops&fts=" + top + "&offset=0&limit=3&sort=Popular", function(data) {
-   //    $("#top").append("<br>CAT:womens-tops:spring green<br><img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+"><img src="+data.products[2].image.sizes.Large.url+">");
-   // });
 
    var bottom = "pants";
     if (sex === "F"){
@@ -166,8 +157,6 @@ if (sex === "F"){
       }
     }
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&fts=" + bottom + "&offset=0&limit=30&sort=Popular", function(data) {
-        console.log("bottom");
-   console.log(data);
       $("#bottom").append("<img src="+data.products[0].image.sizes.Large.url+">");
       $("#bottom").append("<img src="+data.products[1].image.sizes.Large.url+">");
       $("#bottom").append("<img src="+data.products[2].image.sizes.Large.url+">");
@@ -182,7 +171,7 @@ if (sex === "F"){
         $("#bottom").append("<img src="+productIdx.image.sizes.Large.url+">");
         $("#selectedDress").html("");
         $("#selectedBottom").html("");
-        $("#selectedBottom").append("<br><h3>Bottom</h3><br>");
+        $("#selectedBottom").append("<h3>Bottom</h3>");
         $("#selectedBottom").append(this);
       });
    });
@@ -206,41 +195,31 @@ if (sex === "F"){
    */
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&fts=hat&offset=0&limit=3&cat=womens-accessories", function(data) {
       $("#accessory").append("<br>womens-accessories:HAT<br><img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+"><img src="+data.products[2].image.sizes.Large.url+">");
-      // console.log("hat");
-      // console.log(data.products[0].image.sizes.Large.url);
    });
 
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&offset=0&limit=3&cat=womens-umbrellas", function(data) {
       $("#accessory").append("<br>womens-umbrellas<br><img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+"><img src="+data.products[2].image.sizes.Large.url+">");
-      // console.log("hat");
-      // console.log(data.products[0].image.sizes.Large.url);
    });
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&offset=0&limit=3&fts=rain-boots", function(data) {
       $("#accessory").append("<br>rainboots<br><img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+"><img src="+data.products[2].image.sizes.Large.url+">");
-      // console.log("hat");
-      // console.log(data.products[0].image.sizes.Large.url);
    });
 
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&offset=0&limit=3&cat=mens-dress-shirts", function(data) {
-      // $("#accessory").html("");
-      // console.log("Dress shirts");
       $("#accessory").append("<br><br>");
       $("#accessory").append("<br><img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+"><img src="+data.products[2].image.sizes.Large.url+">");
-      // console.log(data.products[0].image.sizes.Large.url);
    });
    //fl=b936 -> search by brand(fl=b) b936:Chanel
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&offset=0&limit=3&cat=womens-suits&fl=b936", function(data) {
       $("#accessory").append("<br>Chanel Suits:<br><img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+"><img src="+data.products[2].image.sizes.Large.url+">");
-      // console.log(data);
-      // console.log(data.products[0].image.sizes.Large.url);
    });
 
 
 
- // $("form").on("submit", function (event) {
- //   event.preventDefault();
- //   var query = this.searchTerm.value;
-// });
+   $("#saveStyleForm").on("submit", function (event) {
+     event.preventDefault();
+
+     // var query = this.searchTerm.value;
+   });
 
 // $("#dress").on("click","img", function(e){
 //   console.log(this);
