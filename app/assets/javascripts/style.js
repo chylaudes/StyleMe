@@ -132,7 +132,6 @@ $(document).ready(function () {
     var sex = $("#gender").text().trim();
     var dressfts = "", dresscat = "", counter = 0;
 
-<<<<<<< HEAD
     if (sex === "F"){
       // var ranDress=['sleeveless dress', 'summer dress', 'yellow dress', 'pink dress'];
       if (todayTemp >= 90 ) {
@@ -155,37 +154,6 @@ $(document).ready(function () {
       } else {
         dresscat = "day-dresses";
         dressfts = "winter dress";
-=======
-    if (todayTemp >= 90 ) {
-      if (sex === "F"){
-        cat = "womens-clothes";
-        fts = "sleeveless dress";
-      }
-    } else if (todayTemp > 80) {
-      if (sex === "F"){
-        cat = "womens-clothes";
-        fts = "summer dress";
-      }
-    } else if (todayTemp > 70) {
-      if (sex === "F"){
-        cat = "womens-clothes";
-        fts ="spring dress";
-      }
-    } else if (todayTemp > 60) {
-      if (sex === "F"){
-        cat = "day-dresses";
-        fts ="longsleeve";
-      }
-    } else if (todayTemp > 50) {
-      if (sex === "F"){
-        cat = "day-dresses";
-        fts ="winter dress";
-      }
-    } else {
-      if (sex === "F"){
-        cat = "day-dresses";
-        fts = "winter dress";
->>>>>>> 9370bfa571b4607cf7e039a20dc49e80faf5ccc8
       }
 
      $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat=" + dresscat + "&fts=" + dressfts + "&offset=0&limit=30&sort=Popular", function(data) {
