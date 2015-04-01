@@ -15,7 +15,9 @@
   </div>
     <div class="field">
     <%= f.label :location %><br />
-    <%= f.text_field :location %>
+    <%= f.text_field :location, placeholder: " e.g., San Francisco,CA", value:"" %>
+    <!-- <input type="text" name="location" value="" placeholder=" e.g., San Francisco,CA" id="location"> -->
+
   </div>
   <div class="field">
     <%= f.label :age %><br />
@@ -50,5 +52,5 @@
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
-
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 <%= render "devise/shared/links" %>

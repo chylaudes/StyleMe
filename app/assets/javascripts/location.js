@@ -90,7 +90,7 @@ $(document).ready(function () {
           $("#selectedBottom").html("");
           $("#selectedDress").append("<br><h3>Dress</h3><br>");
           $("#selectedDress").append(this);
-          $("#saveStyle").show();
+          // $("#saveStyle").show();
         });
       });
     }
@@ -153,7 +153,7 @@ $(document).ready(function () {
         $("#selectedTop").html("");
         $("#selectedTop").append("<br><h3>Top</h3>");
         $("#selectedTop").append(this);
-        $("#saveStyle").show();
+        // $("#saveStyle").show();
       });
    });
 
@@ -200,6 +200,7 @@ $(document).ready(function () {
         fts = "outerwear";
       }
     }
+    
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ cat +"&fts=" + fts + "&offset=0&limit=30&sort=Popular", function(data) {
       $("#bottom").text('');
       $("#bottom").append("<img src="+data.products[0].image.sizes.Large.url+">");
@@ -219,19 +220,14 @@ $(document).ready(function () {
       });
    });
 
-   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&fts="+fts+"&offset=0&limit=3&cat="+cat, function(data) {
-      $("#accessory").append("<br>womens-accessories:HAT<br><img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+"><img src="+data.products[2].image.sizes.Large.url+">");
-   });
+   // $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&fts="+fts+"&offset=0&limit=3&cat="+cat, function(data) {
+   //    $("#accessory").append("<br>womens-accessories:HAT<br><img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+"><img src="+data.products[2].image.sizes.Large.url+">");
+   // });
 
-   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&offset=0&limit=3&cat="+cat, function(data) {
-      $("#accessory").append("<br>womens-umbrellas<br><img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+"><img src="+data.products[2].image.sizes.Large.url+">");
-   });
+   // $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&offset=0&limit=3&cat="+cat, function(data) {
+   //    $("#accessory").append("<br>womens-umbrellas<br><img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+"><img src="+data.products[2].image.sizes.Large.url+">");
+   // });
     //=========== SHOPSTYPLE ================//
-
-
-
-
-
 
 
    }); //end of ON CLICK

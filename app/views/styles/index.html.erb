@@ -31,7 +31,7 @@
 
 <!-- GOOGLE SEARCH PAGE -->
   <div class="form-group form-inline">
-    <input type="text" name="location" value="" placeholder=" e.g., San Francisco, CA or 94101" autofocus="true" size="30" id="location"><button class="btn btn-success" id="changeLoc">Change</button>
+    <input type="text" name="user_location" value="" placeholder=" e.g., San Francisco, CA or 94101" autofocus="true" size="30" id="user_location"><button class="btn btn-success" id="changeLoc">Change</button>
   </div> 
     </div>
 </div>
@@ -42,9 +42,9 @@
       <div>
 
         <h2>picked style</h2>
-        <div id="selectedDress"></div>
-        <div id="selectedTop"></div>
-        <div id="selectedBottom"></div>                
+        <div id="selectedDress"></div><div id="selectedTop"></div><div id="selectedBottom"></div> <div id="selectedShoes"></div> 
+        <div id="selectedAccessory1"></div>
+        <div id="selectedAccessory2"></div>        
       </div>
     </div>
 
@@ -65,20 +65,36 @@
     </div>
   <% end %>
     <br>
+
+<!-- TOPS -->
     <div style="border-width: 1px; border-style: solid;">
       <div class="styleHeader text-center" style="border-width: 1px; border-style: solid;">Tops</div>
       <div id="top" style="border-width: 1px; border-style: solid;"></div>
     </div>
     <br>
+<!-- BOTTOM -->    
     <div style="border-width: 1px; border-style: solid;">
       <div class="styleHeader text-center" style="border-width: 1px; border-style: solid;">Bottom</div>
       <div id="bottom" style="border-width: 1px; border-style: solid;"></div>
     </div>
     <br>
+<!-- SHOES -->   
     <div style="border-width: 1px; border-style: solid;">
-      <div class="styleHeader text-center" style="border-width: 1px; border-style: solid;">Accessories</div>
-      <div id="accessory" style="border-width: 1px; border-style: solid;"></div>
+      <div class="styleHeader text-center" style="border-width: 1px; border-style: solid;">Shoes</div>
+      <div id="shoes" style="border-width: 1px; border-style: solid;"></div>
     </div>
+    <br>
+<!-- ACCESSORY 1 -->      
+    <div style="border-width: 1px; border-style: solid;">
+      <div class="styleHeader text-center" style="border-width: 1px; border-style: solid;">Accessory</div>
+      <div id="accessory1" style="border-width: 1px; border-style: solid;"></div>
+    </div>    
+    <br>
+<!-- ACCESSORY 2 -->      
+    <div style="border-width: 1px; border-style: solid;">
+      <div class="styleHeader text-center" style="border-width: 1px; border-style: solid;">Accessory</div>
+      <div id="accessory2" style="border-width: 1px; border-style: solid;"></div>
+    </div>  
   </div>
 
 </div> <!-- end of weather row -->
