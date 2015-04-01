@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
 //========= StyleMe ==============================//
-// if (window.location.pathname) {}
+ if (window.location.href==="http://localhost:3000/styles") {
 //in a console do window.location.href
 
 var $showInfo = $("#showInfo"); 
@@ -14,7 +14,7 @@ var $showInfo = $("#showInfo");
    $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/geolookup/conditions/q/CA/"+ userLocation +".json", function(data) {                                   
     $("div #location").text('');
     $('#curTemp').append(data.current_observation.temp_f + " &#8457;");
-    $('#location').append("<strong>" + data.current_observation.display_location.full + "</strong><br><a href='#' class='changeLoc'>Change Location</a>");  
+    $('#location').append("<strong>" + data.current_observation.display_location.full + "</strong><br><div class='changeLoc'><a href='#'>Change Location</a></div>");  
    });
     
    $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/forecast/q/CA/"+ userLocation +".json", function(data) { 
@@ -127,13 +127,13 @@ var $showInfo = $("#showInfo");
       $("#accessory").append("<br>Chanel Suits:<br><img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+"><img src="+data.products[2].image.sizes.Large.url+">");
    }); 
 
+  }
 
-
-   $("#saveStyleForm").on("submit", function (event) {
-     event.preventDefault();
+   // $("#saveStyleForm").on("submit", function (event) {
+   //   event.preventDefault();
 
      // var query = this.searchTerm.value;
-   });
+   // });
 
 // $("#dress").on("click","img", function(e){
 //   console.log(this);

@@ -7,16 +7,21 @@
 <div class="row" id="weather">
   <!-- weather info -->
   <div id="weather">
+    
     <div class="col-md-3 col-lg-3 lead" id="location"><%= @user.location %></div> 
+    
     <div class="col-md-2 col-lg-1 col-sm-3">
       <div id="wIcon"></div>
     </div> 
+    
     <div class="col-md-3 col-lg-3 col-sm-4">
       <div style="color:#f4b701" id="curTemp"></div>
     </div>      
+    
     <div class="col-md-2 col-lg-2 col-sm-5">
       <div id="curCond"></div>
     </div> 
+    
     <div class="col-md-2 col-lg-2">
       <span> Hi: 
         <span id="hiTemp"></span>
@@ -26,6 +31,29 @@
       </span>
       <br>
     </div> 
+
+    <div>
+<!-- GOOGLE SEARCH PAGE -->
+
+<!-- <%#= 
+form_tag(styles_show_path, class:"form-inline") do 
+  %> -->
+
+
+<form class="form-inline" role="form">
+  <div class="form-group form-inline">
+    <h3>Change location</h3>
+    <br>
+    <%= label_tag :location,nil, class: "control-label" %>
+    <%= text_field_tag(:location, nil, placeholder: "e.g., San Francisco, CA or 94101", class: "form-control",  size: 50, autofocus: true) %>
+    <button class="btn btn-info">Change</button>
+  </div>
+<% end %>  
+</form>
+    
+
+    </div>
+
   </div>  
 </div>
 
@@ -39,8 +67,8 @@
         <div id="selectedTop"></div>
         <br>
         <div id="selectedBottom"></div> 
-        <br>
-        <div id="saveStyle"><%= f.submit "Save this style", class: "btn btn-info" %></div>                
+       <!--  <br> -->
+        <!-- <div id="saveStyle"><%#= f.submit "Save this style", class: "btn btn-info" %></div> -->                
       </div>
     </div>
 
@@ -92,30 +120,7 @@
 
 
 
-<!-- GOOGLE SEARCH PAGE -->
-<br><br>
-<!-- <%#= 
-form_tag(styles_show_path, class:"form-inline") do 
-  %> -->
 
-
-<!-- <form class="form-inline" role="form"> -->
-<!--   <div class="form-group form-inline">
-    <h3>Change location</h3>
-    <br>
-    <%#= 
-    label_tag :location,nil, class: "control-label" 
-    %>
-    <%#= 
-    text_field_tag(:location, nil, placeholder: "e.g., San Francisco, CA or 94101", class: "form-control",  size: 50, autofocus: true) 
-    %>
-    <button class="btn btn-info">Change</button>
-  </div>
-<%# 
-end 
-%>   -->
-<!-- </form> -->
-<br><br>
 
 <%#= 
 link_to "Create a new style", styles_new_path 
