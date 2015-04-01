@@ -1,5 +1,94 @@
 $(document).ready(function () {
 
+
+//BRANDS: WOMEN
+//&fl=b30810  = H&M
+//&fl=b2333 = Forever21
+//&fl=b30 = Ann Taylor
+//&fl=b29798&fl=b284 == J. Crew and J.Crew Factory
+//&fl=b7478&fl=b21236 = Madewell and AllSaints
+//&fl=b18563 = LOFT
+//&fl=b728 = Anthropoligie
+//&fl=b2683 = Banana Republic
+//&fl=b2446 = GAP
+//&fl=b18530 = Club Monaco
+//&fl=b4493&fl=b31409 = MANGO
+//&fl=b4486 = ASOS
+//&fl=b822 = Bloomingdale's
+//&fl=b2363 = Barney's New York
+//&fl=b427 = Nordstrom
+//fl=b8031 = Topshop
+
+//BRANDS: MEN
+//&fl=b30810 = H&M
+//fl=b18530 = Club Monaco
+//&fl=b4486 = ASOS
+//&fl=b2683 = Banana Republic
+//&fl=b2446 = GAP
+//&fl=b284&fl=b29798 = J CREW
+//&fl=b462 = Ralph Lauren
+//&fl=b2329 = VANS
+//&fl=b3471 = Old Navy
+//&fl=b2363 = Barney's New York
+//&fl=b822 = Bloomingdale's
+//&fl=b427 = Nordstrom
+//&fl=b12953 = Topman
+
+
+//WOMEN's SHOES:
+// if (FORECAST >= clear) {
+//       if (sex === "F"){
+//cat=womens-shoes&fl=b4089&fl=b1077
+//         cat = "womens-shoes";
+//         fl = "b4089&fl=b1077"
+//       }
+//     } else if (FORECAST = Rainning) {
+//cat=boots&fts=rain
+//         cat = "boots";
+//         fts ="rain";
+//cat=womens-shoes&fl=b4089&fl=b1077
+//MEN's SHOES:
+//cat=mens-shoes&sort=Popular&fl=b267&fl=b30810&fl=b552&fl=b4089&fl=b1336&fl=b14&fl=b870
+
+//WOMEN ACCESSORIES: (BAGS)
+//cat=handbags&fl=b4089
+//WOMEN ACCESSORIES: (EVERYTHING)
+//
+// if (FORECAST >= clear) {
+//       if (sex === "F"){
+//cat=womens-accessories&fl=b4089&fl=b30810&fts=
+//         cat = "womens-accessories";
+//         fl = "b4089&fl=b30810"
+//       }
+//     } else if (FORECAST = Rainning) {
+//cat=womens-accessories&fts=umbrella
+//         cat = "womens-accessories";
+//         fts ="umbrella";
+//       }
+//     } else if (FORECAST = Snowing) {
+// cat=womens-accessories&fl=b4089&fl=b30810
+//       if (sex === "F"){
+//         cat = "womens-accessories";
+//         fts ="";
+//         fl = "b4089&fl=b30810"
+//       }
+//     } else if (FORECAST > 60) {
+//       if (sex === "F"){
+//         cat = "day-dresses";
+//         fts ="longsleeve";
+//       }
+//     } else if (FORECAST > 50) {
+//       if (sex === "F"){
+//         cat = "day-dresses";
+//         fts ="winter dress";
+//       }
+//     } else {
+//       if (sex === "F"){
+//         cat = "day-dresses";
+//         fts = "winter dress";
+//       }
+//     }
+
 //========= Get weather data from user database ===========================//
 
  if (window.location.href==="http://localhost:3000/styles") {
@@ -43,6 +132,7 @@ $(document).ready(function () {
     var sex = $("#gender").text().trim();
     var dressfts = "", dresscat = "", counter = 0;
 
+<<<<<<< HEAD
     if (sex === "F"){
       // var ranDress=['sleeveless dress', 'summer dress', 'yellow dress', 'pink dress'];
       if (todayTemp >= 90 ) {
@@ -65,6 +155,37 @@ $(document).ready(function () {
       } else {
         dresscat = "day-dresses";
         dressfts = "winter dress";
+=======
+    if (todayTemp >= 90 ) {
+      if (sex === "F"){
+        cat = "womens-clothes";
+        fts = "sleeveless dress";
+      }
+    } else if (todayTemp > 80) {
+      if (sex === "F"){
+        cat = "womens-clothes";
+        fts = "summer dress";
+      }
+    } else if (todayTemp > 70) {
+      if (sex === "F"){
+        cat = "womens-clothes";
+        fts ="spring dress";
+      }
+    } else if (todayTemp > 60) {
+      if (sex === "F"){
+        cat = "day-dresses";
+        fts ="longsleeve";
+      }
+    } else if (todayTemp > 50) {
+      if (sex === "F"){
+        cat = "day-dresses";
+        fts ="winter dress";
+      }
+    } else {
+      if (sex === "F"){
+        cat = "day-dresses";
+        fts = "winter dress";
+>>>>>>> 9370bfa571b4607cf7e039a20dc49e80faf5ccc8
       }
 
      $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat=" + dresscat + "&fts=" + dressfts + "&offset=0&limit=30&sort=Popular", function(data) {
@@ -80,7 +201,7 @@ $(document).ready(function () {
           $("#dress").append("<img src="+productIdx.image.sizes.Large.url+">");
           $("#selectedDress").html("");
           $("#selectedTop").html("");
-          $("#selectedBottom").html("");
+          $("#selectedBottom").html(""); //Also append to the ruby hidden field
           $("#selectedDress").append("<br><h3>Dress</h3><br>");
           $("#selectedDress").append(this);
           $("#saveStyle").show();
@@ -104,22 +225,35 @@ $(document).ready(function () {
         topfts = "summer";
       }
     } else if (todayTemp > 80) {
+<<<<<<< HEAD
       if (sex === "F"){        
         topcat = "womens-clothes";
         topfts = "summer top";
+=======
+      if (sex === "F"){
+        cat = "womens-clothes";
+        fts = "summer top";
+>>>>>>> 9370bfa571b4607cf7e039a20dc49e80faf5ccc8
       } else if (sex === "M"){
         topcat = "mens-tees-and-tshirts";
         topfts = "summer";
       }
     } else if (todayTemp > 70) {
+<<<<<<< HEAD
       if (sex === "F"){           
         topcat = "womens-clothes";
         topfts = "spring top";
+=======
+      if (sex === "F"){
+        cat = "womens-clothes";
+        fts = "spring top";
+>>>>>>> 9370bfa571b4607cf7e039a20dc49e80faf5ccc8
       } else if (sex === "M"){
         topcat = "mens-tees-and-tshirts";
         topfts = "summer";
       }
     } else if (todayTemp > 60) {
+<<<<<<< HEAD
       if (sex === "F"){          
         topcat = "longsleeve-tops";
         topfts ="";
@@ -143,6 +277,31 @@ $(document).ready(function () {
         topcat = "mens-overcoats-and-trenchcoats";
         topfts = "";
       }          
+=======
+      if (sex === "F"){
+        cat = "longsleeve-tops";
+        fts ="";
+      } else if (sex === "M"){
+        cat = "mens-longsleeve-shirts";
+        fts = "summer";
+      }
+    } else if (todayTemp > 50) {
+      if (sex === "F"){
+        cat = "cashmere-sweaters";
+        fts ="";
+      } else if (sex === "M"){
+        cat = "mens-sweaters";
+        fts = "";
+      }
+    } else {
+      if (sex === "F"){
+        cat = "womens-outerwear";
+        fts = "outerwear";
+      } else if (sex === "M"){
+        cat = "mens-overcoats-and-trenchcoats";
+        fts = "";
+      }
+>>>>>>> 9370bfa571b4607cf7e039a20dc49e80faf5ccc8
     }
 
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ topcat +"&fts=" + topfts + "&offset=0&limit=30&sort=Popular", function(data) {   
@@ -151,9 +310,9 @@ $(document).ready(function () {
       $("#top").append("<img src="+data.products[1].image.sizes.Large.url+">");
       $("#top").append("<img src="+data.products[2].image.sizes.Large.url+">");
       $("#top").append("<img src="+data.products[3].image.sizes.Large.url+">");
-      
+
       counter = 4;
-      
+
       $("#top").on("click","img", function(e){
         var productIdx = data.products[counter];
 
@@ -169,25 +328,43 @@ $(document).ready(function () {
 
     var bottomcat = "", bottomfts = "";
     if (todayTemp >= 90 ) {
+<<<<<<< HEAD
       if (sex === "F"){        
         bottomcat = "womens-clothes";
         bottomfts = "summer shorts";
+=======
+      if (sex === "F"){
+        cat = "womens-clothes";
+        fts = "summer shorts";
+>>>>>>> 9370bfa571b4607cf7e039a20dc49e80faf5ccc8
       } else if (sex === "M"){
         bottomcat = "mens-shorts";
         bottomfts = "summer";
       }
     } else if (todayTemp > 80) {
+<<<<<<< HEAD
       if (sex === "F"){        
         bottomcat = "womens-clothes";
         bottomfts = "summer shorts";
+=======
+      if (sex === "F"){
+        cat = "womens-clothes";
+        fts = "summer shorts";
+>>>>>>> 9370bfa571b4607cf7e039a20dc49e80faf5ccc8
       } else if (sex === "M"){
         bottomcat = "mens-chinos-and-khakis";
         bottomfts = "summer";
       }
     } else if (todayTemp > 70) {
+<<<<<<< HEAD
       if (sex === "F"){        
         bottomcat = "womens-clothes";
         bottomfts ="spring pants";
+=======
+      if (sex === "F"){
+        cat = "womens-clothes";
+        fts ="spring pants";
+>>>>>>> 9370bfa571b4607cf7e039a20dc49e80faf5ccc8
       } else if (sex === "M"){
         bottomcat = "mens-jeans";
         bottomfts = "classic";
@@ -223,7 +400,7 @@ $(document).ready(function () {
       $("#bottom").append("<img src="+data.products[0].image.sizes.Large.url+">");
       $("#bottom").append("<img src="+data.products[1].image.sizes.Large.url+">");
       $("#bottom").append("<img src="+data.products[2].image.sizes.Large.url+">");
-      $("#bottom").append("<img src="+data.products[3].image.sizes.Large.url+">");      
+      $("#bottom").append("<img src="+data.products[3].image.sizes.Large.url+">");
       counter = 4;
 
       $("#bottom").on("click","img", function(e){

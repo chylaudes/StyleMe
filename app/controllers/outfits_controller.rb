@@ -20,6 +20,6 @@ class OutfitsController < ApplicationController
 
   private
   def outfit_params
-
+    params.require(:actor).permit(:id, :name)
   end
 end
