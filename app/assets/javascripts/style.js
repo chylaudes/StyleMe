@@ -10,7 +10,7 @@ $(document).ready(function () {
     if (!userLocation){
       userLocation = 'San Francisco';
     }
- 
+
     userLocation = userLocation.replace(" ", "");
     var trimmedUserLocation = userLocation;
     var index = userLocation.indexOf(',');
@@ -24,7 +24,7 @@ $(document).ready(function () {
    $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/geolookup/conditions/q/"+ $newState +"/"+ userLocation +".json", function(data) {
     $("div #curLocation").text('');
     $('#curTemp').append(data.current_observation.temp_f + " &#8457;");
-    $('#curLocation').append("<strong>" + data.current_observation.display_location.full + "</strong>");  
+    $('#curLocation').append("<strong>" + data.current_observation.display_location.full + "</strong>");
    });
 
    $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/forecast/q/"+ $newState +"/"+ userLocation +".json", function(data) {
@@ -114,14 +114,14 @@ else  {
       cat = "mens-tees-and-tshirts";
       fts = "summer";
   } else if (todayTemp > 60) {
-      cat = "men-longsleeve-shirts";
+      cat = "mens-longsleeve-shirts";
       fts = "summer";
   } else if ( todayTemp > 50) {
-      cat = "cashmere-sweaters";
-      fts = "summer";
+      cat = "mens-sweaters";
+      fts = "";
   } else {
-    cat = "womens-outerwear";
-    fts = "outerwear";
+    cat = "mens-overcoats-and-trenchcoats";
+    fts = "";
   }
 }
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ cat +"&fts=" + fts + "&offset=0&limit=30&sort=Popular", function(data) {
@@ -168,23 +168,23 @@ else  {
       }
 else  {
   if (todayTemp >= 90 ) {
-    cat = "mens-tees-and-tshirts";
+    cat = "mens-shorts";
     fts = "summer";
   } else if (todayTemp > 90) {
-    cat = "mens-tees-and-tshirts";
+    cat = "mens-shorts";
     fts = "summer";
   } else if (todayTemp > 80) {
-      cat = "mens-tees-and-tshirts";
+      cat = "mens-chinos-and-khakis";
       fts = "summer";
   } else if (todayTemp > 70) {
-      cat = "longsleeve-tops";
-      fts = "summer";
+      cat = "mens-jeans";
+      fts = "classic";
   } else if ( todayTemp > 60) {
-      cat = "cashmere-sweaters";
-      fts = "summer";
+      cat = "mens-jeans";
+      fts = "classic";
   } else {
-    cat = "womens-outerwear";
-    fts = "outerwear";
+    cat = "mens-jeans";
+    fts = "classic";
   }
 
     }
