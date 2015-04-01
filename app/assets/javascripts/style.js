@@ -37,27 +37,37 @@ $(document).ready(function () {
    });
 
     var sex = $("#gender").text();
-    var fts, cat, counter;
+    var fts = "", cat = "", counter = 0;
 
-    if (sex === "F"){
-      if (todayTemp >= 90 ) {
+    if (todayTemp >= 90 ) {
+      if (sex === "F"){        
         cat = "womens-clothes";
         fts = "sleeveless dress";
-      } else if (todayTemp > 80) {
+      }
+    } else if (todayTemp > 80) {
+      if (sex === "F"){        
         cat = "womens-clothes";
         fts = "summer dress";
-      } else if (todayTemp > 70) {
-          cat = "womens-clothes";
-          fts ="spring dress";
-      } else if (todayTemp > 60) {
-          cat = "day-dresses";
-          fts ="longsleeve";
-      } else if (todayTemp > 50) {
-          cat = "day-dresses";
-          fts ="winter dress";
-      } else {
-          cat = "day-dresses";
-          fts = "winter dress";
+      }
+    } else if (todayTemp > 70) {
+      if (sex === "F"){        
+        cat = "womens-clothes";
+        fts ="spring dress";
+      }
+    } else if (todayTemp > 60) {
+      if (sex === "F"){
+        cat = "day-dresses";
+        fts ="longsleeve";
+      }
+    } else if (todayTemp > 50) {
+      if (sex === "F"){        
+        cat = "day-dresses";
+        fts ="winter dress";
+      }
+    } else {
+      if (sex === "F"){
+        cat = "day-dresses";
+        fts = "winter dress";
       }
     }
 
@@ -83,48 +93,56 @@ $(document).ready(function () {
       });
     }
 
-    if (sex === "F"){
-      if (todayTemp >= 90 ) {
+    if (todayTemp >= 90 ) {
+      if (sex === "F"){
         cat = "womens-clothes";
         fts = "tank top";
-      } else if (todayTemp > 80) {
+      } else if (sex === "M"){
+        cat = "mens-tees-and-tshirts";
+        fts = "summer";
+      }
+    } else if (todayTemp > 80) {
+      if (sex === "F"){        
         cat = "womens-clothes";
         fts = "summer top";
-      } else if (todayTemp > 70) {
-          cat = "womens-clothes";
-          fts = "spring top";
-      } else if (todayTemp > 60) {
-          cat = "longsleeve-tops";
-          fts ="";
-      } else if (todayTemp > 50) {
-          cat = "cashmere-sweaters";
-          fts ="";
-      } else {
-          cat = "womens-outerwear";
-        fts = "outerwear";
+      } else if (sex === "M"){
+        cat = "mens-tees-and-tshirts";
+        fts = "summer";
       }
-    } else  {
-      //MEN
-      if (todayTemp >= 90 ) {
+    } else if (todayTemp > 70) {
+      if (sex === "F"){           
+        cat = "womens-clothes";
+        fts = "spring top";
+      } else if (sex === "M"){
         cat = "mens-tees-and-tshirts";
         fts = "summer";
-      } else if (todayTemp > 80) {
-        cat = "mens-tees-and-tshirts";
+      }
+    } else if (todayTemp > 60) {
+      if (sex === "F"){          
+        cat = "longsleeve-tops";
+        fts ="";
+      } else if (sex === "M"){
+        cat = "mens-longsleeve-shirts";
         fts = "summer";
-      } else if (todayTemp > 70) {
-          cat = "mens-tees-and-tshirts";
-          fts = "summer";
-      } else if (todayTemp > 60) {
-          cat = "mens-longsleeve-shirts";
-          fts = "summer";
-      } else if ( todayTemp > 50) {
-          cat = "mens-sweaters";
-          fts = "";
-      } else {
+      }         
+    } else if (todayTemp > 50) {
+      if (sex === "F"){   
+        cat = "cashmere-sweaters";
+        fts ="";
+      } else if (sex === "M"){
+        cat = "mens-sweaters";
+        fts = "";  
+      }                    
+    } else {
+      if (sex === "F"){           
+        cat = "womens-outerwear";
+        fts = "outerwear";
+      } else if (sex === "M"){        
         cat = "mens-overcoats-and-trenchcoats";
         fts = "";
-      }
+      }          
     }
+
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ cat +"&fts=" + fts + "&offset=0&limit=30&sort=Popular", function(data) {
       $("#top").text('');
       $("#top").append("<img src="+data.products[0].image.sizes.Large.url+">");
@@ -148,44 +166,52 @@ $(document).ready(function () {
    });
 
    var bottom = "pants";
-    if (sex === "F"){
-      if (todayTemp >= 90 ) {
+
+    if (todayTemp >= 90 ) {
+      if (sex === "F"){        
         cat = "womens-clothes";
         fts = "summer shorts";
-      } else if (todayTemp > 80) {
-        cat = "womens-clothes";
-        fts = "summer shorts";
-      } else if (todayTemp > 70) {
-          cat = "womens-clothes";
-          fts ="spring pants";
-      } else if (todayTemp > 60) {
-          cat = "jeans";
-          fts ="";
-      } else if (todayTemp > 50) {
-          cat = "classic-jeans";
-          fts ="";
-      } else {
-          cat = "classic-jeans";
-        fts = "";
+      } else if (sex === "M"){
+        cat = "mens-shorts";
+        fts = "summer";
       }
-    }  else  {
-      //==== MEN ======//
-      if (todayTemp >= 90 ) {
-        cat = "mens-shorts";
+    } else if (todayTemp > 80) {
+      if (sex === "F"){        
+        cat = "womens-clothes";
+        fts = "summer shorts";
+      } else if (sex === "M"){
+        cat = "mens-chinos-and-khakis";
         fts = "summer";
-      } else if (todayTemp > 90) {
-        cat = "mens-shorts";
-        fts = "summer";
-      } else if (todayTemp > 80) {
-          cat = "mens-chinos-and-khakis";
-          fts = "summer";
-      } else if (todayTemp > 70) {
-          cat = "mens-jeans";
-          fts = "classic";
-      } else if ( todayTemp > 60) {
-          cat = "mens-jeans";
-          fts = "classic";
-      } else {
+      }
+    } else if (todayTemp > 70) {
+      if (sex === "F"){        
+        cat = "womens-clothes";
+        fts ="spring pants";
+      } else if (sex === "M"){
+        cat = "mens-jeans";
+        fts = "classic";
+      }
+    } else if (todayTemp > 60) {
+      if (sex === "F"){
+        cat = "jeans";
+        fts ="";
+      } else if (sex === "M"){
+        cat = "mens-jeans";
+        fts = "classic";
+      }
+    } else if (todayTemp > 50) {
+      if (sex === "F"){
+        cat = "classic-jeans";
+        fts ="";
+      } else if (sex === "M"){
+      cat = "mens-jeans";
+      fts = "classic";
+      }
+    } else {
+      if (sex === "F"){
+        cat = "classic-jeans";
+        fts = "";
+      } else if (sex === "M"){
         cat = "mens-jeans";
         fts = "classic";
       }
