@@ -1,31 +1,32 @@
+<div id="gender"> <%= @user.sex %></div>
+
 <div class="row" id="weather">
   <!-- weather info -->
   <div id="weather">
-    
-    <div class="col-md-2 col-lg-2 lead" id="curLocation"><%= @user.location %></div> 
-    
+    <div class="col-md-2 col-lg-2 lead" id="curLocation"><%= @user.location %></div>
+
     <div class="col-md-2 col-lg-1 col-sm-3">
       <div id="wIcon"></div>
-    </div> 
-    
+    </div>
+
     <div class="col-md-2 col-lg-2 col-sm-4">
       <div style="color:#f4b701" id="curTemp"></div>
-    </div>      
-    
+    </div>
+
     <div class="col-md-1 col-lg-2 col-sm-5">
       <div id="curCond"></div>
-    </div> 
-    
+    </div>
+
     <div class="col-md-1 col-lg-2">
-      <span> Hi: 
+      <span> Hi:
+
         <span id="hiTemp"></span>
         <br>
         Low:
-        <span id="loTemp"></span>    
+        <span id="loTemp"></span>
       </span>
       <br>
     </div> 
-
     <div class="col-md-3 col-lg-2 col-sm-5">
 
 <!-- GOOGLE SEARCH PAGE -->
@@ -33,14 +34,13 @@
     <input type="text" name="location" value="" placeholder=" e.g., San Francisco, CA or 94101" autofocus="true" size="30" id="location"><button class="btn btn-success" id="changeLoc">Change</button>
   </div> 
     </div>
-  </div>  
 </div>
 
 <div class="row">
-  <div class="col-md-4 col-lg-4 col-sm-4">      
+  <div class="col-md-4 col-lg-4 col-sm-4">
       <!-- picked style -->
       <div>
-        
+
         <h2>picked style</h2>
         <div id="selectedDress"></div>
         <div id="selectedTop"></div>
@@ -50,7 +50,7 @@
 
   <!-- space btw two cols in Row -->
   <div class="col-md-1 col-lg-1"></div>
-  
+
   <!-- suggested style below -->
   <div class="col-md-7 col-lg-7 col-sm-7" id="suggestedStyle">
     <h2>Suggested styles</h2>
@@ -78,19 +78,11 @@
     <div style="border-width: 1px; border-style: solid;">
       <div class="styleHeader text-center" style="border-width: 1px; border-style: solid;">Accessories</div>
       <div id="accessory" style="border-width: 1px; border-style: solid;"></div>
-    </div>    
+    </div>
   </div>
 
 </div> <!-- end of weather row -->
-
-<br><br>
-
-
-
-
-
-
-
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+
 
 
