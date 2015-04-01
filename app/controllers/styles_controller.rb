@@ -8,6 +8,9 @@ class StylesController < ApplicationController
     @user = current_user
   end
 
+  def saved_style
+  end
+
   def new
   end
 

@@ -1,28 +1,31 @@
 <h3>Hello <span style="color:blue;"><%= @user.first_name %>,</span> Here is what we suggest for you today!</h3><br>
 
-<%= form_for @user, url: styles_path(@user), id:"saveStyleForm" do |f| %>
 
+
+
+<%#= form_for @user, url:"" , id:"saveStyleForm" do |f| %>
+<!-- styles_path(@user) -->
 <!-- url: [@user, @whatever] -->
 
 <div class="row" id="weather">
   <!-- weather info -->
   <div id="weather">
     
-    <div class="col-md-3 col-lg-3 lead" id="location"><%= @user.location %></div> 
+    <div class="col-md-2 col-lg-2 lead" id="curLocation"><%= @user.location %></div> 
     
     <div class="col-md-2 col-lg-1 col-sm-3">
       <div id="wIcon"></div>
     </div> 
     
-    <div class="col-md-3 col-lg-3 col-sm-4">
+    <div class="col-md-2 col-lg-2 col-sm-4">
       <div style="color:#f4b701" id="curTemp"></div>
     </div>      
     
-    <div class="col-md-2 col-lg-2 col-sm-5">
+    <div class="col-md-1 col-lg-2 col-sm-5">
       <div id="curCond"></div>
     </div> 
     
-    <div class="col-md-2 col-lg-2">
+    <div class="col-md-1 col-lg-2">
       <span> Hi: 
         <span id="hiTemp"></span>
         <br>
@@ -31,8 +34,9 @@
       </span>
       <br>
     </div> 
+<%# end %> 
 
-    <div>
+    <div class="col-md-3 col-lg-2 col-sm-5">
 <!-- GOOGLE SEARCH PAGE -->
 
 <!-- <%#= 
@@ -40,16 +44,10 @@ form_tag(styles_show_path, class:"form-inline") do
   %> -->
 
 
-<form class="form-inline" role="form">
   <div class="form-group form-inline">
-    <h3>Change location</h3>
-    <br>
-    <%= label_tag :location,nil, class: "control-label" %>
-    <%= text_field_tag(:location, nil, placeholder: "e.g., San Francisco, CA or 94101", class: "form-control",  size: 50, autofocus: true) %>
-    <button class="btn btn-info">Change</button>
-  </div>
-<% end %>  
-</form>
+    <input type="text" name="location" value="" placeholder=" e.g., San Francisco, CA or 94101" autofocus="true" size="30" id="location"><button class="btn btn-success" id="changeLoc">Change</button>
+  </div> 
+
     
 
     </div>
@@ -66,13 +64,11 @@ form_tag(styles_show_path, class:"form-inline") do
         <div id="selectedDress"></div>
         <div id="selectedTop"></div>
         <br>
-        <div id="selectedBottom"></div> 
-       <!--  <br> -->
-        <!-- <div id="saveStyle"><%#= f.submit "Save this style", class: "btn btn-info" %></div> -->                
+        <div id="selectedBottom"></div>                
       </div>
     </div>
 
-<% end %>
+
 
   <!-- space btw two cols in Row -->
   <div class="col-md-1 col-lg-1"></div>
@@ -113,18 +109,6 @@ form_tag(styles_show_path, class:"form-inline") do
 
 
 
-
-
-
-
-
-
-
-
-
-<%#= 
-link_to "Create a new style", styles_new_path 
-%>
-<!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script> -->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 
 
