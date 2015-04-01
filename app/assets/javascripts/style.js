@@ -1,36 +1,43 @@
 $(document).ready(function () {
 
-//========= StyleMe ==============================//
-// if (window.location.pathname) {}
-//in a console do window.location.href
+//========= Get weather data from user database ===========================//
 
-var $showInfo = $("#showInfo");
-var todayTemp, fts, cat;
-var sex = $("#gender").text();
+ if (window.location.href==="http://localhost:3000/styles") {
 
+    var userLocation = $("div #curLocation").text();
+    var todayTemp;
 
-//======== WEATHER UNDERGROUND API CALL ========================//
-   var userLocation = $("div #location").text();
-   if (!userLocation){
-    userLocation = 'San Francisco';
-   }
-   $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/geolookup/conditions/q/CA/"+ userLocation +".json", function(data) {
-    $("div #location").text('');
+    if (!userLocation){
+      userLocation = 'San Francisco';
+    }
+ 
+    userLocation = userLocation.replace(" ", "");
+    var trimmedUserLocation = userLocation;
+    var index = userLocation.indexOf(',');
+    userLocation = userLocation.slice(0, index);
+
+    $newState = trimmedUserLocation.slice(index+1, index+4);
+    if ($newState === null || $newState === undefined){
+      $newState = "CA";
+    }
+
+   $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/geolookup/conditions/q/"+ $newState +"/"+ userLocation +".json", function(data) {
+    $("div #curLocation").text('');
     $('#curTemp').append(data.current_observation.temp_f + " &#8457;");
-    $('#location').append("<strong>" + data.current_observation.display_location.full + "</strong><br><a href='#' class='changeLoc'>Change Location</a>");
+    $('#curLocation').append("<strong>" + data.current_observation.display_location.full + "</strong>");  
    });
 
-   $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/forecast/q/CA/"+ userLocation +".json", function(data) {
+   $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/forecast/q/"+ $newState +"/"+ userLocation +".json", function(data) {
     $('#curCond').append(data.forecast.simpleforecast.forecastday[0].conditions);
     $('#hiTemp').append(data.forecast.simpleforecast.forecastday[0].high.fahrenheit + " &#8457;");
     todayTemp = data.forecast.simpleforecast.forecastday[0].high.fahrenheit;
-    console.log('todayTempyy',todayTemp);
     $('#loTemp').append(data.forecast.simpleforecast.forecastday[0].low.fahrenheit + " &#8457;");
     var $weatherIcon = data.forecast.simpleforecast.forecastday[0].icon_url;
     $('#wIcon').append("<img src=" + $weatherIcon + ">");
    });
 
-   var counter;
+    var sex = $("#gender").text();
+    var dress="dress", fts, cat, counter;
 
     if (sex === "F"){
       if (todayTemp >= 90 ) {
@@ -189,9 +196,6 @@ else  {
 
       $("#bottom").on("click","img", function(e){
         var productIdx = data.products[counter];
-        console.log(counter);
-        console.log(productIdx);
-
         counter++;
         $("#bottom").append("<img src="+productIdx.image.sizes.Large.url+">");
         $("#selectedDress").html("");
@@ -225,26 +229,26 @@ else  {
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&offset=0&limit=3&cat=womens-umbrellas", function(data) {
       $("#accessory").append("<br>womens-umbrellas<br><img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+"><img src="+data.products[2].image.sizes.Large.url+">");
    });
-   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&offset=0&limit=3&fts=rain-boots", function(data) {
-      $("#accessory").append("<br>rainboots<br><img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+"><img src="+data.products[2].image.sizes.Large.url+">");
-   });
+   // $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&offset=0&limit=3&fts=rain-boots", function(data) {
+   //    $("#accessory").append("<br>rainboots<br><img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+"><img src="+data.products[2].image.sizes.Large.url+">");
+   // });
 
-   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&offset=0&limit=3&cat=mens-dress-shirts", function(data) {
-      $("#accessory").append("<br><br>");
-      $("#accessory").append("<br><img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+"><img src="+data.products[2].image.sizes.Large.url+">");
-   });
+   // $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&offset=0&limit=3&cat=mens-dress-shirts", function(data) {
+   //    $("#accessory").append("<br><br>");
+   //    $("#accessory").append("<br><img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+"><img src="+data.products[2].image.sizes.Large.url+">");
+   // });
    //fl=b936 -> search by brand(fl=b) b936:Chanel
-   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&offset=0&limit=3&cat=womens-suits&fl=b936", function(data) {
-      $("#accessory").append("<br>Chanel Suits:<br><img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+"><img src="+data.products[2].image.sizes.Large.url+">");
-   });
+   // $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&offset=0&limit=3&cat=womens-suits&fl=b936", function(data) {
+   //    $("#accessory").append("<br>Chanel Suits:<br><img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+"><img src="+data.products[2].image.sizes.Large.url+">");
+   // });
 
+  }
 
-
-   $("#saveStyleForm").on("submit", function (event) {
-     event.preventDefault();
+   // $("#saveStyleForm").on("submit", function (event) {
+   //   event.preventDefault();
 
      // var query = this.searchTerm.value;
-   });
+   // });
 
 // $("#dress").on("click","img", function(e){
 //   console.log(this);
@@ -276,31 +280,7 @@ else  {
    //    // console.log(data);
    // });
 
-    // $('.carousel').carousel({
-    //     interval: 3000
-    // });
 
-
-  // $('button').on('click', '.save_style',function (e) {
-  //   e.preventDefault();
-  //   var formURL = $("#search").attr("data-url");
-  //   // var title = $(this).parent().find($('.tr-title')).text();
-  //   // var artist = $(this).parent().find($('.tr-artist')).text();
-  //   var postData = spResult[title($(this))+artist($(this))];
-  //   console.log(postData.preview_url);
-  //   $.ajax({
-  //     url : formURL,
-  //     type: "POST",
-  //     data : {track: {spotify_track_id: postData.id, title: postData.name, track_uri: postData.uri, artist: postData.artists[0].name}},
-  //     success:function(data, textStatus, jqXHR)
-  //     {
-  //       location.reload();
-  //         //data: return data from server
-  //         // data
-  //     }
-  //      });
-  //   // $('#results ul').empty();
-  // });
 
 
 
