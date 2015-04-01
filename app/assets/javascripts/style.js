@@ -57,11 +57,12 @@ $(document).ready(function () {
           fts ="winter dress";
       } else {
           cat = "day-dresses";
-        fts = "winter dress";
+          fts = "winter dress";
       }
     }
 
-   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&fts=" + dress + "&offset=0&limit=30&sort=Popular", function(data) {      $("#dress").append("<img src="+data.products[0].image.sizes.Large.url+">");
+   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&fts=" + dress + "&offset=0&limit=30&sort=Popular", function(data) {
+      $("#dress").append("<img src="+data.products[0].image.sizes.Large.url+">");
       $("#dress").append("<img src="+data.products[1].image.sizes.Large.url+">");
       $("#dress").append("<img src="+data.products[2].image.sizes.Large.url+">");
 
@@ -101,25 +102,27 @@ if (sex === "F"){
       cat = "womens-outerwear";
     fts = "outerwear";
   }
-// }
-// else  {
-//   if (todayTemp >= 90 ) {
-//     cat = "womens-clothes";
-//     fts = "tank top";
-//   } else if (80 < todayTemp < 90) {
-//     cat = "womens-clothes";
-//     fts = "summer top";
-//   } else if (70 < todayTemp < 80) {
-//       cat = "womens-clothes";
-//     fts = "spring top";
-//   } else if (60 < todayTemp < 70) {
-//       cat = "longsleeve-tops";
-//   } else if (50 < todayTemp < 60) {
-//       cat = "cashmere-sweaters";
-//   } else if (todayTemp <= 50) {
-//       cat = "womens-outerwear";
-//     fts = "outerwear";
-//   }
+}
+else  {
+  if (todayTemp >= 90 ) {
+    cat = "mens-tees-and-tshirts";
+    fts = "summer";
+  } else if (todayTemp > 80) {
+    cat = "mens-tees-and-tshirts";
+    fts = "summer";
+  } else if (todayTemp > 70) {
+      cat = "mens-tees-and-tshirts";
+      fts = "summer";
+  } else if (todayTemp > 60) {
+      cat = "men-longsleeve-shirts";
+      fts = "summer";
+  } else if ( todayTemp > 50) {
+      cat = "cashmere-sweaters";
+      fts = "summer";
+  } else {
+    cat = "womens-outerwear";
+    fts = "outerwear";
+  }
 }
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ cat +"&fts=" + fts + "&offset=0&limit=30&sort=Popular", function(data) {
       $("#top").append("<img src="+data.products[0].image.sizes.Large.url+">");
@@ -162,6 +165,28 @@ if (sex === "F"){
           cat = "classic-jeans";
         fts = "";
       }
+      }
+else  {
+  if (todayTemp >= 90 ) {
+    cat = "mens-tees-and-tshirts";
+    fts = "summer";
+  } else if (todayTemp > 90) {
+    cat = "mens-tees-and-tshirts";
+    fts = "summer";
+  } else if (todayTemp > 80) {
+      cat = "mens-tees-and-tshirts";
+      fts = "summer";
+  } else if (todayTemp > 70) {
+      cat = "longsleeve-tops";
+      fts = "summer";
+  } else if ( todayTemp > 60) {
+      cat = "cashmere-sweaters";
+      fts = "summer";
+  } else {
+    cat = "womens-outerwear";
+    fts = "outerwear";
+  }
+
     }
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&fts=" + bottom + "&offset=0&limit=30&sort=Popular", function(data) {
       $("#bottom").append("<img src="+data.products[0].image.sizes.Large.url+">");
