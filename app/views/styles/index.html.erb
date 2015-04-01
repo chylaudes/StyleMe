@@ -5,7 +5,6 @@
 <div id="gender"> <%= @user.sex %></div>
 
 
-
 <%#= form_for @user, url:"" , id:"saveStyleForm" do |f| %>
 <!-- styles_path(@user) -->
 
@@ -14,10 +13,7 @@
 <div class="row" id="weather">
   <!-- weather info -->
   <div id="weather">
-
-
     <div class="col-md-2 col-lg-2 lead" id="curLocation"><%= @user.location %></div>
-
     <div class="col-md-2 col-lg-1 col-sm-3">
       <div id="wIcon"></div>
     </div>
@@ -40,7 +36,7 @@
       </span>
       <br>
     </div>
-<%# end %>
+<%end %>
 
     <div class="col-md-3 col-lg-2 col-sm-5">
 <!-- GOOGLE SEARCH PAGE -->
@@ -71,6 +67,7 @@ form_tag(styles_show_path, class:"form-inline") do
         <div id="selectedTop"></div>
         <br>
         <div id="selectedBottom"></div>
+      <%= %>
       </div>
     </div>
 
