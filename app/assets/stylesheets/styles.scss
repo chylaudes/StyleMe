@@ -6,36 +6,54 @@
 }
 #curTemp {
   color: #f4b701;
-    font-weight: 600;
-    font-size: 2.75rem;
+  font-weight: 600;
+  font-size: 2.75rem;
+  letter-spacing: 0.09em;
+
 }
 
-#weather {overflow: hidden;}
+#weather {overflow: hidden;
+  margin-top: 10px;}
 
 #weather DIV SPAN{
   white-space: nowrap;
   display: inline-block;
   margin: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+strong{
+  font-weight: 200;
+  font-size: 2.80rem;
+}
+hr {
+  border: none;
+  height: 1px;
+  color:#333;
+  background-color:#333;
 }
 
 #curCond {
   font-weight: bold;
-  font-size: 1.7rem;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-top: 15px;
+  letter-spacing: 0.09em;
+  margin-top: 6px;
+}
+div#wlcon{
+  padding-left: 10px;
 }
 
 #suggestedStyle img {
-    margin: 5px;
+    margin: 0px;
     padding: 5px;
-    border: 1px solid #0000ff;
     height: auto;
     width: auto;
     text-align: center;
 }
 
-div .styleHeader {
-  background-color: #b0c4de;
-  color: white;
-}
 
 div #saveStyle {
   display: none;
@@ -43,52 +61,4 @@ div #saveStyle {
 
 div #gender {
   display: none;
-}
-
-body {
-    background: #F0EFE7;
-    margin: 0;
-    padding: 0;
-    font: 15px/1.5 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: #4E443C;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Arvo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  text-align: center;
-  font-weight: normal;
-  text-rendering: optimizelegibility;
-}
-
-h1 {
-    color: #4E443C;
-    font-size: 36px;
-    font-weight: bold;
-}
-
-h2, h2 a {
-    color: #F14E32;
-}
-
-h3, h3 a {
-  color: #0388A6;
-}
-
-a {
-  color: #0388A6;
-}
-
-pre {
-  border:1px solid #000;
-  overflow-x:auto;
-  background: #222;
-  color: #fff;
-  text-shadow: none;
-}
-
-.wrapper {
-    max-width: 620px;
-    padding: 0 20px 40px 20px;
-    margin: auto;
 }

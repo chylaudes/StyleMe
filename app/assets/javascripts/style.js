@@ -21,44 +21,64 @@ $(document).ready(function () {
 //
 // if (FORECAST >= clear) {
 //       if (sex === "F"){
-//cat=womens-accessories&fl=b4089&fl=b30810&fts=
+//      cat=womens-accessories&fl=b4089&fl=b30810&fts=
 //         cat = "womens-accessories";
 //         fl = "b4089&fl=b30810"
 //       }
-//     } else if (FORECAST = Rainning) {
-//cat=womens-accessories&fts=umbrella
+//     } else if (FORECAST = Raining) {
+//      cat=womens-accessories&fts=umbrella
 //         cat = "womens-accessories";
 //         fts ="umbrella";
 //       }
 //     } else if (FORECAST = Snowing) {
-// cat=womens-accessories&fl=b4089&fl=b30810
+//      cat=scarves&fl=b4486&fts=oversized
 //       if (sex === "F"){
+//         cat = "scarves";
+//         fts ="oversized";
+//         fl = "b4486&"
+//       }
+//        else {
+//        if (sex === "F"){
+//          cat=womens-accessories&fl=b4089&fl=b30810&fts=
+//          cat = "womens-accessories";
+//          fl = "b4089&fl=b30810"
+//        }
+//      }
+//MEN ACCESSORIES: (WATCHES)
+//MEN ACCESSORIES: (EVERYTHING)
+// if (FORECAST >= clear) {
+//       if (sex === "M){
+//      cat=womens-accessories&fl=b4089&fl=b30810&fts=
 //         cat = "womens-accessories";
-//         fts ="";
 //         fl = "b4089&fl=b30810"
 //       }
-//     } else if (FORECAST > 60) {
-//       if (sex === "F"){
-//         cat = "day-dresses";
-//         fts ="longsleeve";
+//     } else if (FORECAST = Raining) {
+//         if (sex === "M){
+//      cat=womens-accessories&fts=umbrella
+//         cat = "womens-accessories";
+//         fts ="umbrella";
 //       }
-//     } else if (FORECAST > 50) {
-//       if (sex === "F"){
-//         cat = "day-dresses";
-//         fts ="winter dress";
+//     } else if (FORECAST = Snowing) {
+//      cat=scarves&fl=b4486&fts=oversized
+//       if (sex === "M){
+//         cat = "scarves";
+//         fts ="oversized";
+//         fl = "b4486&"
 //       }
-//     } else {
-//       if (sex === "F"){
-//         cat = "day-dresses";
-//         fts = "winter dress";
-//       }
-//     }
+//        else {
+//        if (sex === "M){
+//          cat=womens-accessories&fl=b4089&fl=b30810&fts=
+//          cat = "womens-accessories";
+//          fl = "b4089&fl=b30810"
+//        }
+//      }
 
 //========= Get weather data from user database ===========================//
 
  if (window.location.href==="http://localhost:3000/styles") {
 
     var userLocation = $("div #curLocation").text();
+    console.log('userlocation: ',userLocation);
     var todayTemp;
     var sex = $("#gender").text().trim();
 
@@ -70,10 +90,10 @@ $(document).ready(function () {
       var index = Math.floor(Math.random() * arr.length);
       console.log('index:', index);
       return arr[index];
-    };  
-  
+    };
+
     if (sex === 'M'){
-      fl = getRandowmFTS(maleBrand1);     
+      fl = getRandowmFTS(maleBrand1);
     } else {
       fl = getRandowmFTS(femaleBrand1);
     } 
@@ -91,7 +111,8 @@ $(document).ready(function () {
     if ($newState === null || $newState === undefined){
       $newState = "CA";
     }
-
+    userLocation = 'San Francisco';
+    console.log('userlocation: ',userLocation);
    $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/geolookup/conditions/q/"+ $newState +"/"+ userLocation +".json", function(data) {
     $("div #curLocation").text('');
     $('#curTemp').append(data.current_observation.temp_f + " &#8457;");
@@ -249,7 +270,7 @@ $(document).ready(function () {
           topfts = "";          
         }   
       } else if (sex === "M"){
-        if (fl === ("b284")  || fl === ("b427") ||  fl === ("b29798") ||  fl === ("b2683") || fl === ("b2363")){ 
+        if (fl === ("b284")  || fl === ("b427") ||  fl === ("b29798") ||  fl === ("b2683") || fl === ("b2363")){
           topfts = "";
           topcat = "mens-shortsleeve-shirts";
         } else {
@@ -279,7 +300,7 @@ $(document).ready(function () {
           topfts = "";
         } else {
           topcat = "mens-tees-and-tshirts";
-          topfts = "";          
+          topfts = "";
         }
       }
     } else if (todayTemp > 60) {
@@ -289,7 +310,7 @@ $(document).ready(function () {
       } else if (sex === "M"){
         topcat = "mens-longsleeve-shirts";
         topfts = "";
-      }         
+      }
     } else if (todayTemp > 50) {
       if (sex === "F"){
         topcat = "cashmere-sweaters";
@@ -355,6 +376,7 @@ $(document).ready(function () {
         $("#selectedTop").html("");
         // $("#selectedTop").append("<br><h3>Top</h3>");
         $("#selectedTop").append(this);
+        $("#selectedTop").children().addClass("topbottomsize");
         $("#saveStyle").show();
       });
    });
@@ -416,7 +438,7 @@ $(document).ready(function () {
       } else if (sex === "M"){
         if (fl==="b2446" || fl==="b427" || fl==="b29798" || fl === "b2329") {
           bottomcat = "mens-chinos-and-khakis";
-          bottomfts = "";          
+          bottomfts = "";
         } else {
           bottomcat = "mens-jeans";
           if (fl==="b3471" || fl === "b2363"){
@@ -489,8 +511,10 @@ $(document).ready(function () {
         $("#selectedBottom").html("");
         // $("#selectedBottom").append("<h3>Bottom</h3>");
         $("#selectedBottom").append(this);
+        $("#selectedBottom").children().addClass("topbottomsize");
       });
     });
+
 
   //   var shoescat = "", shoesfts = "";
   //   if (todayTemp >= 90 ) {
