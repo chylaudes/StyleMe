@@ -659,7 +659,6 @@ $(document).ready(function () {
   });
 
   var accessory2_cat = "", accessory2_fts = "";
-  console.log("curCondition:",curCondition);
   curCondition = curCondition.trim();
   if (curCondition === "Clear"){
     if (sex === "F"){
