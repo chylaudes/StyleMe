@@ -26,7 +26,10 @@ body{
 div.container1 {
   width: 1600px;
 }
-
+div.container.content{
+  width: 1770px;
+  padding-left: 1px;
+}
 div.container{
   width: 1600px;
 }
@@ -58,6 +61,14 @@ padding-left: 40px;
 
 /*NAV BAR */
 
+a#txt{
+  color:white;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 20px;
+  font-weight: 500;
+}
+
 .navbar-default .navbar-nav>li>a {
   color:white;
   text-transform: uppercase;
@@ -76,8 +87,23 @@ h1 {
 .container-fluid {
 background-color: black;
 height: 90px;
-/*border-color: none;*/
+
 }
+
+a.txt{
+  color:white;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.carousel-indicatorts li{
+  border-color:#999;
+  background-color:#ccc;
+}
+/*border-color: none;*/
+
 .navbar-default .navbar-text {
   color: white;
   padding-top: 21px;
@@ -85,7 +111,12 @@ height: 90px;
   text-transform: uppercase;
   letter-spacing: 0.2em;
 }
-
+nav.navbar.navbar-default{
+margin-bottom: 0;
+}
+.carousel-control.left, .carousel-control.right {
+    background-image: none
+}
 .navbar-fixed-top {
 top: 0;
 /*border-width: 0 0 0px;*/
@@ -106,6 +137,7 @@ color: white;
 }
 
 /*styleHeader*/
+
 
 
 div .styleHeader {
@@ -137,7 +169,23 @@ div#selectedTop.col-md-6{
   height: 360px;
 }
 
+div#login{
+margin-left: 30px;
+}
+
+
 /*flash*/
+div.alert.alert-notice{
+  width: 1400px;
+  margin-left: 150px;
+  position: absolute;
+  z-index: 1;
+}
+input{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .alert-error {
     background-color: #f2dede;
     border-color: #eed3d7;
