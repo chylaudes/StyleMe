@@ -35,8 +35,6 @@ $(document).ready(function () {
 //&fl=b427 = Nordstrom
 //&fl=b12953 = Topman
 
-
->>>>>>> 6dc2507526edbc8cfb5c029cd30ed69579518cef
 //WOMEN's SHOES:
 // if (FORECAST >= clear) {
 //       if (sex === "F"){
@@ -115,6 +113,7 @@ $(document).ready(function () {
  if (window.location.href==="http://localhost:3000/styles") {
 
     var userLocation = $("div #curLocation").text();
+    console.log('userlocation: ',userLocation);
     var todayTemp;
     var sex = $("#gender").text().trim();
 
@@ -127,17 +126,17 @@ $(document).ready(function () {
       var index = Math.floor(Math.random() * arr.length);
       console.log('index:', index);
       return arr[index];
-    };  
-  
+    };
+
     if (sex === 'M'){
-      fl = getRandowmFTS(maleBrand1);     
+      fl = getRandowmFTS(maleBrand1);
     } else {
       fl = getRandowmFTS(femaleBrand1);
-    } 
-  
+    }
+
 
   fl = "b2683";
-  
+
 
 
 
@@ -155,7 +154,8 @@ $(document).ready(function () {
     if ($newState === null || $newState === undefined){
       $newState = "CA";
     }
-
+    userLocation = 'San Francisco';
+    console.log('userlocation: ',userLocation);
    $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/geolookup/conditions/q/"+ $newState +"/"+ userLocation +".json", function(data) {
     $("div #curLocation").text('');
     $('#curTemp').append(data.current_observation.temp_f + " &#8457;");
@@ -218,7 +218,7 @@ $(document).ready(function () {
     }
 
 
-    
+
     todayTemp = '65';
     console.log("fl:",fl, "-temp:",todayTemp);
 
@@ -236,7 +236,7 @@ $(document).ready(function () {
         topcat = "womens-clothes";
         topfts = "summer top";
       } else if (sex === "M"){
-        if (fl === ("b284")  || fl === ("b427") ||  fl === ("b29798") ||  fl === ("b2683") || fl === ("b2363")){ 
+        if (fl === ("b284")  || fl === ("b427") ||  fl === ("b29798") ||  fl === ("b2683") || fl === ("b2363")){
           topfts = "";
           topcat = "mens-shortsleeve-shirts";
         } else {
@@ -254,7 +254,7 @@ $(document).ready(function () {
           topfts = "";
         } else {
           topcat = "mens-tees-and-tshirts";
-          topfts = "";          
+          topfts = "";
         }
       }
     } else if (todayTemp > 60) {
@@ -264,7 +264,7 @@ $(document).ready(function () {
       } else if (sex === "M"){
         topcat = "mens-longsleeve-shirts";
         topfts = "";
-      }         
+      }
     } else if (todayTemp > 50) {
       if (sex === "F"){
         topcat = "cashmere-sweaters";
@@ -284,7 +284,7 @@ $(document).ready(function () {
     }
 
     console.log("topcat:",topcat, "|topfts:",topfts, "|fl",fl );
-   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ topcat + "&fl=" + fl +"&fts=" + topfts + "&offset=0&limit=30", function(data) {   
+   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ topcat + "&fl=" + fl +"&fts=" + topfts + "&offset=0&limit=30", function(data) {
     console.log("manTop:",data);
       $("#top").text('');
       $("#top").append("<img src="+data.products[0].image.sizes.Large.url+">");
@@ -303,6 +303,7 @@ $(document).ready(function () {
         $("#selectedTop").html("");
         // $("#selectedTop").append("<br><h3>Top</h3>");
         $("#selectedTop").append(this);
+        $("#selectedTop").children().addClass("topbottomsize");
         $("#saveStyle").show();
       });
    });
@@ -333,7 +334,7 @@ $(document).ready(function () {
       } else if (sex === "M"){
         if (fl==="b2446" || fl==="b427" || fl==="b29798" || fl === "b2329") {
           bottomcat = "mens-chinos-and-khakis";
-          bottomfts = "";          
+          bottomfts = "";
         } else {
           bottomcat = "mens-jeans";
           if (fl==="b3471" || fl === "b2363"){
@@ -385,6 +386,7 @@ console.log('bottomcat:',bottomcat," bottomfts:",bottomfts," fl",fl);
         $("#selectedBottom").html("");
         // $("#selectedBottom").append("<h3>Bottom</h3>");
         $("#selectedBottom").append(this);
+        $("#selectedBottom").children().addClass("topbottomsize");
       });
     });
 
@@ -450,10 +452,11 @@ console.log('bottomcat:',bottomcat," bottomfts:",bottomfts," fl",fl);
       $("#shoes").on("click","img", function(e){
         var productIdx = data.products[counter];
         counter++;
-        $("#shoes").append("<img src="+productIdx.image.sizes.Large.url+">");
+        $("#shoes").append("<img src="+productIdx.image.sizes.Large.url+'class="img-responsive">');
         $("#selectedShoes").html("");
         // $("#selectedShoes").append("<h3>Shoes</h3>");
         $("#selectedShoes").append(this);
+        $("#selectedShoes").children().addClass("shoesize");
       });
     });
 
@@ -521,8 +524,9 @@ console.log('bottomcat:',bottomcat," bottomfts:",bottomfts," fl",fl);
       counter++;
       $("#accessory1").append("<img src="+productIdx.image.sizes.Large.url+">");
       $("#selectedAccessory1").html("");
-      $("#selectedAccessory1").append("<h3>Accessory</h3>");
+      // $("#selectedAccessory1").append("<p> Accessory</p>");
       $("#selectedAccessory1").append(this);
+      $("#selectedAccessory1").children().addClass("accessory1size");
     });
   });
 
@@ -590,8 +594,9 @@ console.log('bottomcat:',bottomcat," bottomfts:",bottomfts," fl",fl);
       counter++;
       $("#accessory2").append("<img src="+productIdx.image.sizes.Large.url+">");
       $("#selectedAccessory2").html("");
-      $("#selectedAccessory2").append("<h3>Accessory</h3>");
+      // $("#selectedAccessory2").append("<h3>Accessory</h3>");
       $("#selectedAccessory2").append(this);
+      $("#selectedAccessory2").children().addClass("accessory2size");
     });
   });
 

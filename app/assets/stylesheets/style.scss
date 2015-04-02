@@ -11,7 +11,7 @@ h2{
 color: black;
 letter-spacing: 0.1em;
 text-transform: uppercase;
-font-weight: 500;
+font-weight: 600;
 }
 
 
@@ -23,11 +23,37 @@ text-transform: uppercase;
 body{
   background-color:white;
 }
+div.container1 {
+  width: 1600px;
+}
+
 div.container{
   width: 1600px;
 }
 .field{
   padding-top: 10px;
+}
+.panel-body {
+padding-left: 40px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-top: 10;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  margin-top: 15px;
+  cursor: pointer;
+  letter-spacing: .1em;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  text-transform: uppercase;
 }
 
 /*NAV BAR */
@@ -85,6 +111,30 @@ color: white;
 div .styleHeader {
   background-color: #b0c4de;
   color: white;
+}
+.rowstyle1{
+  height: 374px;
+}
+ #style2{
+  height: 200px;
+}
+
+.shoesize{
+  padding-left: 30px;
+}
+.accessory1size{
+  padding-left: 63px;
+}
+.accessory2size{
+  padding-left: 95px;
+}
+div#selectedTop.col-md-6{
+  height: 373px;
+
+}
+
+.topbottomsize{
+  height: 360px;
 }
 
 /*flash*/

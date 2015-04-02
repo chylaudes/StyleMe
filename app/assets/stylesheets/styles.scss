@@ -6,27 +6,49 @@
 }
 #curTemp {
   color: #f4b701;
-    font-weight: 600;
-    font-size: 2.75rem;
+  font-weight: 600;
+  font-size: 2.75rem;
+  letter-spacing: 0.09em;
+
 }
 
-#weather {overflow: hidden;}
+#weather {overflow: hidden;
+  margin-top: 10px;}
 
 #weather DIV SPAN{
   white-space: nowrap;
   display: inline-block;
   margin: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+strong{
+  font-weight: 200;
+  font-size: 2.80rem;
+}
+hr {
+  border: none;
+  height: 1px;
+  color:#333;
+  background-color:#333;
 }
 
 #curCond {
   font-weight: bold;
-  font-size: 1.7rem;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-top: 15px;
+  letter-spacing: 0.09em;
+  margin-top: 6px;
+}
+div#wlcon{
+  padding-left: 10px;
 }
 
 #suggestedStyle img {
-    margin: 5px;
+    margin: 0px;
     padding: 5px;
-    border: 1px solid #0000ff;
     height: auto;
     width: auto;
     text-align: center;

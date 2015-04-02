@@ -24,41 +24,112 @@
         <span id="loTemp"></span>
         </span>
       <br>
+      <!-- GOOGLE SEARCH PAGE -->
       </div>
-    <div class="col-md-3 col-lg-2 col-sm-5">
-
-<!-- GOOGLE SEARCH PAGE -->
-  <div class="form-group form-inline">
-    <input type="text" name="user_location" value="" placeholder=" e.g., San Francisco, CA or 94101" autofocus="true" size="30" id="user_location"><button class="btn btn-success" id="changeLoc">Change</button>
+      <div class="form-group form-inline">
+    <input type="text" name="user_location" value="" placeholder=" e.g., San Francisco, CA or 94101" autofocus="true" size="30" id="user_location">
   </div>
-    </div>
-</div>
-
-<div class="row">
-  <div class="col-md-4 col-lg-4 col-sm-4">
-      <!-- picked style -->
-      <div>
-
-        <h2>Picked Style</h2>
-        <div id="selectedDress"></div>
-        <div id="selectedTop"></div>
-        <div id="selectedBottom"></div>
-        <div id="selectedShoes"></div>
-        <div id="selectedAccessory1"></div>
-        <div id="selectedAccessory2"></div>
+  <button class="btn btn-primary" id="changeLoc">Change</button>
       </div>
-    </div>
+      </div>
 
-  <!-- space btw two cols in Row -->
-  <div class="col-md-1 col-lg-1"></div>
+<div class="col-md-6 col-lg-6 col-sm-6">
+      <!-- picked style -->
+    <h2>Picked Style</h2>
+    <br>
+    <br>
+      <div class ="rowstyle1">
+       <div id="selectedDress"></div>
+        <div id="selectedTop" class="col-md-6"></div>
+         <div id="selectedBottom" class="col-md-6"></div>
+           </div>
+           <hr class="page-divider">
+           <br>
+        <div class ="row" id="style2">
+          <div id="selectedShoes" class="col-md-3"></div>
+          <div id="selectedAccessory1" class="col-md-3"></div>
+          <div id="selectedAccessory2" class="col-md-3"></div>
+         </div>
+      </div>
+
 
   <!-- suggested style below -->
-  <div class="col-md-7 col-lg-7 col-sm-7" id="suggestedStyle">
+  <div class=" col-sm-6 col-md-6 col-lg-6" id="suggestedStyle">
     <h2>Suggested styles</h2>
     <div id="gender"><%= @user.sex %></div>
     <h5>Create your look!</h5>
 
-  <% if @user.sex =='F' %>
+  <% if @user.sex =='M' %>
+    <br>
+<div class="drop-down"><!--  top accordian  -->
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">TOPS</a>
+        </h4>
+        </div> <!-- end of dress collapse up -->
+        <div id="collapseOne" class="panel-collapse collapse in">
+         <div class="panel-body" id="top">
+                </div>
+            </div>
+        </div> <!-- end of top collapse down -->
+<br>
+
+
+
+<div class="panel panel-default"> <!-- bottoms collapse -->
+  <div class="panel-heading">
+    <h4 class="panel-title">
+    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Bottoms</a>
+    </h4>
+  </div>
+    <div id="collapseTwo" class="panel-collapse collapse">
+      <div class="panel-body" id="bottom">
+      </div>
+    </div>
+</div> <!-- end bottoms collapse -->
+<br>
+<div class="panel panel-default"> <!-- Shoes collapse -->
+  <div class="panel-heading">
+    <h4 class="panel-title">
+    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Shoes</a>
+    </h4>
+  </div>
+    <div id="collapseThree" class="panel-collapse collapse">
+      <div class="panel-body" id="shoes">
+      </div>
+    </div>
+</div> <!-- end Shoes collapse -->
+<br>
+<div class="panel panel-default"> <!-- Accessory collapse -->
+  <div class="panel-heading">
+    <h4 class="panel-title">
+    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Accessory</a>
+    </h4>
+  </div>
+    <div id="collapseFour" class="panel-collapse collapse">
+      <div class="panel-body" id="accessory1">
+      </div>
+    </div>
+</div> <!-- end Accessory collapse -->
+<br>
+<div class="panel panel-default"> <!-- Accessory 2 collapse -->
+  <div class="panel-heading">
+    <h4 class="panel-title">
+    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">Accessory #2</a>
+    </h4>
+  </div>
+    <div id="collapseFive" class="panel-collapse collapse">
+      <div class="panel-body" id="accessory2">
+      </div>
+    </div>
+</div> <!-- end Accessory 2 collapse -->
+  <% end %>
+  </div>
+  </div>
+
+<% if @user.sex =='F' %>
     <br>
 <div class="drop-down"><!--  dress accordian  -->
   <div class="panel-group" id="accordion">
@@ -81,7 +152,7 @@
     </h4>
   </div>
     <div id="collapseTwo" class="panel-collapse collapse">
-      <div class="panel-body" id="tops">
+      <div class="panel-body" id="top">
       </div>
     </div>
 </div> <!-- end tops collapse -->
@@ -93,7 +164,7 @@
     </h4>
   </div>
     <div id="collapseThree" class="panel-collapse collapse">
-      <div class="panel-body" id="bottoms">
+      <div class="panel-body" id="bottom">
       </div>
     </div>
 </div> <!-- end bottoms collapse -->
@@ -134,6 +205,9 @@
     </div>
 </div> <!-- end Accessory 2 collapse -->
   <% end %>
+  </div>
+  </div>
+  </div>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 
 
