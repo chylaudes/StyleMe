@@ -1,42 +1,5 @@
 $(document).ready(function () {
 
-//this is good one
-//BRANDS: WOMEN
-//&fl=b30810  = H&M
-//&fl=b2333 = Forever21
-//&fl=b30 = Ann Taylor
-//&fl=b29798&fl=b284 == J. Crew and J.Crew Factory
-//&fl=b7478&fl=b21236 = Madewell and AllSaints
-//&fl=b18563 = LOFT
-//&fl=b728 = Anthropoligie
-//&fl=b2683 = Banana Republic
-//&fl=b2446 = GAP
-//&fl=b18530 = Club Monaco
-//&fl=b4493&fl=b31409 = MANGO
-//&fl=b4486 = ASOS
-//&fl=b822 = Bloomingdale's
-//&fl=b2363 = Barney's New York
-//&fl=b427 = Nordstrom
-//fl=b8031 = Topshop
-
-
-//BRANDS: MEN
-//&fl=b30810 = H&M
-//fl=b18530 = Club Monaco
-//&fl=b4486 = ASOS
-//&fl=b2683 = Banana Republic
-//&fl=b2446 = GAP
-//&fl=b284&fl=b29798 = J CREW
-//&fl=b462 = Ralph Lauren
-//&fl=b2329 = VANS
-//&fl=b3471 = Old Navy
-//&fl=b2363 = Barney's New York
-//&fl=b822 = Bloomingdale's
-//&fl=b427 = Nordstrom
-//&fl=b12953 = Topman
-
-
->>>>>>> 6dc2507526edbc8cfb5c029cd30ed69579518cef
 //WOMEN's SHOES:
 // if (FORECAST >= clear) {
 //       if (sex === "F"){
@@ -99,9 +62,8 @@ $(document).ready(function () {
     var todayTemp;
     var sex = $("#gender").text().trim();
 
-    var femaleBrand1 = ["b4493","b29798","b7478","b30810","b2333","b30","b4486","b822","b2363","b21236","b284","b31409","b18563","b728","b2683","b2446","b18530","b427"];
-    var maleBrand1 = ["b284","b18530","b4486","b2446","b427","b29798","b462","b2329","b3471","b2363","b12953","b2683"];
-
+   var femaleBrand1 = ["b4493","b2333","b728","b284","b18563"];
+   var maleBrand1 = ["b284","b2446","b29798","b462","b2329"];
 
     var getRandowmFTS = function(arr){
       console.log('arr:', arr);
@@ -115,13 +77,6 @@ $(document).ready(function () {
     } else {
       fl = getRandowmFTS(femaleBrand1);
     } 
-  
-
-  fl = "b2683";
-  
-
-
-
 
     if (!userLocation){
       userLocation = 'San Francisco';
@@ -154,30 +109,100 @@ $(document).ready(function () {
     var dressfts = "", dresscat = "", counter = 0;
 
     if (sex === "F"){
-      // var ranDress=['sleeveless dress', 'summer dress', 'yellow dress', 'pink dress'];
       if (todayTemp >= 90 ) {
-        dresscat = "womens-clothes";
-        // dressfts = "sleeveless dress";
-        dressfts = getRandowmFTS(ranDress);
-        console.log('dressfts:',dressfts);
+         if (fl === "b728") {
+          dresscat = "day-dresses";
+          dressfts = "";         
+        } else {
+          dresscat = "dresses";
+          dressfts = "sleeveless";
+        }
       } else if (todayTemp > 80) {
-        dresscat = "womens-clothes";
+        dresscat = "dresses";
         dressfts = "summer dress";
+        if (fl === "b4493") {
+          dresscat = "day-dresses";
+          dressfts = "short sleeve";
+        }
+        if (fl === "b2363" || fl === "b21236" || fl === "b31409" || fl === "b728" || fl === "b18563") {
+          dresscat = "day-dresses";
+          dressfts = "";
+        } 
       } else if (todayTemp > 70) {
-        dresscat = "womens-clothes";
+        dresscat = "dresses";
         dressfts ="spring dress";
+        if (fl === "b4493" || fl === "b728") {
+          dresscat = "day-dresses";
+          dressfts ="";      
+        }
+        if (fl === "b2333") {
+          dresscat = "day-dresses";
+          dressfts ="long sleeve";      
+        }    
+        if (fl === "b4486") {
+          dresscat = "day-dresses";
+          dressfts ="light";      
+        }  
+        if (fl === "b284" || fl === "b18563") {
+          dresscat = "dresses";
+          dressfts ="";      
+        }           
       } else if (todayTemp > 60) {
         dresscat = "day-dresses";
         dressfts ="longsleeve";
+        if (fl === "b4493" || fl === "b2333") {
+          dresscat = "dresses";
+          dressfts ="long sleeve";
+        } 
+        if (fl === "b728") {
+          dresscat = "dresses";
+          dressfts ="fall";
+        }   
+        if (fl === "b284" || fl === "b18563") {
+          dresscat = "evening-dresses";
+          dressfts ="";
+        }  
       } else if (todayTemp > 50) {
         dresscat = "day-dresses";
         dressfts ="winter dress";
+        if (fl === "b4493"){
+          dresscat = "dresses";
+          dressfts ="knit";          
+        }
+        if (fl === "b2333"){
+          dresscat = "dresses";
+          dressfts ="long sleeve";            
+        }
+          if (fl === "b728") {
+          dresscat = "dresses";
+          dressfts ="fall";
+        }  
+          if (fl === "b284") {
+          dresscat = "dresses";
+          dressfts ="";
+        } 
+        if (fl === "b18563") {
+          dresscat = "evening-dresses";
+          dressfts ="";
+        }                   
       } else {
         dresscat = "day-dresses";
         dressfts = "winter dress";
+        if (fl === "b4493" || fl === "b284") {
+          dresscat = "fur-and-shearling-coats";
+          dressfts ="";
+        }  
+        if (fl === "b2333") {
+          dresscat = "wool-coats";
+          dressfts ="";
+        }  
+        if (fl === "b728" || fl === "b18563") {
+          dresscat = "jackets";
+          dressfts ="";
+        }                      
       }
-
-     $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat=" + dresscat + "&fts=" + dressfts + "&fl=" + fl + "&offset=0&limit=30&sort=Popular", function(data) {
+      var dressURL = "http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat=" + dresscat + "&fts=" + dressfts + "&fl=" + fl + "&offset=0&limit=30&sort=Popular";
+     $.getJSON(dressURL, function(data) {
         $("#dress").text('');
         $("#dress").append("<img src="+data.products[0].image.sizes.Large.url+">");
         $("#dress").append("<img src="+data.products[1].image.sizes.Large.url+">");
@@ -198,16 +223,19 @@ $(document).ready(function () {
       });
     }
 
-
-    
-    todayTemp = '65';
-    console.log("fl:",fl, "-temp:",todayTemp);
-
     var topfts = "", topcat = "";
     if (todayTemp >= 90 ) {
       if (sex === "F"){
-        topcat = "womens-clothes";
-        topfts = "tank top";
+        if (fl === "b4493"){
+          topcat = "halter-tops";
+          topfts = ""; 
+        } else if (fl === "b284" || fl === "b31409"){
+          topcat = "shortsleeve-tops";
+          topfts = "";
+        } else {
+          topcat = "womens-clothes";
+          topfts = "tank top";
+        }
       } else if (sex === "M"){
         topcat = "mens-shortsleeve-shirts";
         topfts = "short";
@@ -216,6 +244,10 @@ $(document).ready(function () {
       if (sex === "F"){
         topcat = "womens-clothes";
         topfts = "summer top";
+        if (fl === "b4493" || fl === "b4486" || fl === "b2363" || fl === "b21236" || fl === "b31409" || fl === "b728" || fl === "b2446"){
+          topcat = "shortsleeve-tops";
+          topfts = "";          
+        }   
       } else if (sex === "M"){
         if (fl === ("b284")  || fl === ("b427") ||  fl === ("b29798") ||  fl === ("b2683") || fl === ("b2363")){ 
           topfts = "";
@@ -229,6 +261,18 @@ $(document).ready(function () {
       if (sex === "F"){
         topcat = "womens-clothes";
         topfts = "spring top";
+        if (fl === "b4493" || fl === "b728" || fl === "b284") {
+          topcat = "tees-and-tshirts";
+          topfts = "";          
+        }
+        if (fl === "b2333") {
+          topcat = "womens-tops";
+          topfts = "light";          
+        }
+        if (fl === "b4486") {
+          topcat = "womens-tops";
+          topfts = "";          
+        }
       } else if (sex === "M"){
         if (fl === "b427"){
           topcat = "mens-polo-shirts";
@@ -250,6 +294,15 @@ $(document).ready(function () {
       if (sex === "F"){
         topcat = "cashmere-sweaters";
         topfts ="";
+        if (fl === "b4493" || fl === "b18563"){
+          topcat = "sweatshirts";
+        }
+        if (fl === "b2333") {
+          topcat = "turleneck-sweaters";
+        }
+        if (fl === "b728" || fl === "b284") {
+          topcat = "cardigan-sweaters";
+        }     
       } else if (sex === "M"){
         topcat = "mens-sweaters";
         topfts = "";
@@ -258,15 +311,33 @@ $(document).ready(function () {
       if (sex === "F"){
         topcat = "womens-outerwear";
         topfts = "outerwear";
+        if (fl === "b18563") {
+          topcat = "cardigan-sweaters";
+          topfts = "";
+        } 
+        if (fl === "b284") {
+          topcat = "turleneck-sweaters";
+          topfts = "";
+        }  
+        if (fl === "b18563") {
+          topcat = "sweaters";
+          topfts = "";
+        }             
       } else if (sex === "M"){
-        topcat = "mens-overcoats-and-trenchcoats";
+        if (fl==="b2683" || fl === "b3471" || fl === "b2329" || fl === "b2446") { 
+          topcat = "mens-jackets";
+        } else if (fl === "b462" || fl==="b284"){
+          topcat = "mens-wool-coats";
+        } else if (fl === "b29798") { 
+          topcat = "mens-outerwear";
+        } else {
+          topcat = "mens-overcoats-and-trenchcoats";
+        }
         topfts = "";
       }
     }
 
-    console.log("topcat:",topcat, "|topfts:",topfts, "|fl",fl );
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ topcat + "&fl=" + fl +"&fts=" + topfts + "&offset=0&limit=30", function(data) {   
-    console.log("manTop:",data);
       $("#top").text('');
       $("#top").append("<img src="+data.products[0].image.sizes.Large.url+">");
       $("#top").append("<img src="+data.products[1].image.sizes.Large.url+">");
@@ -290,9 +361,12 @@ $(document).ready(function () {
 
     var bottomcat = "", bottomfts = "";
     if (todayTemp >= 90 ) {
-      if (sex === "F"){
-        bottomcat = "womens-clothes";
-        bottomfts = "summer shorts";
+      if (sex === "F"){      
+          bottomcat = "shorts";
+          bottomfts = "";   
+        if (fl==="b4486"){
+          bottomcat = "mini-skirts";
+        }
       } else if (sex === "M"){
         bottomcat = "mens-shorts";
         if (fl==="b4486" || fl==="b2329"){
@@ -300,9 +374,25 @@ $(document).ready(function () {
         }
       }
     } else if (todayTemp > 80) {
-      if (sex === "F"){
+      if (sex === "F") {
         bottomcat = "womens-clothes";
         bottomfts = "summer shorts";
+        if (fl === "b4493" || fl === "b728"){
+          bottomcat = "mid-length-skirts";
+          bottomfts = "";          
+        } 
+        if (fl === "b2333" || fl === "b4486"){
+          bottomcat = "mini-skirts";
+          bottomfts = "";          
+        } 
+        if (fl === "b2363" || fl === "b31409"){
+          bottomcat = "shorts";
+          bottomfts = "";          
+        }   
+        if (fl === "b21236"){
+          bottomcat = "shorts";
+          bottomfts = "summer";          
+        }  
       } else if (sex === "M"){
         bottomcat = "mens-shorts";
         bottomfts = "";
@@ -311,6 +401,18 @@ $(document).ready(function () {
       if (sex === "F"){
         bottomcat = "womens-clothes";
         bottomfts ="spring pants";
+        if (fl === "b4493" || fl === "b2333" || fl === "b728") {
+          bottomcat = "cropped-pants";
+          bottomfts ="";   
+        }
+        if (fl === "b284") {
+          bottomcat = "mid-length-skirts";
+          bottomfts ="";   
+        }
+        if (fl === "b18563") {
+          bottomcat = "womens-pants";
+          bottomfts ="";   
+        }        
       } else if (sex === "M"){
         if (fl==="b2446" || fl==="b427" || fl==="b29798" || fl === "b2329") {
           bottomcat = "mens-chinos-and-khakis";
@@ -336,20 +438,41 @@ $(document).ready(function () {
       if (sex === "F"){
         bottomcat = "classic-jeans";
         bottomfts ="";
+        if (fl === "b4493" || fl === "b728" || fl === "b18563"){
+          bottomcat = "straight-leg-jeans";
+        }
       } else if (sex === "M"){
-        bottomcat = "mens-jeans";
-        bottomfts = "classic";
+        if (fl === "b2329"){
+          bottomcat = "mens-casual-pants";
+          bottomfts=""; 
+        } else {
+          bottomcat = "mens-jeans";
+          if (fl === "b2446" || fl === "b29798" || fl==="b3471" || fl === "b2363"){
+            bottomfts = "";
+          } else {
+            bottomfts = "classic";
+          }          
+        }
       }
     } else {
       if (sex === "F"){
         bottomcat = "classic-jeans";
         bottomfts = "";
+        if (fl === "b4493" || fl === "b728" || fl === "b18563"){
+          bottomcat = "straight-leg-jeans";
+        }
       } else if (sex === "M"){
+        if (fl === "b2329"){
+          bottomcat = "mens-casual-pants";
+          bottomfts=""; 
+        } else {
+
         bottomcat = "mens-jeans";
-        bottomfts = "classic";
+        bottomfts = "";
+        }
       }
     }
-console.log('bottomcat:',bottomcat," bottomfts:",bottomfts," fl",fl);
+
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ bottomcat +"&fts=" + bottomfts + "&fl=" + fl + "&offset=0&limit=30&sort=Popular", function(data) {
       $("#bottom").text('');
       $("#bottom").append("<img src="+data.products[0].image.sizes.Large.url+">");
@@ -369,212 +492,212 @@ console.log('bottomcat:',bottomcat," bottomfts:",bottomfts," fl",fl);
       });
     });
 
-    var shoescat = "", shoesfts = "";
-    if (todayTemp >= 90 ) {
-      if (sex === "F"){
-        shoescat = "womens-shoes";
-        shoesfts = "summer shorts";
-      } else if (sex === "M"){
-        shoescat = "mens-shoes";
-        shoesfts = "summer";
-      }
-    } else if (todayTemp > 80) {
-      if (sex === "F"){
-        shoescat = "womens-shoes";
-        shoesfts = "summer shorts";
-      } else if (sex === "M"){
-        shoescat = "mens-shoes";
-        shoesfts = "summer";
-      }
-    } else if (todayTemp > 70) {
-      if (sex === "F"){
-        shoescat = "womens-shoes";
-        shoesfts ="spring pants";
-      } else if (sex === "M"){
-        shoescat = "mens-shoes";
-        shoesfts = "classic";
-      }
-    } else if (todayTemp > 60) {
-      if (sex === "F"){
-        shoescat = "womens-shoes";
-        shoesfts ="";
-      } else if (sex === "M"){
-        shoescat = "mens-shoes";
-        shoesfts = "classic";
-      }
-    } else if (todayTemp > 50) {
-      if (sex === "F"){
-        shoescat = "womens-shoes";
-        shoesfts ="";
-      } else if (sex === "M"){
-        shoescat = "mens-shoes";
-        shoesfts = "classic";
-      }
-    } else {
-      if (sex === "F"){
-        shoescat = "womens-shoes";
-        shoesfts = "";
-      } else if (sex === "M"){
-        shoescat = "mens-shoes";
-        shoesfts = "classic";
-      }
-    }
+  //   var shoescat = "", shoesfts = "";
+  //   if (todayTemp >= 90 ) {
+  //     if (sex === "F"){
+  //       shoescat = "womens-shoes";
+  //       shoesfts = "summer shorts";
+  //     } else if (sex === "M"){
+  //       shoescat = "mens-shoes";
+  //       shoesfts = "summer";
+  //     }
+  //   } else if (todayTemp > 80) {
+  //     if (sex === "F"){
+  //       shoescat = "womens-shoes";
+  //       shoesfts = "summer shorts";
+  //     } else if (sex === "M"){
+  //       shoescat = "mens-shoes";
+  //       shoesfts = "summer";
+  //     }
+  //   } else if (todayTemp > 70) {
+  //     if (sex === "F"){
+  //       shoescat = "womens-shoes";
+  //       shoesfts ="spring pants";
+  //     } else if (sex === "M"){
+  //       shoescat = "mens-shoes";
+  //       shoesfts = "classic";
+  //     }
+  //   } else if (todayTemp > 60) {
+  //     if (sex === "F"){
+  //       shoescat = "womens-shoes";
+  //       shoesfts ="";
+  //     } else if (sex === "M"){
+  //       shoescat = "mens-shoes";
+  //       shoesfts = "classic";
+  //     }
+  //   } else if (todayTemp > 50) {
+  //     if (sex === "F"){
+  //       shoescat = "womens-shoes";
+  //       shoesfts ="";
+  //     } else if (sex === "M"){
+  //       shoescat = "mens-shoes";
+  //       shoesfts = "classic";
+  //     }
+  //   } else {
+  //     if (sex === "F"){
+  //       shoescat = "womens-shoes";
+  //       shoesfts = "";
+  //     } else if (sex === "M"){
+  //       shoescat = "mens-shoes";
+  //       shoesfts = "classic";
+  //     }
+  //   }
 
-    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ shoescat +"&fts=" + shoesfts + "&offset=0&limit=30&sort=Popular", function(data) {
-      $("#shoes").text('');
-      $("#shoes").append("<img src="+data.products[0].image.sizes.Large.url+">");
-      $("#shoes").append("<img src="+data.products[1].image.sizes.Large.url+">");
-      $("#shoes").append("<img src="+data.products[2].image.sizes.Large.url+">");
-      $("#shoes").append("<img src="+data.products[3].image.sizes.Large.url+">");
-      counter = 4;
+  //   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ shoescat +"&fts=" + shoesfts + "&offset=0&limit=30&sort=Popular", function(data) {
+  //     $("#shoes").text('');
+  //     $("#shoes").append("<img src="+data.products[0].image.sizes.Large.url+">");
+  //     $("#shoes").append("<img src="+data.products[1].image.sizes.Large.url+">");
+  //     $("#shoes").append("<img src="+data.products[2].image.sizes.Large.url+">");
+  //     $("#shoes").append("<img src="+data.products[3].image.sizes.Large.url+">");
+  //     counter = 4;
 
-      $("#shoes").on("click","img", function(e){
-        var productIdx = data.products[counter];
-        counter++;
-        $("#shoes").append("<img src="+productIdx.image.sizes.Large.url+">");
-        $("#selectedShoes").html("");
-        // $("#selectedShoes").append("<h3>Shoes</h3>");
-        $("#selectedShoes").append(this);
-      });
-    });
+  //     $("#shoes").on("click","img", function(e){
+  //       var productIdx = data.products[counter];
+  //       counter++;
+  //       $("#shoes").append("<img src="+productIdx.image.sizes.Large.url+">");
+  //       $("#selectedShoes").html("");
+  //       // $("#selectedShoes").append("<h3>Shoes</h3>");
+  //       $("#selectedShoes").append(this);
+  //     });
+  //   });
 
-  var accessory1_cat = "", accessory1_fts = "";
-  if (todayTemp >= 90 ) {
-    if (sex === "F"){
-      accessory1_cat = "womens-accessories";
-      accessory1_fts = "summer shorts";
-    } else if (sex === "M"){
-      accessory1_cat = "mens-accessories";
-      accessory1_fts = "summer";
-    }
-  } else if (todayTemp > 80) {
-    if (sex === "F"){
-      accessory1_cat = "womens-accessories";
-      accessory1_fts = "summer shorts";
-    } else if (sex === "M"){
-      accessory1_cat = "mens-accessories";
-      accessory1_fts = "summer";
-    }
-  } else if (todayTemp > 70) {
-    if (sex === "F"){
-      accessory1_cat = "womens-accessories";
-      accessory1_fts ="spring pants";
-    } else if (sex === "M"){
-      accessory1_cat = "mens-accessories";
-      accessory1_fts = "classic";
-    }
-  } else if (todayTemp > 60) {
-    if (sex === "F"){
-      accessory1_cat = "womens-accessories";
-      accessory1_fts ="";
-    } else if (sex === "M"){
-      accessory1_cat = "mens-accessories";
-      accessory1_fts = "classic";
-    }
-  } else if (todayTemp > 50) {
-    if (sex === "F"){
-      accessory1_cat = "womens-accessories";
-      accessory1_fts ="";
-    } else if (sex === "M"){
-      accessory1_cat = "mens-accessories";
-      accessory1_fts = "classic";
-    }
-  } else {
-    if (sex === "F"){
-      accessory1_cat = "womens-accessories";
-      accessory1_fts = "";
-    } else if (sex === "M"){
-      accessory1_cat = "mens-accessories";
-      accessory1_fts = "classic";
-    }
-  }
+  // var accessory1_cat = "", accessory1_fts = "";
+  // if (todayTemp >= 90 ) {
+  //   if (sex === "F"){
+  //     accessory1_cat = "womens-accessories";
+  //     accessory1_fts = "summer shorts";
+  //   } else if (sex === "M"){
+  //     accessory1_cat = "mens-accessories";
+  //     accessory1_fts = "summer";
+  //   }
+  // } else if (todayTemp > 80) {
+  //   if (sex === "F"){
+  //     accessory1_cat = "womens-accessories";
+  //     accessory1_fts = "summer shorts";
+  //   } else if (sex === "M"){
+  //     accessory1_cat = "mens-accessories";
+  //     accessory1_fts = "summer";
+  //   }
+  // } else if (todayTemp > 70) {
+  //   if (sex === "F"){
+  //     accessory1_cat = "womens-accessories";
+  //     accessory1_fts ="spring pants";
+  //   } else if (sex === "M"){
+  //     accessory1_cat = "mens-accessories";
+  //     accessory1_fts = "classic";
+  //   }
+  // } else if (todayTemp > 60) {
+  //   if (sex === "F"){
+  //     accessory1_cat = "womens-accessories";
+  //     accessory1_fts ="";
+  //   } else if (sex === "M"){
+  //     accessory1_cat = "mens-accessories";
+  //     accessory1_fts = "classic";
+  //   }
+  // } else if (todayTemp > 50) {
+  //   if (sex === "F"){
+  //     accessory1_cat = "womens-accessories";
+  //     accessory1_fts ="";
+  //   } else if (sex === "M"){
+  //     accessory1_cat = "mens-accessories";
+  //     accessory1_fts = "classic";
+  //   }
+  // } else {
+  //   if (sex === "F"){
+  //     accessory1_cat = "womens-accessories";
+  //     accessory1_fts = "";
+  //   } else if (sex === "M"){
+  //     accessory1_cat = "mens-accessories";
+  //     accessory1_fts = "classic";
+  //   }
+  // }
 
-   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory1_cat +"&fts=" + accessory1_fts + "&offset=0&limit=30&sort=Popular", function(data) {
-    $("#accessory1").text('');
-    $("#accessory1").append("<img src="+data.products[0].image.sizes.Large.url+">");
-    $("#accessory1").append("<img src="+data.products[1].image.sizes.Large.url+">");
-    $("#accessory1").append("<img src="+data.products[2].image.sizes.Large.url+">");
-    $("#accessory1").append("<img src="+data.products[3].image.sizes.Large.url+">");
-    counter = 4;
+  //  $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory1_cat +"&fts=" + accessory1_fts + "&offset=0&limit=30&sort=Popular", function(data) {
+  //   $("#accessory1").text('');
+  //   $("#accessory1").append("<img src="+data.products[0].image.sizes.Large.url+">");
+  //   $("#accessory1").append("<img src="+data.products[1].image.sizes.Large.url+">");
+  //   $("#accessory1").append("<img src="+data.products[2].image.sizes.Large.url+">");
+  //   $("#accessory1").append("<img src="+data.products[3].image.sizes.Large.url+">");
+  //   counter = 4;
 
-    $("#accessory1").on("click","img", function(e){
-      var productIdx = data.products[counter];
-      counter++;
-      $("#accessory1").append("<img src="+productIdx.image.sizes.Large.url+">");
-      $("#selectedAccessory1").html("");
-      $("#selectedAccessory1").append("<h3>Accessory</h3>");
-      $("#selectedAccessory1").append(this);
-    });
-  });
+  //   $("#accessory1").on("click","img", function(e){
+  //     var productIdx = data.products[counter];
+  //     counter++;
+  //     $("#accessory1").append("<img src="+productIdx.image.sizes.Large.url+">");
+  //     $("#selectedAccessory1").html("");
+  //     $("#selectedAccessory1").append("<h3>Accessory</h3>");
+  //     $("#selectedAccessory1").append(this);
+  //   });
+  // });
 
-  var accessory2_cat = "", accessory2_fts = "";
-  if (todayTemp >= 90 ) {
-    if (sex === "F"){
-      accessory2_cat = "womens-accessories";
-      accessory2_fts = "summer shorts";
-    } else if (sex === "M"){
-      accessory2_cat = "mens-accessories";
-      accessory2_fts = "summer";
-    }
-  } else if (todayTemp > 80) {
-    if (sex === "F"){
-      accessory2_cat = "womens-accessories";
-      accessory2_fts = "summer shorts";
-    } else if (sex === "M"){
-      accessory2_cat = "mens-accessories";
-      accessory2_fts = "summer";
-    }
-  } else if (todayTemp > 70) {
-    if (sex === "F"){
-      accessory2_cat = "womens-accessories";
-      accessory2_fts ="spring pants";
-    } else if (sex === "M"){
-      accessory2_cat = "mens-accessories";
-      accessory2_fts = "classic";
-    }
-  } else if (todayTemp > 60) {
-    if (sex === "F"){
-      accessory2_cat = "jeans";
-      accessory2_fts ="";
-    } else if (sex === "M"){
-      accessory2_cat = "mens-accessories";
-      accessory2_fts = "classic";
-    }
-  } else if (todayTemp > 50) {
-    if (sex === "F"){
-      accessory2_cat = "classic-jeans";
-      accessory2_fts ="";
-    } else if (sex === "M"){
-      accessory2_cat = "mens-accessories";
-      accessory2_fts = "classic";
-    }
-  } else {
-    if (sex === "F"){
-      accessory2_cat = "classic-jeans";
-      accessory2_fts = "";
-    } else if (sex === "M"){
-      accessory2_cat = "mens-accessories";
-      accessory2_fts = "classic";
-    }
-  }
+  // var accessory2_cat = "", accessory2_fts = "";
+  // if (todayTemp >= 90 ) {
+  //   if (sex === "F"){
+  //     accessory2_cat = "womens-accessories";
+  //     accessory2_fts = "summer shorts";
+  //   } else if (sex === "M"){
+  //     accessory2_cat = "mens-accessories";
+  //     accessory2_fts = "summer";
+  //   }
+  // } else if (todayTemp > 80) {
+  //   if (sex === "F"){
+  //     accessory2_cat = "womens-accessories";
+  //     accessory2_fts = "summer shorts";
+  //   } else if (sex === "M"){
+  //     accessory2_cat = "mens-accessories";
+  //     accessory2_fts = "summer";
+  //   }
+  // } else if (todayTemp > 70) {
+  //   if (sex === "F"){
+  //     accessory2_cat = "womens-accessories";
+  //     accessory2_fts ="spring pants";
+  //   } else if (sex === "M"){
+  //     accessory2_cat = "mens-accessories";
+  //     accessory2_fts = "classic";
+  //   }
+  // } else if (todayTemp > 60) {
+  //   if (sex === "F"){
+  //     accessory2_cat = "jeans";
+  //     accessory2_fts ="";
+  //   } else if (sex === "M"){
+  //     accessory2_cat = "mens-accessories";
+  //     accessory2_fts = "classic";
+  //   }
+  // } else if (todayTemp > 50) {
+  //   if (sex === "F"){
+  //     accessory2_cat = "classic-jeans";
+  //     accessory2_fts ="";
+  //   } else if (sex === "M"){
+  //     accessory2_cat = "mens-accessories";
+  //     accessory2_fts = "classic";
+  //   }
+  // } else {
+  //   if (sex === "F"){
+  //     accessory2_cat = "classic-jeans";
+  //     accessory2_fts = "";
+  //   } else if (sex === "M"){
+  //     accessory2_cat = "mens-accessories";
+  //     accessory2_fts = "classic";
+  //   }
+  // }
 
-   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory2_cat +"&fts=" + accessory2_fts + "&offset=0&limit=30&sort=Popular", function(data) {
-    $("#accessory2").text('');
-    $("#accessory2").append("<img src="+data.products[0].image.sizes.Large.url+">");
-    $("#accessory2").append("<img src="+data.products[1].image.sizes.Large.url+">");
-    $("#accessory2").append("<img src="+data.products[2].image.sizes.Large.url+">");
-    $("#accessory2").append("<img src="+data.products[3].image.sizes.Large.url+">");
-    counter = 4;
+  //  $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory2_cat +"&fts=" + accessory2_fts + "&offset=0&limit=30&sort=Popular", function(data) {
+  //   $("#accessory2").text('');
+  //   $("#accessory2").append("<img src="+data.products[0].image.sizes.Large.url+">");
+  //   $("#accessory2").append("<img src="+data.products[1].image.sizes.Large.url+">");
+  //   $("#accessory2").append("<img src="+data.products[2].image.sizes.Large.url+">");
+  //   $("#accessory2").append("<img src="+data.products[3].image.sizes.Large.url+">");
+  //   counter = 4;
 
-    $("#accessory2").on("click","img", function(e){
-      var productIdx = data.products[counter];
-      counter++;
-      $("#accessory2").append("<img src="+productIdx.image.sizes.Large.url+">");
-      $("#selectedAccessory2").html("");
-      $("#selectedAccessory2").append("<h3>Accessory</h3>");
-      $("#selectedAccessory2").append(this);
-    });
-  });
+  //   $("#accessory2").on("click","img", function(e){
+  //     var productIdx = data.products[counter];
+  //     counter++;
+  //     $("#accessory2").append("<img src="+productIdx.image.sizes.Large.url+">");
+  //     $("#selectedAccessory2").html("");
+  //     $("#selectedAccessory2").append("<h3>Accessory</h3>");
+  //     $("#selectedAccessory2").append(this);
+  //   });
+  // });
 
 //========ends
 
