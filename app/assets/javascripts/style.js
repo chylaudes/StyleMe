@@ -99,27 +99,28 @@ $(document).ready(function () {
     } 
 
     if (!userLocation){
-      userLocation = 'San Francisco';
+      userLocation = 'San Francisco,CA';
     }
 
-    userLocation = userLocation.replace(" ", "");
-    var trimmedUserLocation = userLocation;
-    var index = userLocation.indexOf(',');
-    userLocation = userLocation.slice(0, index);
+     var index = userLocation.indexOf(',');
+     var $userCity = userLocation.slice(0, index);
 
-    $newState = trimmedUserLocation.slice(index+1, index+4);
+    $newState = userLocation.slice(index+1, index+4);
+    $newState = $newState.replace(" ", "");
+    console.log('userLocation:',userLocation, '|$userCity:',$userCity,'|$newState:',$newState );
+
     if ($newState === null || $newState === undefined){
       $newState = "CA";
     }
     userLocation = 'San Francisco';
     console.log('userlocation: ',userLocation);
-   $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/geolookup/conditions/q/"+ $newState +"/"+ userLocation +".json", function(data) {
+   $.getJSON("http://api.wunderground.com/api/fa10126c4dd3470b/geolookup/conditions/q/"+ $newState +"/"+ $userCity +".json", function(data) {
     $("div #curLocation").text('');
     $('#curTemp').append(data.current_observation.temp_f + " &#8457;");
     $('#curLocation').append("<strong>" + data.current_observation.display_location.full + "</strong>");
    });
 
-   $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/forecast/q/"+ $newState +"/"+ userLocation +".json", function(data) {
+   $.getJSON("http://api.wunderground.com/api/fa10126c4dd3470b/forecast/q/"+ $newState +"/"+ $userCity +".json", function(data) {
     $('#curCond').append(data.forecast.simpleforecast.forecastday[0].conditions);
     $('#hiTemp').append(data.forecast.simpleforecast.forecastday[0].high.fahrenheit + " &#8457;");
     todayTemp = data.forecast.simpleforecast.forecastday[0].high.fahrenheit;
