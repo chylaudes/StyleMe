@@ -78,7 +78,6 @@ $(document).ready(function () {
  if (window.location.href==="http://localhost:3000/styles") {
 
     var userLocation = $("div #curLocation").text();
-    console.log('userlocation: ',userLocation);
     var todayTemp;
     var sex = $("#gender").text().trim();
 
@@ -86,9 +85,7 @@ $(document).ready(function () {
    var maleBrand1 = ["b284","b2446","b29798","b462","b2329"];
 
     var getRandowmFTS = function(arr){
-      console.log('arr:', arr);
       var index = Math.floor(Math.random() * arr.length);
-      console.log('index:', index);
       return arr[index];
     };
 
@@ -107,13 +104,11 @@ $(document).ready(function () {
 
     $newState = userLocation.slice(index+1, index+4);
     $newState = $newState.replace(" ", "");
-    console.log('userLocation:',userLocation, '|$userCity:',$userCity,'|$newState:',$newState );
 
     if ($newState === null || $newState === undefined){
       $newState = "CA";
     }
-    userLocation = 'San Francisco';
-    console.log('userlocation: ',userLocation);
+
    $.getJSON("http://api.wunderground.com/api/fa10126c4dd3470b/geolookup/conditions/q/"+ $newState +"/"+ $userCity +".json", function(data) {
     $("div #curLocation").text('');
     $('#curTemp').append(data.current_observation.temp_f + " &#8457;");
