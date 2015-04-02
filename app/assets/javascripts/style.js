@@ -78,7 +78,7 @@ $(document).ready(function () {
  if (window.location.href==="http://localhost:3000/styles") {
 
     var userLocation = $("div #curLocation").text();
-    var todayTemp;
+    var todayTemp, curCondition;
     var sex = $("#gender").text().trim();
 
    var femaleBrand1 = ["b4493","b2333","b728","b284","b18563"];
@@ -117,6 +117,7 @@ $(document).ready(function () {
 
    $.getJSON("http://api.wunderground.com/api/fa10126c4dd3470b/forecast/q/"+ $newState +"/"+ $userCity +".json", function(data) {
     $('#curCond').append(data.forecast.simpleforecast.forecastday[0].conditions);
+    curCondition = data.forecast.simpleforecast.forecastday[0].conditions;
     $('#hiTemp').append(data.forecast.simpleforecast.forecastday[0].high.fahrenheit + " &#8457;");
     todayTemp = data.forecast.simpleforecast.forecastday[0].high.fahrenheit;
     $('#loTemp').append(data.forecast.simpleforecast.forecastday[0].low.fahrenheit + " &#8457;");
@@ -631,26 +632,71 @@ $(document).ready(function () {
   //     accessory1_fts = "classic";
   //   }
   // }
+    if (sex === "F"){
+      accessory1_cat = "womens-accessories";
+      accessory1_fts = "";
+    } else if (sex === "M"){
+      accessory1_cat = "mens-accessories";
+      accessory1_fts = "";
+    } 
 
-  //  $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory1_cat +"&fts=" + accessory1_fts + "&offset=0&limit=30&sort=Popular", function(data) {
-  //   $("#accessory1").text('');
-  //   $("#accessory1").append("<img src="+data.products[0].image.sizes.Large.url+">");
-  //   $("#accessory1").append("<img src="+data.products[1].image.sizes.Large.url+">");
-  //   $("#accessory1").append("<img src="+data.products[2].image.sizes.Large.url+">");
-  //   $("#accessory1").append("<img src="+data.products[3].image.sizes.Large.url+">");
-  //   counter = 4;
+   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory1_cat +"&fts=" + accessory1_fts + "&offset=0&limit=30&sort=Popular", function(data) {
+    $("#accessory1").text('');
+    $("#accessory1").append("<img src="+data.products[0].image.sizes.Large.url+">");
+    $("#accessory1").append("<img src="+data.products[1].image.sizes.Large.url+">");
+    $("#accessory1").append("<img src="+data.products[2].image.sizes.Large.url+">");
+    $("#accessory1").append("<img src="+data.products[3].image.sizes.Large.url+">");
+    counter = 4;
 
-  //   $("#accessory1").on("click","img", function(e){
-  //     var productIdx = data.products[counter];
-  //     counter++;
-  //     $("#accessory1").append("<img src="+productIdx.image.sizes.Large.url+">");
-  //     $("#selectedAccessory1").html("");
-  //     $("#selectedAccessory1").append("<h3>Accessory</h3>");
-  //     $("#selectedAccessory1").append(this);
-  //   });
-  // });
+    $("#accessory1").on("click","img", function(e){
+      var productIdx = data.products[counter];
+      counter++;
+      $("#accessory1").append("<img src="+productIdx.image.sizes.Large.url+">");
+      $("#selectedAccessory1").html("");
+      $("#selectedAccessory1").append("<h3>Accessory</h3>");
+      $("#selectedAccessory1").append(this);
+    });
+  });
 
-  // var accessory2_cat = "", accessory2_fts = "";
+  var accessory2_cat = "", accessory2_fts = "";
+  console.log("curCondition:",curCondition);
+  curCondition = curCondition.trim();
+  if (curCondition === "Clear"){
+    if (sex === "F"){
+      accessory2_cat = "sunglasses";
+      accessory2_fts = "";
+    } else if (sex === "M"){
+      accessory2_cat = "mens-sunglasses";
+      accessory2_fts = "";
+    }
+  } else if (curCondition === "Light Rain" || curCondition === "Light Showers Rain" || curCondition === "Rain"){
+    if (sex === "F"){
+      accessory2_cat = "womens-umbrellas";
+      accessory2_fts = "";
+    } else if (sex === "M"){
+      accessory2_cat = "mens-umbrellas";
+      accessory2_fts = "";
+    }
+  } else if (curCondition === "Snow" || curCondition === "Light Snow"){
+    if (sex === "F"){
+      accessory2_cat = "scarves";
+      accessory2_fts = "";
+    } else if (sex === "M"){
+      accessory2_cat = "mens-gloves-and-scarves";
+      accessory2_fts = "";
+    }
+  } else {
+    if (sex === "F"){
+      accessory2_cat = "womens-tech-accessories";
+      accessory2_fts = "";
+    } else if (sex === "M"){
+      accessory2_cat = "mens-tech-accessories";
+      accessory2_fts = "";
+    }    
+  }
+
+
+
   // if (todayTemp >= 90 ) {
   //   if (sex === "F"){
   //     accessory2_cat = "womens-accessories";
@@ -701,23 +747,23 @@ $(document).ready(function () {
   //   }
   // }
 
-  //  $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory2_cat +"&fts=" + accessory2_fts + "&offset=0&limit=30&sort=Popular", function(data) {
-  //   $("#accessory2").text('');
-  //   $("#accessory2").append("<img src="+data.products[0].image.sizes.Large.url+">");
-  //   $("#accessory2").append("<img src="+data.products[1].image.sizes.Large.url+">");
-  //   $("#accessory2").append("<img src="+data.products[2].image.sizes.Large.url+">");
-  //   $("#accessory2").append("<img src="+data.products[3].image.sizes.Large.url+">");
-  //   counter = 4;
+   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory2_cat +"&fts=" + accessory2_fts + "&offset=0&limit=30&sort=Popular", function(data) {
+    $("#accessory2").text('');
+    $("#accessory2").append("<img src="+data.products[0].image.sizes.Large.url+">");
+    $("#accessory2").append("<img src="+data.products[1].image.sizes.Large.url+">");
+    $("#accessory2").append("<img src="+data.products[2].image.sizes.Large.url+">");
+    $("#accessory2").append("<img src="+data.products[3].image.sizes.Large.url+">");
+    counter = 4;
 
-  //   $("#accessory2").on("click","img", function(e){
-  //     var productIdx = data.products[counter];
-  //     counter++;
-  //     $("#accessory2").append("<img src="+productIdx.image.sizes.Large.url+">");
-  //     $("#selectedAccessory2").html("");
-  //     $("#selectedAccessory2").append("<h3>Accessory</h3>");
-  //     $("#selectedAccessory2").append(this);
-  //   });
-  // });
+    $("#accessory2").on("click","img", function(e){
+      var productIdx = data.products[counter];
+      counter++;
+      $("#accessory2").append("<img src="+productIdx.image.sizes.Large.url+">");
+      $("#selectedAccessory2").html("");
+      $("#selectedAccessory2").append("<h3>Accessory</h3>");
+      $("#selectedAccessory2").append(this);
+    });
+  });
 
 //========ends
 
