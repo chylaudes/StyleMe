@@ -433,6 +433,77 @@ $(document).ready(function () {
       });
     });
 
+    var shoescat = "", shoesfts = "";
+    if (todayTemp >= 90 ) {
+      if (sex === "F"){
+        shoescat = "flats";
+        shoesfts = "";
+      } else if (sex === "M"){
+        shoescat = "mens-sandals";
+        shoesfts = "";
+      }
+    } else if (todayTemp > 80) {
+      if (sex === "F"){
+        shoescat = "flats";
+        shoesfts = "";
+      } else if (sex === "M"){
+        shoescat = "mens-sandals";
+        shoesfts = "";
+      }
+    } else if (todayTemp > 70) {
+      if (sex === "F"){
+        shoescat = "mules-and-clogs";
+        shoesfts ="";
+      } else if (sex === "M"){
+        shoescat = "mens-slip-ons-shoes";
+        shoesfts = "";
+      }
+    } else if (todayTemp > 60) {
+      if (sex === "F"){
+        shoescat = "mules-and-clogs";
+        shoesfts ="";
+      } else if (sex === "M"){
+        shoescat = "mens-slip-ons-shoes";
+        shoesfts = "";
+      }
+    } else if (todayTemp > 50) {
+      if (sex === "F"){
+        shoescat = "boots";
+        shoesfts ="";
+      } else if (sex === "M"){
+        shoescat = "mens-boots";
+        shoesfts = "kenneth cole";
+      }
+    } else {
+      if (sex === "F"){
+        shoescat = "boots";
+        shoesfts = "";
+      } else if (sex === "M"){
+        shoescat = "mens-boots";
+        shoesfts = "kenneth cole";
+      }
+    }
+
+    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ shoescat +"&fts=" + shoesfts + "&offset=0&limit=30&sort=Popular", function(data) {
+      $("#shoes").text('');
+      $("#shoes").append("<img src="+data.products[0].image.sizes.Large.url+">");
+      $("#shoes").append("<img src="+data.products[1].image.sizes.Large.url+">");
+      $("#shoes").append("<img src="+data.products[2].image.sizes.Large.url+">");
+      $("#shoes").append("<img src="+data.products[3].image.sizes.Large.url+">");
+      counter = 4;
+
+      $("#shoes").on("click","img", function(e){
+        var productIdx = data.products[counter];
+        counter++;
+        $("#shoes").append("<img src="+productIdx.image.sizes.Large.url+">");
+        $("#selectedShoes").html("");
+        // $("#selectedShoes").append("<h3>Shoes</h3>");
+        $("#selectedShoes").append(this);
+      });
+    });
+
+
+
     if (sex === "F"){
       accessory1_cat = "womens-accessories";
       accessory1_fts = "";
@@ -454,7 +525,7 @@ $(document).ready(function () {
       counter++;
       $("#accessory1").append("<img src="+productIdx.image.sizes.Large.url+">");
       $("#selectedAccessory1").html("");
-      $("#selectedAccessory1").append("<h3>Accessory</h3>");
+      // $("#selectedAccessory1").append("<h3>Accessory</h3>");
       $("#selectedAccessory1").append(this);
     });
   });
@@ -508,7 +579,7 @@ $(document).ready(function () {
       counter++;
       $("#accessory2").append("<img src="+productIdx.image.sizes.Large.url+">");
       $("#selectedAccessory2").html("");
-      $("#selectedAccessory2").append("<h3>Accessory</h3>");
+      // $("#selectedAccessory2").append("<h3>Accessory</h3>");
       $("#selectedAccessory2").append(this);
     });
   });
