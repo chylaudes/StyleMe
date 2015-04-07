@@ -68,7 +68,15 @@ a#txt{
   font-size: 20px;
   font-weight: 500;
 }
-
+div#top.panel-body>img{
+  margin-right: 28px;
+}
+div#bottom.panel-body>img{
+  margin-right: 33px;
+}
+div#shoes.panel-body>img{
+  margin-right: 23px;
+}
 .navbar-default .navbar-nav>li>a {
   color:white;
   text-transform: uppercase;
