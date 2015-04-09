@@ -33,8 +33,7 @@
       </div>
       </div>
 
-<div class="col-md-5 col-lg-5 col-sm-5">
-      <!-- picked style -->
+<div class="col-md-5 col-lg-5 col-sm-5">  <!-- picked style -->
     <h2>Picked Style</h2>
     <br>
     <br>
@@ -61,22 +60,21 @@
 
   <% if @user.sex =='M' %>
     <br>
-<div class="drop-down"><!--  top accordian  -->
-  <div class="panel-group" id="accordion">
-    <div class="panel panel-default">
+<div class="drop-down"><!--  drop down DIV  -->
+  <div class="panel-group" id="accordion"><!--  accordian  -->
+
+    <div class="panel panel-default"><!--  top default  -->
       <div class="panel-heading">
         <h4 class="panel-title">
           <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">TOPS</a>
         </h4>
-        </div> <!-- end of dress collapse up -->
+        </div> <!-- end of panel heading  -->
         <div id="collapseOne" class="panel-collapse collapse in">
          <div class="panel-body" id="top">
-                </div>
-            </div>
-        </div> <!-- end of top collapse down -->
+                </div> <!-- end of panel body -->
+            </div><!-- end of panel-collapse -->
+        </div> <!-- end of top panel-default -->
 <br>
-
-
 
 <div class="panel panel-default"> <!-- bottoms collapse -->
   <div class="panel-heading">
@@ -126,8 +124,6 @@
     </div>
 </div> <!-- end Accessory 2 collapse -->
   <% end %>
-  </div>
-  </div>
 
 <% if @user.sex =='F' %>
     <br>
