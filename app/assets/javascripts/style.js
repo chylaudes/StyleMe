@@ -362,10 +362,11 @@ $(document).ready(function () {
 
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ topcat + "&fl=" + fl +"&fts=" + topfts + "&offset=0&limit=30", function(data) {
       $("#top").text('');
-      $("#top").append("<img src="+data.products[0].image.sizes.Large.url+">");
-      $("#top").append("<img src="+data.products[1].image.sizes.Large.url+">");
-      $("#top").append("<img src="+data.products[2].image.sizes.Large.url+">");
-      $("#top").append("<img src="+data.products[3].image.sizes.Large.url+">");
+      $("#top").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
+      $("#top").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
+      $("#top").append("<img src="+data.products[2].image.sizes.Large.url+" alt="+ data.products[2].id +">");
+      $("#top").append("<img src="+data.products[3].image.sizes.Large.url+" alt="+ data.products[3].id +">");
+
 
       counter = 4;
 
@@ -373,7 +374,7 @@ $(document).ready(function () {
         var productIdx = data.products[counter];
 
         counter++;
-        $("#top").append("<img src="+productIdx.image.sizes.Large.url+">");
+        $("#top").append("<img src="+productIdx.image.sizes.Large.url+" alt="+ productIdx.id +">");
         $("#selectedDress").html("");
         $("#selectedTop").html("");
         // $("#selectedTop").append("<br><h3>Top</h3>");
@@ -776,6 +777,43 @@ $(document).ready(function () {
    // $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&offset=0&limit=3&cat="+cat, function(data) {
    //    $("#accessory2").append("<br>womens-umbrellas<br><img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+"><img src="+data.products[2].image.sizes.Large.url+">");
    // });
+
+
+  // $(".save_outfit").on("click", function(e){
+  $(".save_outfit").submit(function(e) {
+    e.preventDefault();
+    var formURL = $(this).attr("action");
+    console.log('formURL:',formURL);
+//== TOP == //
+    var topInfo = $("#selectedTop").html();
+    var x = topInfo.search("src");
+    var y = topInfo.search("alt");
+    var z = topInfo.search("class");
+    var topsrc = topInfo.substring(x+5,y-2);
+    var topalt = topInfo.substring(y+5,z-2);
+
+
+
+//----------------------------------
+ 
+    $.ajax({
+      url : formURL,
+      type: "POST",
+      data : {top_url: topsrc, top: topalt},
+      success:function(data, textStatus, jqXHR) {
+        console.log("data submitted!");
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+          //if fails      
+      }
+    });   
+
+//------------------------------------
+
+
+  });
+
+
 
    }); //end of forecast api call
 
