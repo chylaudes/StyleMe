@@ -84,7 +84,7 @@ $(document).ready(function () {
    var femaleBrand1 = ["b4493","b2333","b728","b284","b18563"];
    var maleBrand1 = ["b284","b2446","b29798","b462","b2329"];
 
-   var femaleShoeBrand = [];
+   var femaleShoeBrand = ["b13293", "b2333", "b1077", "b3510", "b15611"];
    var maleShoeBrand = [];
 
     var getRandomFTS = function(arr){
@@ -97,7 +97,7 @@ $(document).ready(function () {
       flshoe = getRandomFTS(maleShoeBrand);
     } else {
       fl = getRandomFTS(femaleBrand1);
-      flshoe= getRandomFTS(femaleShoeBrand);
+      flshoe = getRandomFTS(femaleShoeBrand);
     }
 
     if (!userLocation){
@@ -118,6 +118,7 @@ $(document).ready(function () {
     $("div #curLocation").text('');
     $('#curTemp').append(data.current_observation.temp_f + " &#8457;");
     $('#curLocation').append("<strong>" + data.current_observation.display_location.full + "</strong>");
+
    });
 
    $.getJSON("http://api.wunderground.com/api/fa10126c4dd3470b/forecast/q/"+ $newState +"/"+ $userCity +".json", function(data) {
@@ -238,9 +239,11 @@ $(document).ready(function () {
           $("#dress").append("<img src="+productIdx.image.sizes.Large.url+">");
           $("#selectedDress").html("");
           $("#selectedTop").html("");
+          $("#selectedTop").hide();
           $("#selectedBottom").html(""); //Also append to the ruby hidden field
-          $("#selectedDress").append("<br><h3>Dress</h3><br>");
+          $("#selectedDress").show();
           $("#selectedDress").append(this);
+          $("#selectedDress").children().addClass("topbottomsize");
           $("#saveStyle").show();
         });
       });
@@ -376,8 +379,11 @@ $(document).ready(function () {
         counter++;
         $("#top").append("<img src="+productIdx.image.sizes.Large.url+" alt="+ productIdx.id +">");
         $("#selectedDress").html("");
+        // $("#selectedDress").hide();
         $("#selectedTop").html("");
+
         // $("#selectedTop").append("<br><h3>Top</h3>");
+        $("#selectedTop").show();
         $("#selectedTop").append(this);
         $("#selectedTop").children().addClass("topbottomsize");
         $("#saveStyle").show();
@@ -499,6 +505,7 @@ $(document).ready(function () {
     }
 
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ bottomcat +"&fts=" + bottomfts + "&fl=" + fl + "&offset=0&limit=30&sort=Popular", function(data) {
+      console.log("bottomdata:", data);
       $("#bottom").text('');
       $("#bottom").append("<img src="+data.products[0].image.sizes.Large.url+">");
       $("#bottom").append("<img src="+data.products[1].image.sizes.Large.url+">");
@@ -509,22 +516,31 @@ $(document).ready(function () {
       $("#bottom").on("click","img", function(e){
         var productIdx = data.products[counter];
         counter++;
-        $("#bottom").append("<img src="+productIdx.image.sizes.Large.url+">");
         $("#selectedDress").html("");
+        $("#selectedDress").hide();
+        $("#selectedBottom").show();
+
+    console.log(productIdx.image.sizes.Large.url);
+        $("#bottom").append("<img src="+productIdx.image.sizes.Large.url+">");
         $("#selectedBottom").html("");
         // $("#selectedBottom").append("<h3>Bottom</h3>");
+        $("#selectedBottom").show();
         $("#selectedBottom").append(this);
         $("#selectedBottom").children().addClass("topbottomsize");
       });
     });
 
 
-    var shoescat = "", shoesfts = ""; //
-    if (todayTemp >= 90 ) {
+    var shoescat = "", shoesfts = ""; //SHOES ALGORITHM
+
+    if (todayTemp >= 90 ) { //done with 90
       if (sex === "F"){
-        shoescat = "flats";
-        shoesfts = "";
-        flshoe ="";
+        shoescat = "sandals";
+        shoesfts = "flat";
+        if (flshoe === "b15611"){ //if the brand is Mossimo
+          shoescat = "sandals";
+          shoesfts ="";
+        }
 
       } else if (sex === "M"){
         shoescat = "mens-sandals";
@@ -532,24 +548,40 @@ $(document).ready(function () {
       }
     } else if (todayTemp > 80) {
       if (sex === "F"){
-        shoescat = "flats";
-        shoesfts = "";
+        shoescat = "sandals";
+        shoesfts = "flat";
+        if (flshoe === "b15611"){ //if the brand is Mossimo
+          shoescat = "sandals";
+          shoesfts ="";
+        }
       } else if (sex === "M"){
         shoescat = "mens-sandals";
         shoesfts = "";
       }
     } else if (todayTemp > 70) {
       if (sex === "F"){
-        shoescat = "mules-and-clogs";
-        shoesfts ="";
+        shoescat = "flats";
+        shoesfts = "";
+        if (flshoe === "b2333"){ //if the brand is Mossimo
+          shoescat = "flats";
+          shoesfts ="everyday";
+        }
       } else if (sex === "M"){
         shoescat = "mens-slip-ons-shoes";
         shoesfts = "";
       }
     } else if (todayTemp > 60) {
       if (sex === "F"){
-        shoescat = "mules-and-clogs";
-        shoesfts ="";
+        shoescat = "womens-shoes";
+        shoesfts ="boot";
+        if (flshoe === "b13293"){ //if the brand is Mossimo
+          shoescat = "womens-shoes";
+          shoesfts ="flat";
+        }
+        else if( flshoe === "b3510"){
+          shoescat = "womens-shoes";
+          shoesfts = "ankle flat"; //DONE
+        }
       } else if (sex === "M"){
         shoescat = "mens-slip-ons-shoes";
         shoesfts = "";
@@ -558,6 +590,14 @@ $(document).ready(function () {
       if (sex === "F"){
         shoescat = "boots";
         shoesfts ="";
+        if (flshoe === "b13293"){
+          shoescat = "boots";
+          shoesfts ="chunky";
+        }
+        else if( flshoe === "b1077"){
+          shoescat = "boots";
+          shoesfts = "tall";
+        }
       } else if (sex === "M"){
         shoescat = "mens-boots";
         shoesfts = "kenneth cole";
@@ -565,14 +605,24 @@ $(document).ready(function () {
     } else {
       if (sex === "F"){
         shoescat = "boots";
-        shoesfts = "";
+        shoesfts ="";
+        if (flshoe === "b13293"){
+          shoescat = "boots";
+          shoesfts ="chunky";
+        }
+        else if( flshoe === "b1077"){
+          shoescat = "boots";
+          shoesfts = "tall";
+        }
       } else if (sex === "M"){
         shoescat = "mens-boots";
         shoesfts = "kenneth cole";
       }
     }
 
-    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ shoescat +"&fts=" + shoesfts + "&fl=" + flshoe + "&offset=0&limit=30&sort=Popular", function(data) {
+    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ shoescat +"&fts=" + shoesfts + "&fl=" + flshoe + "&offset=0&limit=10&sort=Popular", function(data) {
+      console.log(data);
+      console.log("todaytemp UNCHANGED", todayTemp);
       $("#shoes").text('');
       $("#shoes").append("<img src="+data.products[0].image.sizes.Large.url+">");
       $("#shoes").append("<img src="+data.products[1].image.sizes.Large.url+">");
@@ -795,7 +845,7 @@ $(document).ready(function () {
 
 
 //----------------------------------
- 
+
     $.ajax({
       url : formURL,
       type: "POST",
@@ -804,9 +854,9 @@ $(document).ready(function () {
         console.log("data submitted!");
       },
       error: function(jqXHR, textStatus, errorThrown) {
-          //if fails      
+          //if fails
       }
-    });   
+    });
 
 //------------------------------------
 
