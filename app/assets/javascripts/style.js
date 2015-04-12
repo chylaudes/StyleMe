@@ -85,7 +85,7 @@ $(document).ready(function () {
    var maleBrand1 = ["b284","b2446","b29798","b462","b2329"];
 
    var femaleShoeBrand = ["b13293", "b2333", "b1077", "b3510", "b15611"];
-   var maleShoeBrand = [];
+   var maleShoeBrand = ["b321", "b812", "b4089", "b4486", "b14", "b422"];
 
     var getRandomFTS = function(arr){
       var index = Math.floor(Math.random() * arr.length);
@@ -541,10 +541,13 @@ $(document).ready(function () {
           shoescat = "sandals";
           shoesfts ="";
         }
-
       } else if (sex === "M"){
-        shoescat = "mens-sandals";
-        shoesfts = "";
+        shoescat = "mens-shoes";
+        shoesfts = "sandals";
+        if (flshoe === "b321"){ //if the brand is Mossimo
+          shoescat = "men-shoes";
+          shoesfts ="light";
+        }
       }
     } else if (todayTemp > 80) {
       if (sex === "F"){
@@ -555,8 +558,12 @@ $(document).ready(function () {
           shoesfts ="";
         }
       } else if (sex === "M"){
-        shoescat = "mens-sandals";
-        shoesfts = "";
+          shoescat = "mens-shoes";
+          shoesfts = "sandals";
+        if (flshoe === "b321"){ //if the brand is Mossimo
+          shoescat = "mens-shoes";
+          shoesfts ="light";
+        }
       }
     } else if (todayTemp > 70) {
       if (sex === "F"){
@@ -567,8 +574,20 @@ $(document).ready(function () {
           shoesfts ="everyday";
         }
       } else if (sex === "M"){
-        shoescat = "mens-slip-ons-shoes";
-        shoesfts = "";
+        shoescat = "mens-shoes";
+        shoesfts = "sandals";
+        if (flshoe === "b4486" || flshoe === "b4089"){ //if the brand is Mossimo
+          shoescat = "mens-shoes";
+          shoesfts ="boat";
+        }
+        if (flshoe === "b812"){ //Men's > 70 degree
+          shoescat = "mens-shoes";
+          shoesfts ="";
+        }
+        if (flshoe === "b321"){ //Men's > 70 degree
+          shoescat = "mens-shoes";
+          shoesfts ="light";
+        }
       }
     } else if (todayTemp > 60) {
       if (sex === "F"){
@@ -578,13 +597,29 @@ $(document).ready(function () {
           shoescat = "womens-shoes";
           shoesfts ="flat";
         }
-        else if( flshoe === "b3510"){
+        if(flshoe === "b3510"){
           shoescat = "womens-shoes";
           shoesfts = "ankle flat"; //DONE
         }
       } else if (sex === "M"){
-        shoescat = "mens-slip-ons-shoes";
-        shoesfts = "";
+        shoescat = "mens-shoes";
+        shoesfts = "sandals";
+        if (flshoe === "b4486" || flshoe === "b4089"){ //Men's 70 degree
+          shoescat = "mens-shoes";
+          shoesfts ="boat";
+        }
+        if (flshoe === "b812"){ //Men's 70 degree
+          shoescat = "mens-shoes";
+          shoesfts ="";
+        }
+        if (flshoe === "b321"){ //Men's 70 degree
+          shoescat = "mens-shoes";
+          shoesfts ="light";
+        }
+        if (flshoe === "b422"){ //Men's 70 degree
+          shoescat = "mens-shoes";
+          shoesfts ="slide";
+        }
       }
     } else if (todayTemp > 50) {
       if (sex === "F"){
@@ -594,7 +629,7 @@ $(document).ready(function () {
           shoescat = "boots";
           shoesfts ="chunky";
         }
-        else if( flshoe === "b1077"){
+        if( flshoe === "b1077"){
           shoescat = "boots";
           shoesfts = "tall";
         }
@@ -610,7 +645,7 @@ $(document).ready(function () {
           shoescat = "boots";
           shoesfts ="chunky";
         }
-        else if( flshoe === "b1077"){
+        if( flshoe === "b1077"){
           shoescat = "boots";
           shoesfts = "tall";
         }
@@ -621,8 +656,9 @@ $(document).ready(function () {
     }
 
     $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ shoescat +"&fts=" + shoesfts + "&fl=" + flshoe + "&offset=0&limit=10&sort=Popular", function(data) {
-      console.log(data);
+      console.log("fsakdba:", shoescat, shoesfts, flshoe);
       console.log("todaytemp UNCHANGED", todayTemp);
+      console.log("shoedata", data);
       $("#shoes").text('');
       $("#shoes").append("<img src="+data.products[0].image.sizes.Large.url+">");
       $("#shoes").append("<img src="+data.products[1].image.sizes.Large.url+">");
