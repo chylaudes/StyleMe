@@ -621,7 +621,7 @@ $(document).ready(function () {
           shoesfts ="slide";
         }
       }
-    } else if (todayTemp > 50) {
+    } else if (todayTemp > 50) { //snflsknf TEST
       if (sex === "F"){
         shoescat = "boots";
         shoesfts ="";
