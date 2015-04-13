@@ -603,22 +603,26 @@ $(document).ready(function () {
         }
       } else if (sex === "M"){
         shoescat = "mens-shoes";
-        shoesfts = "sandals";
-        if (flshoe === "b4486" || flshoe === "b4089"){ //Men's 70 degree
+        shoesfts = "original";
+        if (flshoe === "b4486"){ //Men's 70 degree
           shoescat = "mens-shoes";
-          shoesfts ="boat";
+          shoesfts ="loafer";
+        }
+        if (flshoe === "b4089"){
+          shoescat = "mens-shoes";
+          shoesft = "work";
         }
         if (flshoe === "b812"){ //Men's 70 degree
           shoescat = "mens-shoes";
-          shoesfts ="";
+          shoesfts ="london";
         }
         if (flshoe === "b321"){ //Men's 70 degree
           shoescat = "mens-shoes";
-          shoesfts ="light";
+          shoesfts ="oxford";
         }
         if (flshoe === "b422"){ //Men's 70 degree
           shoescat = "mens-shoes";
-          shoesfts ="slide";
+          shoesfts ="line";
         }
       }
     } else if (todayTemp > 50) { //snflsknf TEST
@@ -634,8 +638,24 @@ $(document).ready(function () {
           shoesfts = "tall";
         }
       } else if (sex === "M"){
-        shoescat = "mens-boots";
-        shoesfts = "kenneth cole";
+        shoescat = "mens-shoes";
+        shoesfts = "work";
+        if (flshoe === "b4486" || flshoe === "b321"){ //Men's 70 degree
+          shoescat = "mens-shoes";
+          shoesfts ="oxford";
+        }
+        if (flshoe === "b812"){ //Men's 70 degree
+          shoescat = "mens-shoes";
+          shoesfts ="london";
+        }
+        if (flshoe === "b422"){ //Men's 70 degree
+          shoescat = "mens-shoes";
+          shoesfts ="line";
+        }
+        if (flshoe=== "b422"){
+          shoescat = "mens-shoes";
+          shoesfts ="original";
+        }
       }
     } else {
       if (sex === "F"){
@@ -650,8 +670,20 @@ $(document).ready(function () {
           shoesfts = "tall";
         }
       } else if (sex === "M"){
-        shoescat = "mens-boots";
-        shoesfts = "kenneth cole";
+         shoescat = "mens-shoes";
+         shoesfts = "boots";
+        if (flshoe === "b14"){
+          shoescat = "mens-shoes";
+          shoesft = "daily";
+        }
+        if (flshoe === "b812"){ //Men's 70 degree
+          shoescat = "mens-shoes";
+          shoesfts ="clogs";
+        }
+        if (flshoe === "b422"){ //Men's 70 degree
+          shoescat = "mens-shoes";
+          shoesfts ="high";
+        }
       }
     }
 
