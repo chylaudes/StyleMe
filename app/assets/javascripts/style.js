@@ -784,6 +784,7 @@ $(document).ready(function () {
         e.preventDefault();
         var formURL = $("#saveStyle").attr("data-url");
         var user_id = $("#saveStyle").attr("data-userid");
+        var date = $("#saveStyle").attr("data-date");
 
         //== DRESS == //
         var dressInfo = $("#selectedDress").html();
@@ -837,7 +838,7 @@ $(document).ready(function () {
           url : formURL,
           type: "POST",
           data : {outfits: {user_id:user_id, dress:dress_id,dress_url:dress_url, top: top_id,top_url: top_url, bottom:bottom_id,bottom_url:bottom_url, shoe:shoe_id,shoe_url:shoe_url,access_1:access_1_id,access_1_url:access_1_url,access_2:access_2_id,access_2_url:access_2_url},
-                  env_data: {user_id:user_id,location:location, weather_temp:weather_temp, weather_state:weather_state}},
+                  env_data: {user_id:user_id,location:location, weather_temp:weather_temp, weather_state:weather_state, date: date}},
           success:function(data, textStatus, jqXHR) {
             $('.save_outfit').hide();
             $('.show_outfits').show();
@@ -857,7 +858,6 @@ $(document).ready(function () {
 //   date: date
 //   occasion: string
 //   user_id: integer
-
 
 
 // id: nil,

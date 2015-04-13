@@ -35,7 +35,7 @@
 
 <div class="col-md-6 col-lg-6 col-sm-6">
   <!-- picked style -->
-  <h2>Picked Style <div id="saveStyle" data-url="<%=outfits_path%>" data-userid="<%= @user.id %>"><button class="btn btn-primary save_outfit">Save outfit</button></form><div class="show_outfits"><%= link_to 'Show saved outfit',outfits_path, class:'btn btn-primary'%>
+  <h2>Picked Style <div id="saveStyle" data-url="<%=outfits_path%>" data-userid="<%= @user.id %>" data-date="<%= Date.today %>"><button class="btn btn-primary save_outfit">Save outfit</button></form><div class="show_outfits"><%= link_to 'Show saved outfit',outfits_path, class:'btn btn-primary'%>
  
   </div></div></h2>
   <br>
