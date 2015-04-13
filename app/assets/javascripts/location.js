@@ -657,44 +657,45 @@ $(document).ready(function () {
       $("#selectedAccessory1").append(this);
     });
   });
-
   var accessory2_cat = "", accessory2_fts = "";
-
+  curCondition = curCondition.trim();
   if (curCondition === "Clear"){
     if (sex === "F"){
       accessory2_cat = "sunglasses";
-      accessory2_fts = "";
+      accessory2_fts = "asos";
     } else if (sex === "M"){
       accessory2_cat = "mens-sunglasses";
-      accessory2_fts = "";
+      accessory2_fts = "ray ban square";
     }
   } else if (curCondition === "Light Rain" || curCondition === "Light Showers Rain" || curCondition === "Rain"){
     if (sex === "F"){
       accessory2_cat = "womens-umbrellas";
-      accessory2_fts = "";
+      accessory2_fts = "marc";
     } else if (sex === "M"){
       accessory2_cat = "mens-umbrellas";
-      accessory2_fts = "";
+      accessory2_fts = "totes";
     }
-  } else if (curCondition === "Snow" || curCondition === "Light Snow"){
+  } else if (curCondition === "Snow" || curCondition === "Light Snow" || curCondition === "Overcast"){
     if (sex === "F"){
       accessory2_cat = "scarves";
-      accessory2_fts = "";
+      accessory2_fts = "asos collection";
     } else if (sex === "M"){
       accessory2_cat = "mens-gloves-and-scarves";
-      accessory2_fts = "";
+      accessory2_fts = "barneys knit";
     }
   } else {
     if (sex === "F"){
       accessory2_cat = "womens-tech-accessories";
-      accessory2_fts = "";
+      accessory2_fts = "urban outfitters";
     } else if (sex === "M"){
-      accessory2_cat = "mens-tech-accessories";
-      accessory2_fts = "";
+      accessory2_cat = "mens-hats";
+      accessory2_fts = "urban outfitters snapback";
     }
   }
 
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory2_cat +"&fts=" + accessory2_fts + "&offset=0&limit=30&sort=Popular", function(data) {
+        console.log("accessory2:", accessory2_cat, accessory2_fts, curCondition);
+        console.log("accessory!data:", data);
     $("#accessory2").text('');
     $("#accessory2").append("<img src="+data.products[0].image.sizes.Large.url+">");
     $("#accessory2").append("<img src="+data.products[1].image.sizes.Large.url+">");

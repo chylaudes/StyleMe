@@ -87,6 +87,9 @@ $(document).ready(function () {
    var femaleShoeBrand = ["b13293", "b2333", "b1077", "b3510", "b15611"];
    var maleShoeBrand = ["b321", "b812", "b4089", "b4486", "b14", "b422"];
 
+   var femaleBagBrand = ["b316", "b2333", "b2139", "b1171", "b4089", "b2098", "b1890", "b379", "b391"];
+   // var maleWatchBrand = ["b321", "b812", "b4089", "b4486", "b14", "b422"];
+
     var getRandomFTS = function(arr){
       var index = Math.floor(Math.random() * arr.length);
       return arr[index];
@@ -98,6 +101,7 @@ $(document).ready(function () {
     } else {
       fl = getRandomFTS(femaleBrand1);
       flshoe = getRandomFTS(femaleShoeBrand);
+      flbag = getRandomFTS(femaleBagBrand);
     }
 
     if (!userLocation){
@@ -687,7 +691,7 @@ $(document).ready(function () {
       }
     }
 
-    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ shoescat +"&fts=" + shoesfts + "&fl=" + flshoe + "&offset=0&limit=10&sort=Popular", function(data) {
+    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ shoescat +"&fts=" + shoesfts + "&fl=" + flshoe + "&offset=0&limit=30&sort=Popular", function(data) {
       console.log("fsakdba:", shoescat, shoesfts, flshoe);
       console.log("todaytemp UNCHANGED", todayTemp);
       console.log("shoedata", data);
@@ -709,64 +713,46 @@ $(document).ready(function () {
     });
 
   var accessory1_cat = "", accessory1_fts = "";
-  // if (todayTemp >= 90 ) {
-  //   if (sex === "F"){
-  //     accessory1_cat = "womens-accessories";
-  //     accessory1_fts = "";
-  //   } else if (sex === "M"){
-  //     accessory1_cat = "mens-accessories";
-  //     accessory1_fts = "summer";
-  //   }
-  // } else if (todayTemp > 80) {
-  //   if (sex === "F"){
-  //     accessory1_cat = "womens-accessories";
-  //     accessory1_fts = "summer shorts";
-  //   } else if (sex === "M"){
-  //     accessory1_cat = "mens-accessories";
-  //     accessory1_fts = "summer";
-  //   }
-  // } else if (todayTemp > 70) {
-  //   if (sex === "F"){
-  //     accessory1_cat = "womens-accessories";
-  //     accessory1_fts ="spring pants";
-  //   } else if (sex === "M"){
-  //     accessory1_cat = "mens-accessories";
-  //     accessory1_fts = "classic";
-  //   }
-  // } else if (todayTemp > 60) {
-  //   if (sex === "F"){
-  //     accessory1_cat = "womens-accessories";
-  //     accessory1_fts ="";
-  //   } else if (sex === "M"){
-  //     accessory1_cat = "mens-accessories";
-  //     accessory1_fts = "classic";
-  //   }
-  // } else if (todayTemp > 50) {
-  //   if (sex === "F"){
-  //     accessory1_cat = "womens-accessories";
-  //     accessory1_fts ="";
-  //   } else if (sex === "M"){
-  //     accessory1_cat = "mens-accessories";
-  //     accessory1_fts = "classic";
-  //   }
-  // } else {
-  //   if (sex === "F"){
-  //     accessory1_cat = "womens-accessories";
-  //     accessory1_fts = "";
-  //   } else if (sex === "M"){
-  //     accessory1_cat = "mens-accessories";
-  //     accessory1_fts = "classic";
-  //   }
-  // }
+  curCondition = curCondition.trim();
+  if (curCondition === "Clear"){
     if (sex === "F"){
-      accessory1_cat = "womens-accessories";
+      accessory1_cat = "shoulder-bags";
       accessory1_fts = "";
     } else if (sex === "M"){
-      accessory1_cat = "mens-accessories";
-      accessory1_fts = "";
+      accessory1_cat = "mens-sunglasses";
+      accessory1_fts = "ray ban square";
     }
+  } else if (curCondition === "Light Rain" || curCondition === "Light Showers Rain" || curCondition === "Rain"){
+    if (sex === "F"){
+      accessory1_cat = "tote-bags";
+      accessory1_fts = "";
+    } else if (sex === "M"){
+      accessory1_cat = "mens-umbrellas";
+      accessory1_fts = "totes";
+    }
+  } else if (curCondition === "Snow" || curCondition === "Light Snow" || curCondition === "Overcast"){
+    if (sex === "F"){
+      accessory1_cat = "tote-bags";
+      accessory1_fts = "";
+    } else if (sex === "M"){
+      accessory1_cat = "mens-gloves-and-scarves";
+      accessory1_fts = "barneys knit";
+    }
+  } else {
+    if (sex === "F"){
+      accessory1_cat = "satchels";
+      accessory1_fts = "";
+      if(flbag === "b2098"){
+      accessory1_cat = "clutches";
+      accessory1_fts = "";
+      }
+    } else if (sex === "M"){
+      accessory1_cat = "mens-hats";
+      accessory1_fts = "urban outfitters snapback";
+    }
+  }
 
-   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory1_cat +"&fts=" + accessory1_fts + "&offset=0&limit=30&sort=Popular", function(data) {
+   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory1_cat +"&fts=" + accessory1_fts + "&fl=" + flbag +  "&offset=0&limit=30&sort=Popular", function(data) {
     $("#accessory1").text('');
     $("#accessory1").append("<img src="+data.products[0].image.sizes.Large.url+">");
     $("#accessory1").append("<img src="+data.products[1].image.sizes.Large.url+">");
@@ -789,34 +775,34 @@ $(document).ready(function () {
   if (curCondition === "Clear"){
     if (sex === "F"){
       accessory2_cat = "sunglasses";
-      accessory2_fts = "";
+      accessory2_fts = "asos";
     } else if (sex === "M"){
       accessory2_cat = "mens-sunglasses";
-      accessory2_fts = "";
+      accessory2_fts = "ray ban square";
     }
   } else if (curCondition === "Light Rain" || curCondition === "Light Showers Rain" || curCondition === "Rain"){
     if (sex === "F"){
       accessory2_cat = "womens-umbrellas";
-      accessory2_fts = "";
+      accessory2_fts = "marc";
     } else if (sex === "M"){
       accessory2_cat = "mens-umbrellas";
-      accessory2_fts = "";
+      accessory2_fts = "totes";
     }
-  } else if (curCondition === "Snow" || curCondition === "Light Snow"){
+  } else if (curCondition === "Snow" || curCondition === "Light Snow" || curCondition === "Overcast"){
     if (sex === "F"){
       accessory2_cat = "scarves";
-      accessory2_fts = "";
+      accessory2_fts = "asos collection";
     } else if (sex === "M"){
       accessory2_cat = "mens-gloves-and-scarves";
-      accessory2_fts = "";
+      accessory2_fts = "barneys knit";
     }
   } else {
     if (sex === "F"){
-      accessory2_cat = "womens-tech-accessories";
-      accessory2_fts = "";
+      accessory2_cat = "hats";
+      accessory2_fts = "urban outfitters";
     } else if (sex === "M"){
-      accessory2_cat = "mens-tech-accessories";
-      accessory2_fts = "";
+      accessory2_cat = "mens-hats";
+      accessory2_fts = "urban outfitters snapback";
     }
   }
 
@@ -873,6 +859,7 @@ $(document).ready(function () {
   // }
 
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory2_cat +"&fts=" + accessory2_fts + "&offset=0&limit=30&sort=Popular", function(data) {
+    console.log("accessory2:", accessory2_cat, accessory2_fts, curCondition);
     $("#accessory2").text('');
     $("#accessory2").append("<img src="+data.products[0].image.sizes.Large.url+">");
     $("#accessory2").append("<img src="+data.products[1].image.sizes.Large.url+">");
