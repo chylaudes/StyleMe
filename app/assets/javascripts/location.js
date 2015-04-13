@@ -519,6 +519,7 @@ $(document).ready(function () {
           shoescat = "boots";
           shoesfts = "tall";
         }
+      }
     } else {
       if (sex === "F"){
         shoescat = "boots";

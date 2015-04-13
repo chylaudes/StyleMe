@@ -33,11 +33,11 @@
   </div>
 </div>
 
-
-
 <div class="col-md-6 col-lg-6 col-sm-6">
   <!-- picked style -->
-  <h2>Picked Style</h2>
+  <h2>Picked Style <div id="saveStyle" data-url="<%=outfits_path%>" data-userid="<%= @user.id %>"><button class="btn btn-primary save_outfit">Save outfit</button></form><div class="show_outfits"><%= link_to 'Show saved outfit',outfits_path, class:'btn btn-primary'%>
+ 
+  </div></div></h2>
   <br>
   <br>
   <div class ="rowstyle1">
@@ -52,13 +52,16 @@
     <div id="selectedAccessory1" class="col-md-3"></div>
     <div id="selectedAccessory2" class="col-md-3"></div>
   </div>
-  <div class="text-center">
-    <%= form_for(@user, url: styles_path(@user)) do |f|  %>
-    <%= f.hidden_field :top_url, value: "" %>
-    <%= f.hidden_field :top, value: "" %>
-    <%= f.submit("Save outfit", class: "btn btn-primary save_outfit") %>
-    <% end %>
-  </div>
+  <!-- <div class="text-center" id="saveStyle"> -->
+  
+  <%#= form_for(@outfit, @style) do |f|  %>
+    <%#= form_for(@outfit, url: style_path) do |f|  %>
+    <%#= f.hidden_field :top_url, value: "" %>
+    <%#= f.hidden_field :top, value: "" %>
+    <%#= f.submit("Save outfit", class: "btn btn-primary save_outfit") %>
+    <%# end %>
+  <!--   <button class="btn btn-primary save_outfit">Save outfit</button>
+  </div> -->
 </div>
 
 

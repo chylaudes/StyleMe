@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-  get 'outfits/index'
+  # get 'outfits/index'
 
-  get 'outfits/show'
+  # get 'outfits/show'
 
 devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
 
   root 'home#index'
-
-   resources :styles, shallow: true
+  resources :styles, shallow: true
+  resources :outfits, shallow: true
 
 
   # get 'styles/index'
