@@ -1,78 +1,5 @@
 $(document).ready(function () {
 
-//WOMEN's SHOES:
-// if (FORECAST >= clear) {
-//       if (sex === "F"){
-//cat=womens-shoes&fl=b4089&fl=b1077
-//         cat = "womens-shoes";
-//         fl = "b4089&fl=b1077"
-//       }
-//     } else if (FORECAST = Rainning) {
-//cat=boots&fts=rain
-//         cat = "boots";
-//         fts ="rain";
-//cat=womens-shoes&fl=b4089&fl=b1077
-//MEN's SHOES:
-//cat=mens-shoes&sort=Popular&fl=b267&fl=b30810&fl=b552&fl=b4089&fl=b1336&fl=b14&fl=b870
-
-//WOMEN ACCESSORIES: (BAGS)
-//cat=handbags&fl=b4089
-//WOMEN ACCESSORIES: (EVERYTHING)
-//
-// if (FORECAST >= clear) {
-//       if (sex === "F"){
-//      cat=womens-accessories&fl=b4089&fl=b30810&fts=
-//         cat = "womens-accessories";
-//         fl = "b4089&fl=b30810"
-//       }
-//     } else if (FORECAST = Raining) {
-//      cat=womens-accessories&fts=umbrella
-//         cat = "womens-accessories";
-//         fts ="umbrella";
-//       }
-//     } else if (FORECAST = Snowing) {
-//      cat=scarves&fl=b4486&fts=oversized
-//       if (sex === "F"){
-//         cat = "scarves";
-//         fts ="oversized";
-//         fl = "b4486&"
-//       }
-//        else {
-//        if (sex === "F"){
-//          cat=womens-accessories&fl=b4089&fl=b30810&fts=
-//          cat = "womens-accessories";
-//          fl = "b4089&fl=b30810"
-//        }
-//      }
-//MEN ACCESSORIES: (WATCHES)
-//MEN ACCESSORIES: (EVERYTHING)
-// if (FORECAST >= clear) {
-//       if (sex === "M){
-//      cat=womens-accessories&fl=b4089&fl=b30810&fts=
-//         cat = "womens-accessories";
-//         fl = "b4089&fl=b30810"
-//       }
-//     } else if (FORECAST = Raining) {
-//         if (sex === "M){
-//      cat=womens-accessories&fts=umbrella
-//         cat = "womens-accessories";
-//         fts ="umbrella";
-//       }
-//     } else if (FORECAST = Snowing) {
-//      cat=scarves&fl=b4486&fts=oversized
-//       if (sex === "M){
-//         cat = "scarves";
-//         fts ="oversized";
-//         fl = "b4486&"
-//       }
-//        else {
-//        if (sex === "M){
-//          cat=womens-accessories&fl=b4089&fl=b30810&fts=
-//          cat = "womens-accessories";
-//          fl = "b4089&fl=b30810"
-//        }
-//      }
-
 //========= Get weather data from user database ===========================//
 
  if (window.location.href==="http://localhost:3000/styles") {
@@ -233,10 +160,10 @@ $(document).ready(function () {
       var dressURL = "http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat=" + dresscat + "&fts=" + dressfts + "&fl=" + fl + "&offset=0&limit=30&sort=Popular";
      $.getJSON(dressURL, function(data) {
         $("#dress").text('');
-        $("#dress").append("<img src="+data.products[0].image.sizes.Large.url+">");
-        $("#dress").append("<img src="+data.products[1].image.sizes.Large.url+">");
-        $("#dress").append("<img src="+data.products[2].image.sizes.Large.url+">");
-        $("#dress").append("<img src="+data.products[3].image.sizes.Large.url+">");
+        $("#dress").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
+        $("#dress").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
+        $("#dress").append("<img src="+data.products[2].image.sizes.Large.url+" alt="+ data.products[2].id +">");
+        $("#dress").append("<img src="+data.products[3].image.sizes.Large.url+" alt="+ data.products[3].id +">");
         counter = 4;
         $("#dress").on("click","img", function(e){
           var productIdx = data.products[counter];
@@ -512,10 +439,11 @@ $(document).ready(function () {
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ bottomcat +"&fts=" + bottomfts + "&fl=" + fl + "&offset=0&limit=30&sort=Popular", function(data) {
       console.log("bottomdata:", data);
       $("#bottom").text('');
-      $("#bottom").append("<img src="+data.products[0].image.sizes.Large.url+">");
-      $("#bottom").append("<img src="+data.products[1].image.sizes.Large.url+">");
-      $("#bottom").append("<img src="+data.products[2].image.sizes.Large.url+">");
-      $("#bottom").append("<img src="+data.products[3].image.sizes.Large.url+">");
+      $("#bottom").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
+      $("#bottom").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
+      $("#bottom").append("<img src="+data.products[2].image.sizes.Large.url+" alt="+ data.products[2].id +">");
+      $("#bottom").append("<img src="+data.products[3].image.sizes.Large.url+" alt="+ data.products[3].id +">");
+
       counter = 4;
 
       $("#bottom").on("click","img", function(e){
@@ -524,14 +452,15 @@ $(document).ready(function () {
         $("#selectedDress").html("");
         $("#selectedDress").hide();
         $("#selectedBottom").show();
-
-    console.log(productIdx.image.sizes.Large.url);
         $("#bottom").append("<img src="+productIdx.image.sizes.Large.url+">");
         $("#selectedBottom").html("");
         // $("#selectedBottom").append("<h3>Bottom</h3>");
         $("#selectedBottom").show();
         $("#selectedBottom").append(this);
         $("#selectedBottom").children().addClass("topbottomsize");
+
+        // console.log("bottomInfo:",$("#selectedBottom").html());
+
       });
     });
 
@@ -697,10 +626,10 @@ $(document).ready(function () {
       console.log("todaytemp UNCHANGED", todayTemp);
       console.log("shoedata", data);
       $("#shoes").text('');
-      $("#shoes").append("<img src="+data.products[0].image.sizes.Large.url+">");
-      $("#shoes").append("<img src="+data.products[1].image.sizes.Large.url+">");
-      $("#shoes").append("<img src="+data.products[2].image.sizes.Large.url+">");
-      $("#shoes").append("<img src="+data.products[3].image.sizes.Large.url+">");
+      $("#shoes").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
+      $("#shoes").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
+      $("#shoes").append("<img src="+data.products[2].image.sizes.Large.url+" alt="+ data.products[2].id +">");
+      $("#shoes").append("<img src="+data.products[3].image.sizes.Large.url+" alt="+ data.products[3].id +">");
       counter = 4;
 
       $("#shoes").on("click","img", function(e){
@@ -755,10 +684,10 @@ $(document).ready(function () {
 
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory1_cat +"&fts=" + accessory1_fts + "&fl=" + accessory1_fl +  "&offset=0&limit=30&sort=Popular", function(data) {
     $("#accessory1").text('');
-    $("#accessory1").append("<img src="+data.products[0].image.sizes.Large.url+">");
-    $("#accessory1").append("<img src="+data.products[1].image.sizes.Large.url+">");
-    $("#accessory1").append("<img src="+data.products[2].image.sizes.Large.url+">");
-    $("#accessory1").append("<img src="+data.products[3].image.sizes.Large.url+">");
+    $("#accessory1").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
+    $("#accessory1").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
+    $("#accessory1").append("<img src="+data.products[2].image.sizes.Large.url+" alt="+ data.products[2].id +">");
+    $("#accessory1").append("<img src="+data.products[3].image.sizes.Large.url+" alt="+ data.products[3].id +">");
     counter = 4;
 
     $("#accessory1").on("click","img", function(e){
@@ -810,10 +739,10 @@ $(document).ready(function () {
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory2_cat +"&fts=" + accessory2_fts + "&offset=0&limit=30&sort=Popular", function(data) {
     console.log("accessory2:", accessory2_cat, accessory2_fts, curCondition);
     $("#accessory2").text('');
-    $("#accessory2").append("<img src="+data.products[0].image.sizes.Large.url+">");
-    $("#accessory2").append("<img src="+data.products[1].image.sizes.Large.url+">");
-    $("#accessory2").append("<img src="+data.products[2].image.sizes.Large.url+">");
-    $("#accessory2").append("<img src="+data.products[3].image.sizes.Large.url+">");
+    $("#accessory2").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
+    $("#accessory2").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
+    $("#accessory2").append("<img src="+data.products[2].image.sizes.Large.url+" alt="+ data.products[2].id +">");
+    $("#accessory2").append("<img src="+data.products[3].image.sizes.Large.url+" alt="+ data.products[3].id +">");
     counter = 4;
 
     $("#accessory2").on("click","img", function(e){
@@ -828,121 +757,117 @@ $(document).ready(function () {
 
 //========ends
 
-   // $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&offset=0&limit=3&cat="+cat, function(data) {
-   //    $("#accessory2").append("<br>womens-umbrellas<br><img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+"><img src="+data.products[2].image.sizes.Large.url+">");
-   // });
+  
+  //== ENV-DATA == //
+      var location = $userCity;
+      var weather_temp = todayTemp;
+      var weather_state = $newState;
+
+      //////////////////////////
+      // Save Outfit
+      //
+      //////////////////////////
+
+      $('#saveStyle').on('click', '.save_outfit',function (e) { 
+        e.preventDefault(); 
+        var formURL = $("#saveStyle").attr("data-url");
+        var user_id = $("#saveStyle").attr("data-userid");
+
+        //== DRESS == //
+        var dressInfo = $("#selectedDress").html();
+        var dresssrc = dressInfo.search("src");
+        var dressalt = dressInfo.search("alt");
+        var dressclass = dressInfo.search("class");
+        var dress_id = dressInfo.substring(dressalt+5,dressclass-2);
+        var dress_url = dressInfo.substring(dresssrc+5,dressalt-2);
+
+        //== TOP == //
+        var topInfo = $("#selectedTop").html();
+        var topsrc = topInfo.search("src");
+        var topalt = topInfo.search("alt");
+        var topclass = topInfo.search("class");
+        var top_id = topInfo.substring(topalt+5,topclass-2);
+        var top_url = topInfo.substring(topsrc+5,topalt-2);
+
+        //== Bottom == //        
+        var bottomInfo = $("#selectedBottom").html();
+        var bottomsrc = bottomInfo.search("src");
+        var bottomalt = bottomInfo.search("alt");
+        var bottomclass = bottomInfo.search("class");
+        var bottom_id = bottomInfo.substring(bottomalt+5,bottomclass-2);
+        var bottom_url = bottomInfo.substring(bottomsrc+5,bottomalt-2);
+        
+        //== SHOE == //
+        var shoeInfo = $("#selectedShoes").html();
+        var shoesrc = shoeInfo.search("src");
+        var shoealt = shoeInfo.search("alt");
+        var shoeclass = shoeInfo.search("class");
+        var shoe_id = shoeInfo.substring(shoealt+5,shoeclass-2);
+        var shoe_url = shoeInfo.substring(shoesrc+5,shoealt-2);
+
+        //== ACCESS 1 == //
+        var access_1Info = $("#selectedAccessory1").html();
+        var access_1src = access_1Info.search("src");
+        var access_1alt = access_1Info.search("alt");
+        var access_1class = access_1Info.search("class");
+        var access_1_id = access_1Info.substring(access_1alt+5,access_1class-2);
+        var access_1_url = access_1Info.substring(access_1src+5,access_1alt-2);
+
+        //== ACCESS 2 == //
+        var access_2Info = $("#selectedAccessory2").html();
+        var access_2src = access_2Info.search("src");
+        var access_2alt = access_2Info.search("alt");
+        var access_2class = access_2Info.search("class");
+        var access_2_id = access_2Info.substring(access_2alt+5,access_2class-2);
+        var access_2_url = access_2Info.substring(access_2src+5,access_2alt-2);
+
+        $.ajax({
+          url : formURL,
+          type: "POST",
+          data : {outfits: {user_id:user_id, dress:dress_id,dress_url:dress_url, top: top_id,top_url: top_url, bottom:bottom_id,bottom_url:bottom_url, shoe:shoe_id,shoe_url:shoe_url,access_1:access_1_id,access_1_url:access_1_url,access_2:access_2_id,access_2_url:access_2_url},
+                  env_data: {user_id:user_id,location:location, weather_temp:weather_temp, weather_state:weather_state}},
+          success:function(data, textStatus, jqXHR) {
+            $('.save_outfit').hide();
+            $('.show_outfits').show();
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+              //if fails
+          }
+        });   
+      });
+  //---------- end of save outfit --------------------------
+
+// EnvData
+//   id: integer
+//   location: string
+//   weather_temp: integer
+//   weather_state: string
+//   date: date
+//   occasion: string
+//   user_id: integer
 
 
-  // $(".save_outfit").on("click", function(e){
-  $(".save_outfit").submit(function(e) {
-    e.preventDefault();
-    var formURL = $(this).attr("action");
-    console.log('formURL:',formURL);
-//== TOP == //
-    var topInfo = $("#selectedTop").html();
-    var x = topInfo.search("src");
-    var y = topInfo.search("alt");
-    var z = topInfo.search("class");
-    var topsrc = topInfo.substring(x+5,y-2);
-    var topalt = topInfo.substring(y+5,z-2);
 
-
-
-//----------------------------------
-
-    $.ajax({
-      url : formURL,
-      type: "POST",
-      data : {top_url: topsrc, top: topalt},
-      success:function(data, textStatus, jqXHR) {
-        console.log("data submitted!");
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-          //if fails
-      }
-    });
-
-//------------------------------------
-
-
-  });
-
-
+// id: nil,
+//  dress: nil,
+//  dress_url: nil,
+//  top: nil,
+//  top_url: nil,
+//  bottom: nil,
+//  bottom_url: nil,
+//  shoe: nil,
+//  shoe_url: nil,
+//  access_1: nil,
+//  access_1_url: nil,
+//  access_2: nil,
+//  access_2_url: nil,
+//  created_at: nil,
+//  updated_at: nil,
+//  user_id: nil,
+//  env_data_id: nil>
 
    }); //end of forecast api call
 
 
   }//window.location.href
-
-
-
-
-
-   //======== shop sensei brand API CALL ========================//
-   /*
-    ||== QUERY ==||
-    fts: Text search terms, as a user would enter in a Search: field.
-    cat: A product category. Only products within the category will be returned. The easiest way to find values for this parameter is to browse to a category on the ShopStyle website and take the last element of the URL path, e.g., from http://www.shopstyle.com/browse/dresses, use "dresses." Another way is to look at the complete list of categories returned by the /categories.
-    fl: Specify one or more filters on the query for brand, retailer, price, discount, and/or size. Each filter value has an initial letter and a numeric id. The easiest way to construct a filter list is to do a search on ShopStyle, select one or more filters in the UI, and copy the resulting URL. To convert brand or retailer names to ids, use the /brands and /retailers calls. Here is a sample URL showing sale clothing from two brands and one retailer:
-      b - brand
-      r - retailer
-      p - price
-      d - sale
-      s - size
-      c - color
-   */
-
-   // $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&offset=0&limit=3&fts=rain-boots", function(data) {
-   //    $("#accessory").append("<br>rainboots<br><img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+"><img src="+data.products[2].image.sizes.Large.url+">");
-   // });
-
-   // $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&offset=0&limit=3&cat=mens-dress-shirts", function(data) {
-   //    $("#accessory").append("<br><br>");
-   //    $("#accessory").append("<br><img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+"><img src="+data.products[2].image.sizes.Large.url+">");
-   // });
-   //fl=b936 -> search by brand(fl=b) b936:Chanel
-   // $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&offset=0&limit=3&cat=womens-suits&fl=b936", function(data) {
-   //    $("#accessory").append("<br>Chanel Suits:<br><img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+"><img src="+data.products[2].image.sizes.Large.url+">");
-   // });
-
-   // $("#saveStyleForm").on("submit", function (event) {
-   //   event.preventDefault();
-
-     // var query = this.searchTerm.value;
-   // });
-
-// $("#dress").on("click","img", function(e){
-//   console.log(this);
-//   counter++;
-//   $("#selectedDress").html("");
-//   $("#selectedDress").append(this);
-// });
-//======== SHOP STYLE API CALL ========================//
-   // $.ajax({
-   //    url: "http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&fts=" + query + "&offset=0&limit=10",
-   //    dataType: "json",
-   //    success: function(data) {
-   //       console.log(data);
-   //    }
-   // });
-   // $.getJSON("http://api.shopstyle.com/action/apiSearch?pid=uid2100-27524390-36&fts=" + query + "&min=0&count=10", function(data) {
-   //   var $results = $("#results");
-   //    $results.append("Result");
-   //    $results.append("Data:"+data);
-   // });
-
-   // var dress = "summer dress";
-   // $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&fts=" + dress + "&offset=0&limit=30&sort=Popular", function(data) {
-   //    $("#dress").append("<img src="+data.products[0].image.sizes.Large.url+">");
-   //    $("#dress").append("<img src="+data.products[1].image.sizes.Large.url+">");
-   //    $("#dress").append("<img src="+data.products[2].image.sizes.Large.url+">");
-   //    // $("#dress").append("<img src="+data.products[0].image.sizes.Large.url+"><img src="+data.products[1].image.sizes.Large.url+" class='dress2'><img src="+data.products[2].image.sizes.Large.url+" class='dress3'>");
-   //    // console.log("dress");
-   //    // console.log(data);
-   // });
-
-
-
-
-
-});
+}); //end of document load
