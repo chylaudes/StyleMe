@@ -12,13 +12,13 @@
 
   <br>  <br>
   <% env_data = outfit.env_data %>
-  <%= env_data.id %> || <%= env_data.location %> ||  <%= env_data.weather_temp %> || <%= env_data.weather_state %>  
+  <%= env_data.id %> - <%= env_data.date %> || <%= env_data.location %> ||  <%= env_data.weather_temp %> || <%= env_data.weather_state %>  
   <br>
 <% end %>
 <br><br>
 <% end %>
 <% @env_data.each do |env| %>
-<%= env.id %> || <%= env.location %> ||  <%= env.weather_temp %> || <%= env.weather_state %>
+<%= env.id %> - <%= env.date %> || <%= env.location %> ||  <%= env.weather_temp %> || <%= env.weather_state %>
 <br>
 <% end %>
 </div>

@@ -16,11 +16,11 @@ class OutfitsController < ApplicationController
 
   def create
     # env_params["date"]  = Date.today
-    @env_data = EnvData.new(env_params,{date: Date.today})
+    @env_data = EnvData.new env_params
     @env_data.save
     
     # outfit_params["env_data_id"] = @env_id
-    @outfit = Outfit.new(outfit_params)
+    @outfit = Outfit.new outfit_params
     @outfit.env_data = EnvData.last
     if @outfit.save 
       redirect_to outfits_path, notice: 'Outfit was created successfully.'
