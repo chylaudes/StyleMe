@@ -396,6 +396,9 @@ $(document).ready(function () {
       } else if (sex === "M"){
         bottomcat = "mens-jeans";
         bottomfts = "classic";
+        if (fl === "b2446" || fl === "b29798" || fl==="b3471" || fl === "b2363" || fl === "b2329"){
+            bottomfts = "";
+          }
       }
     } else if (todayTemp > 50) {
       if (sex === "F"){
@@ -412,8 +415,6 @@ $(document).ready(function () {
           bottomcat = "mens-jeans";
           if (fl === "b2446" || fl === "b29798" || fl==="b3471" || fl === "b2363"){
             bottomfts = "";
-          } else {
-            bottomfts = "classic";
           }
         }
       }
@@ -438,6 +439,7 @@ $(document).ready(function () {
 
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ bottomcat +"&fts=" + bottomfts + "&fl=" + fl + "&offset=0&limit=30&sort=Popular", function(data) {
       console.log("bottomdata:", data);
+      console.log("bottomkeywords:", bottomfts, bottomcat, fl);
       $("#bottom").text('');
       $("#bottom").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
       $("#bottom").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
@@ -557,6 +559,10 @@ $(document).ready(function () {
         if (flshoe === "b422"){ //Men's 70 degree
           shoescat = "mens-shoes";
           shoesfts ="line";
+        }
+        if (flshoe === "b4089"){ //Men's 70 degree
+          shoescat = "mens-shoes";
+          shoesfts ="";
         }
       }
     } else if (todayTemp > 50) { //snflsknf TEST
@@ -757,7 +763,7 @@ $(document).ready(function () {
 
 //========ends
 
-  
+
   //== ENV-DATA == //
       var location = $userCity;
       var weather_temp = todayTemp;
@@ -768,8 +774,8 @@ $(document).ready(function () {
       //
       //////////////////////////
 
-      $('#saveStyle').on('click', '.save_outfit',function (e) { 
-        e.preventDefault(); 
+      $('#saveStyle').on('click', '.save_outfit',function (e) {
+        e.preventDefault();
         var formURL = $("#saveStyle").attr("data-url");
         var user_id = $("#saveStyle").attr("data-userid");
 
@@ -789,14 +795,14 @@ $(document).ready(function () {
         var top_id = topInfo.substring(topalt+5,topclass-2);
         var top_url = topInfo.substring(topsrc+5,topalt-2);
 
-        //== Bottom == //        
+        //== Bottom == //
         var bottomInfo = $("#selectedBottom").html();
         var bottomsrc = bottomInfo.search("src");
         var bottomalt = bottomInfo.search("alt");
         var bottomclass = bottomInfo.search("class");
         var bottom_id = bottomInfo.substring(bottomalt+5,bottomclass-2);
         var bottom_url = bottomInfo.substring(bottomsrc+5,bottomalt-2);
-        
+
         //== SHOE == //
         var shoeInfo = $("#selectedShoes").html();
         var shoesrc = shoeInfo.search("src");
@@ -833,7 +839,7 @@ $(document).ready(function () {
           error: function(jqXHR, textStatus, errorThrown) {
               //if fails
           }
-        });   
+        });
       });
   //---------- end of save outfit --------------------------
 
