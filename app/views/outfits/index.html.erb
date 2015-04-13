@@ -1,24 +1,26 @@
-<h1>Outfits#index</h1>
-<p>Find me in app/views/outfits/index.html.erb</p>
+<h2>Styled Outfits</h2>
 <div class="container">
 <% if @outfits.any? %>
 <% @outfits.each do |outfit| %>
-  <%= outfit.id %> - <%= outfit.top %> - <img src="<%= outfit.top_url %>" alt=""> 
-  <%= outfit.dress %> - <img src="<%= outfit.dress_url %>" alt=""> 
-  <%= outfit.bottom %> - <img src="<%= outfit.bottom_url %>" alt=""> 
-  <%= outfit.shoe %> - <img src="<%= outfit.shoe_url %>" alt=""> 
-<%= outfit.access_1 %> - <img src="<%= outfit.access_1_url %>" alt=""> 
-<%= outfit.access_2 %> - <img src="<%= outfit.access_2_url %>" alt=""> 
+<div class="col-xs-6 col-md-3">
+<a href="#" class="thumbnail">
+  <%= outfit.id %> - <%= outfit.top %> - <img src="<%= outfit.top_url %>" alt="">
+  <%= outfit.dress %> - <img src="<%= outfit.dress_url %>" alt="">
+  <%= outfit.bottom %> - <img src="<%= outfit.bottom_url %>" alt="">
+  <%= outfit.shoe %> - <img src="<%= outfit.shoe_url %>" alt="">
+<%= outfit.access_1 %> - <img src="<%= outfit.access_1_url %>" alt="">
+<%= outfit.access_2 %> - <img src="<%= outfit.access_2_url %>" alt="">
 
   <br>  <br>
   <% env_data = outfit.env_data %>
-  <%= env_data.id %> || <%= env_data.location %> ||  <%= env_data.weather_temp %> || <%= env_data.weather_state %>  
+  <%= env_data.id %> || <%= env_data.location %> ||  <%= env_data.weather_temp %> || <%= env_data.weather_state %>
   <br>
 <% end %>
 <br><br>
 <% end %>
-<% @env_data.each do |env| %>
+<!-- <% @env_data.each do |env| %>
 <%= env.id %> || <%= env.location %> ||  <%= env.weather_temp %> || <%= env.weather_state %>
 <br>
-<% end %>
+<% end %>  --></a>
+</div>
 </div>
