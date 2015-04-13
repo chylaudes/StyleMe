@@ -17,6 +17,7 @@ $(document).ready(function () {
    var femaleBagBrand = ["b316", "b2333", "b2139", "b1171", "b4089", "b2098", "b1890", "b379", "b391"];
    var maleWatchBrand = ["b2098", "b372", "b172", "b31043", "b2331", "b2380", "b5715", "b1242"];
 
+   // var maleSunKeys = ["ray ban square", "ray ban original", "tom ford" ];
     var getRandomFTS = function(arr){
       var index = Math.floor(Math.random() * arr.length);
       return arr[index];
@@ -399,6 +400,10 @@ $(document).ready(function () {
         if (fl === "b2446" || fl === "b29798" || fl==="b3471" || fl === "b2363" || fl === "b2329"){
             bottomfts = "";
           }
+        if (fl ==="b462"){
+        bottomcat = "mens-jeans";
+        bottomfts = "slim";
+        }
       }
     } else if (todayTemp > 50) {
       if (sex === "F"){
@@ -550,7 +555,7 @@ $(document).ready(function () {
         }
         if (flshoe === "b812"){ //Men's 70 degree
           shoescat = "mens-shoes";
-          shoesfts ="london";
+          shoesfts ="";
         }
         if (flshoe === "b321"){ //Men's 70 degree
           shoescat = "mens-shoes";
@@ -705,7 +710,8 @@ $(document).ready(function () {
       $("#selectedAccessory1").append(this);
     });
   });
-
+  var maleHatKeys = ["urban outfitters snapback", "urban outfitters fedora"];
+  var maleSunKeys = ["ray ban square", "", "tom ford", "urban outfitters ray ban", "ray ban wayfarer"];
   var accessory2_cat = "", accessory2_fts = "";
   curCondition = curCondition.trim();
   if (curCondition === "Clear"){
@@ -714,7 +720,7 @@ $(document).ready(function () {
       accessory2_fts = "asos";
     } else if (sex === "M"){
       accessory2_cat = "mens-sunglasses";
-      accessory2_fts = "ray ban square";
+      accessory2_fts = getRandomFTS(maleSunKeys);
     }
   } else if (curCondition === "Light Rain" || curCondition === "Light Showers Rain" || curCondition === "Rain"){
     if (sex === "F"){
@@ -738,7 +744,7 @@ $(document).ready(function () {
       accessory2_fts = "urban outfitters";
     } else if (sex === "M"){
       accessory2_cat = "mens-hats";
-      accessory2_fts = "urban outfitters snapback";
+      accessory2_fts = getRandomFTS(maleHatKeys);
     }
   }
 
