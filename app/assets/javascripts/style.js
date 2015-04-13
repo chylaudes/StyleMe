@@ -807,58 +807,6 @@ $(document).ready(function () {
     }
   }
 
-
-
-  // if (todayTemp >= 90 ) {
-  //   if (sex === "F"){
-  //     accessory2_cat = "womens-accessories";
-  //     accessory2_fts = "summer shorts";
-  //   } else if (sex === "M"){
-  //     accessory2_cat = "mens-accessories";
-  //     accessory2_fts = "summer";
-  //   }
-  // } else if (todayTemp > 80) {
-  //   if (sex === "F"){
-  //     accessory2_cat = "womens-accessories";
-  //     accessory2_fts = "summer shorts";
-  //   } else if (sex === "M"){
-  //     accessory2_cat = "mens-accessories";
-  //     accessory2_fts = "summer";
-  //   }
-  // } else if (todayTemp > 70) {
-  //   if (sex === "F"){
-  //     accessory2_cat = "womens-accessories";
-  //     accessory2_fts ="spring pants";
-  //   } else if (sex === "M"){
-  //     accessory2_cat = "mens-accessories";
-  //     accessory2_fts = "classic";
-  //   }
-  // } else if (todayTemp > 60) {
-  //   if (sex === "F"){
-  //     accessory2_cat = "jeans";
-  //     accessory2_fts ="";
-  //   } else if (sex === "M"){
-  //     accessory2_cat = "mens-accessories";
-  //     accessory2_fts = "classic";
-  //   }
-  // } else if (todayTemp > 50) {
-  //   if (sex === "F"){
-  //     accessory2_cat = "classic-jeans";
-  //     accessory2_fts ="";
-  //   } else if (sex === "M"){
-  //     accessory2_cat = "mens-accessories";
-  //     accessory2_fts = "classic";
-  //   }
-  // } else {
-  //   if (sex === "F"){
-  //     accessory2_cat = "classic-jeans";
-  //     accessory2_fts = "";
-  //   } else if (sex === "M"){
-  //     accessory2_cat = "mens-accessories";
-  //     accessory2_fts = "classic";
-  //   }
-  // }
-
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory2_cat +"&fts=" + accessory2_fts + "&offset=0&limit=30&sort=Popular", function(data) {
     console.log("accessory2:", accessory2_cat, accessory2_fts, curCondition);
     $("#accessory2").text('');

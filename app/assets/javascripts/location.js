@@ -69,6 +69,7 @@ $(document).ready(function () {
     }
 
     var dressfts = "", dresscat = "", counter = 0;
+
     if (sex === "F"){
       if (todayTemp >= 90 ) {
          if (fl === "b728") {
@@ -320,8 +321,7 @@ $(document).ready(function () {
         $("#saveStyle").show();
       });
    });
-
-    var bottomcat = "", bottomfts = "";
+ var bottomcat = "", bottomfts = "";
     if (todayTemp >= 90 ) {
       if (sex === "F"){
           bottomcat = "shorts";
@@ -411,6 +411,8 @@ $(document).ready(function () {
           bottomcat = "mens-jeans";
           if (fl === "b2446" || fl === "b29798" || fl==="b3471" || fl === "b2363"){
             bottomfts = "";
+          } else {
+            bottomfts = "classic";
           }
         }
       }
@@ -631,14 +633,45 @@ $(document).ready(function () {
     });
 
 
-
+  var accessory1_cat = "", accessory1_fts = "";
+  curCondition = curCondition.trim();
+  if (curCondition === "Clear"){
     if (sex === "F"){
-      accessory1_cat = "womens-accessories";
+      accessory1_cat = "shoulder-bags";
       accessory1_fts = "";
     } else if (sex === "M"){
-      accessory1_cat = "mens-accessories";
+      accessory1_cat = "mens-watches";
       accessory1_fts = "";
     }
+  } else if (curCondition === "Light Rain" || curCondition === "Light Showers Rain" || curCondition === "Rain"){
+    if (sex === "F"){
+      accessory1_cat = "tote-bags";
+      accessory1_fts = "";
+    } else if (sex === "M"){
+      accessory1_cat = "mens-watches";
+      accessory1_fts = "";
+    }
+  } else if (curCondition === "Snow" || curCondition === "Light Snow" || curCondition === "Overcast"){
+    if (sex === "F"){
+      accessory1_cat = "tote-bags";
+      accessory1_fts = "";
+    } else if (sex === "M"){
+      accessory1_cat = "mens-watches";
+      accessory1_fts = "";
+    }
+  } else {
+    if (sex === "F"){
+      accessory1_cat = "satchels";
+      accessory1_fts = "";
+      if(accessory1_fl === "b2098"){
+      accessory1_cat = "clutches";
+      accessory1_fts = "";
+      }
+    } else if (sex === "M"){
+      accessory1_cat = "mens-watches";
+      accessory1_fts = "";
+    }
+  }
 
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory1_cat +"&fts=" + accessory1_fts + "&offset=0&limit=30&sort=Popular", function(data) {
     $("#accessory1").text('');
