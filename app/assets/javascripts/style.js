@@ -47,14 +47,14 @@ $(document).ready(function () {
       $newState = "CA";
     }
 
-   $.getJSON("http://api.wunderground.com/api/fa10126c4dd3470b/geolookup/conditions/q/"+ $newState +"/"+ $userCity +".json", function(data) {
+   $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/geolookup/conditions/q/"+ $newState +"/"+ $userCity +".json", function(data) {
     $("div #curLocation").text('');
     $('#curTemp').append(data.current_observation.temp_f + " &#8457;");
     $('#curLocation').append("<strong>" + data.current_observation.display_location.full + "</strong>");
 
    });
 
-   $.getJSON("http://api.wunderground.com/api/fa10126c4dd3470b/forecast/q/"+ $newState +"/"+ $userCity +".json", function(data) {
+   $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/forecast/q/"+ $newState +"/"+ $userCity +".json", function(data) {
     $('#curCond').append(data.forecast.simpleforecast.forecastday[0].conditions);
     curCondition = data.forecast.simpleforecast.forecastday[0].conditions;
     $('#hiTemp').append(data.forecast.simpleforecast.forecastday[0].high.fahrenheit + " &#8457;");
@@ -709,12 +709,12 @@ $(document).ready(function () {
       $("#selectedAccessory1").html("");
       // $("#selectedAccessory1").append("<h3>Accessory</h3>");
       $("#selectedAccessory1").append(this);
-      $("#selectedAccessory1").children().addClass("accshoesize");
+      $("#selectedAccessory1").children().addClass("accshoesize1");
 
     });
   });
   var maleHatKeys = ["urban outfitters snapback", "norse", "marc jacobs", "porter"];
-  var maleSunKeys = ["ray ban square", "", "tom ford", "urban outfitters ray ban", "ray ban wayfarer"];
+  var maleSunKeys = ["ray ban square", "", "tom ford", "urban outfitters classic", "ray ban wayfarer"];
   var accessory2_cat = "", accessory2_fts = "";
   curCondition = curCondition.trim();
   if (curCondition === "Clear"){

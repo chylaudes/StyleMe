@@ -28,14 +28,14 @@ $(document).ready(function () {
         $newState = "CA";
       }
 
-     $.getJSON("http://api.wunderground.com/api/fa10126c4dd3470b/geolookup/conditions/q/"+ $newState +"/"+ $userCity +".json", function(data) {
+     $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/geolookup/conditions/q/"+ $newState +"/"+ $userCity +".json", function(data) {
       $("div #curLocation").text('');
       $('#curTemp').text('');
       $('#curTemp').append(data.current_observation.temp_f + " &#8457;");
       $('#curLocation').append("<strong>" + data.current_observation.display_location.full + "</strong>");
      });
 
-     $.getJSON("http://api.wunderground.com/api/fa10126c4dd3470b/forecast/q/"+ $newState +"/"+ $userCity +".json", function(data) {
+     $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/forecast/q/"+ $newState +"/"+ $userCity +".json", function(data) {
       $('#curCond').text('');
       $('#hiTemp').text('');
       $('#loTemp').text('');
@@ -754,5 +754,6 @@ $(document).ready(function () {
 });//forecast api
 
   } //end of window.location.href
+
 
 });//end of document.ready
