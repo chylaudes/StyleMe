@@ -29,9 +29,9 @@
             </ul>
             </div>
         <ul class="nav navbar-nav navbar-right">
+           <li><%= link_to "Style Page", styles_path %></li>
          <li><%= link_to "Outfits", outfits_path%></li>
 
-        <li><%= link_to "Style Page", styles_path %></li>
                <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
         <% else %>
         <ul class=" nav navbar-nav navbar-left">

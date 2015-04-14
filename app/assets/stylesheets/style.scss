@@ -80,8 +80,9 @@ div#top.panel-body>img{
 
 }
 div#bottom.panel-body>img{
-   width: 25%;
-  height: auto;
+  width: auto;
+  height: 185px;
+
 }
 div#shoes.panel-body>img{
   width: 25%;
@@ -126,7 +127,6 @@ height: 25px;
 .container-fluid {
 background-color: black;
 height: 50px;
-
 }
 
 a.txt{
@@ -145,11 +145,12 @@ a.txt{
 
 .navbar-default .navbar-text {
   color: white;
-  font-size: 14px;
+  font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-
+  font-weight: 500;
 }
+
 nav.navbar.navbar-default{
 height: 30px;
 margin-bottom: 0;
@@ -160,6 +161,10 @@ margin-bottom: 0;
 .navbar-fixed-top {
 top: 0;
 /*border-width: 0 0 0px;*/
+}
+
+ul.nav.navbar-nav.navbar-right{
+  margin-right: 15px;
 }
 /*FOOTER*/
 footer.footer {
@@ -177,8 +182,6 @@ color: white;
 }
 
 /*styleHeader*/
-
-
 
 div .styleHeader {
   background-color: #b0c4de;
@@ -206,20 +209,27 @@ div#style2.row>img{
 .accessory2size{
   padding-left: 95px;
 }
-div#selectedTop.col-md-6{
 
-}
 
 .topbottomsize{
-  height: 200px;
+height: 250px;
+width: auto;
+margin-bottom: 25px;
 }
 .accshoesize{
-  height: 100px;
-  text-align:center;
+  width: 90%;
+  text-align: center;
   margin-left: 15px;
+  margin-right: 6px;
+}
+.accshoesize1{
+  width: 60%;
+  text-align: center;
+  margin-left: 15px;
+  margin-right: 6px;
 }
 .accshoesize2{
-  height: 100px;
+ width: 90%;
 }
 #selectedShoes{
 
@@ -279,11 +289,16 @@ input{
 #saveStyle {
   display: none;
   float: right;
-  margin-right:300px;
+  margin-right:79px;
 }
 
 .show_outfits{
   display: none;
 }
 
+/*OUTFITS*/
+
+div#outfits.container{
+  width: 1000px;
+}
 

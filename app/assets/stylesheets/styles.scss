@@ -65,6 +65,9 @@ margin-left: 30px;
     text-align: center;
 }
 
+div#picked.row>h2{
+  margin-bottom: 0px;
+}
 
 div #saveStyle {
   display: none;
@@ -76,21 +79,23 @@ div #gender {
 /*THUMBNAIL*/
 
 .thumbnail>img{
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
   display: inline;
-  margin-top: 40px;
-  margin-bottom: 30px;
+  width: 79px;
+
 }
-.thumbnail>h4{
+div.caption>h4{
   margin-left: 20px;
-  font-size: 1.75rem;
-  letter-spacing: 0.09em;
+  font-size: 1.20rem;
+  letter-spacing: 0.10em;
+  margin-top: -25px;
+  margin-left: 1px;
+  font-weight: 900;
 }
 
 h4>a.btn.btn-default{
   margin-top: 0px;
   float: right;
-  margin-right: 20px;
 
 }

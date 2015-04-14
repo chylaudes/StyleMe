@@ -710,12 +710,12 @@ $(document).ready(function () {
       $("#selectedAccessory1").html("");
       // $("#selectedAccessory1").append("<h3>Accessory</h3>");
       $("#selectedAccessory1").append(this);
-      $("#selectedAccessory1").children().addClass("accshoesize");
+      $("#selectedAccessory1").children().addClass("accshoesize1");
 
     });
   });
   var maleHatKeys = ["urban outfitters snapback", "norse", "marc jacobs", "porter"];
-  var maleSunKeys = ["ray ban square", "", "tom ford", "urban outfitters ray ban", "ray ban wayfarer"];
+  var maleSunKeys = ["ray ban square", "", "tom ford", "urban outfitters classic", "ray ban wayfarer"];
   var accessory2_cat = "", accessory2_fts = "";
   curCondition = curCondition.trim();
   if (curCondition === "Clear"){
