@@ -1,8 +1,12 @@
 $(document).ready(function () {
 
 //========= Get weather data from user database ===========================//
-
+  setTimeout(function(){
+    $('.alert').slideUp(500);
+  }, 1000);
  if (window.location.href==="http://localhost:3000/styles") {
+
+
 
     var userLocation = $("div #curLocation").text();
     var todayTemp, curCondition;

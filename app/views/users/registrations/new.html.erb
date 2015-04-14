@@ -1,9 +1,9 @@
+<%= devise_error_messages! %>
 <div id="login">
 <h2>Sign up</h2>
 
 <%= form_for(resource, :as => resource_name, :url => user_registration_path) do |f| %>
 
-  <%= devise_error_messages! %>
 
   <div class="field">
     <%= f.label :first_name, autofocus: true  %><br />
