@@ -650,6 +650,7 @@ $(document).ready(function () {
         $("#selectedShoes").html("");
         // $("#selectedShoes").append("<h3>Shoes</h3>");
         $("#selectedShoes").append(this);
+        $("#selectedShoes").children().addClass("accshoesize");
       });
     });
 
@@ -708,9 +709,11 @@ $(document).ready(function () {
       $("#selectedAccessory1").html("");
       // $("#selectedAccessory1").append("<h3>Accessory</h3>");
       $("#selectedAccessory1").append(this);
+      $("#selectedAccessory1").children().addClass("accshoesize");
+
     });
   });
-  var maleHatKeys = ["urban outfitters snapback", "urban outfitters fedora"];
+  var maleHatKeys = ["urban outfitters snapback", "norse", "marc jacobs", "porter"];
   var maleSunKeys = ["ray ban square", "", "tom ford", "urban outfitters ray ban", "ray ban wayfarer"];
   var accessory2_cat = "", accessory2_fts = "";
   curCondition = curCondition.trim();
@@ -764,6 +767,7 @@ $(document).ready(function () {
       $("#selectedAccessory2").html("");
       // $("#selectedAccessory2").append("<h3>Accessory</h3>");
       $("#selectedAccessory2").append(this);
+      $("#selectedAccessory2").children().addClass("accshoesize2");
     });
   });
 

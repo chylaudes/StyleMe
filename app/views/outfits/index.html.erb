@@ -1,28 +1,27 @@
 <h2>Styled Outfits</h2>
+ <br>  <br>
 <div class="container">
+<div class="row">
 <% if @outfits.any? %>
 <% @outfits.each do |outfit| %>
-<div class="col-xs-6 col-md-3">
-<a href="#" class="thumbnail">
-  <%= outfit.id %> - <%= outfit.top %> - <img src="<%= outfit.top_url %>" alt="">
-  <%= outfit.dress %> - <img src="<%= outfit.dress_url %>" alt="">
-  <%= outfit.bottom %> - <img src="<%= outfit.bottom_url %>" alt="">
-  <%= outfit.shoe %> - <img src="<%= outfit.shoe_url %>" alt="">
-<%= outfit.access_1 %> - <img src="<%= outfit.access_1_url %>" alt="">
-<%= outfit.access_2 %> - <img src="<%= outfit.access_2_url %>" alt="">
-
-  <br>  <br>
+<div class="col-lg-6 ">
+<div class="thumbnail">
+ <br>  <br>
+ <h4>
   <% env_data = outfit.env_data %>
-
-  <%= env_data.id %> - <%= env_data.date %> || <%= env_data.location %> ||  <%= env_data.weather_temp %> || <%= env_data.weather_state %>
+  <%= env_data.date %> || <%= env_data.location %> ||  <%= env_data.weather_temp %> || <%= env_data.weather_state %> <%= link_to "Remove", outfits_delete_path(outfit), method: :delete, class: "btn btn-default" %></h4>
   <br>
-<% end %>
+<!-- <%= outfit.top %> -  --><img src="<%= outfit.top_url %>" alt="">
+<!--   <%= outfit.dress %> -  --><img src="<%= outfit.dress_url %>" alt="">
+<!--   <%= outfit.bottom %> -  --><img src="<%= outfit.bottom_url %>" alt="">
+<!--   <%= outfit.shoe %> -  --><img src="<%= outfit.shoe_url %>" alt="">
+<!-- <%= outfit.access_1 %> -  --><img src="<%= outfit.access_1_url %>" alt="">
+<!-- <%= outfit.access_2 %> -  --><img src="<%= outfit.access_2_url %>" alt="">
 <br><br>
+</a>
+</div>
+</div>
 <% end %>
-
-<% @env_data.each do |env| %>
-<%= env.id %> - <%= env.date %> || <%= env.location %> ||  <%= env.weather_temp %> || <%= env.weather_state %>
-<br>
-<% end %> </a>
+<% end %>
 </div>
 </div>

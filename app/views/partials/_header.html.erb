@@ -17,15 +17,17 @@
 <body>
 <!-- TOP NAV -->
 <nav class="navbar navbar-default">
+
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="container1">
+
       <% if user_signed_in? %>
-          <div class="navbar-header">
+            <div class="navbar-header">
             <ul class=" nav navbar-nav navbar-left">
               <p class="navbar-text">Welcome <%= current_user[:first_name] %></p>
             </ul>
-          </div>
+            </div>
         <ul class="nav navbar-nav navbar-right">
          <li><%= link_to "Outfits", outfits_path%></li>
 
@@ -43,12 +45,11 @@
         <%= link_to "Sign Up", new_user_registration_path %>
         </li>
         <% end %>
-</ul>
+          </ul>
       </ul>
     </div>
     </div>
-    </div>
-  </div>
+
 </nav>
 
 <div class="container content">

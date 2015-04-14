@@ -629,6 +629,7 @@ $(document).ready(function () {
         $("#selectedShoes").html("");
         // $("#selectedShoes").append("<h3>Shoes</h3>");
         $("#selectedShoes").append(this);
+        $("#selectedShoes").children().addClass("accshoesize");
       });
     });
 
@@ -688,6 +689,7 @@ $(document).ready(function () {
       $("#selectedAccessory1").html("");
       // $("#selectedAccessory1").append("<h3>Accessory</h3>");
       $("#selectedAccessory1").append(this);
+      $("#selectedAccessory1").children().addClass("accshoesize");
     });
   });
   var accessory2_cat = "", accessory2_fts = "";
@@ -743,6 +745,7 @@ $(document).ready(function () {
       $("#selectedAccessory2").html("");
       // $("#selectedAccessory2").append("<h3>Accessory</h3>");
       $("#selectedAccessory2").append(this);
+      $("#selectedAccessory2").children().addClass("accshoesize");
     });
   });
 

@@ -12,45 +12,51 @@ color: black;
 letter-spacing: 0.1em;
 text-transform: uppercase;
 font-weight: 600;
+font-size: 20px;
 }
-
+h4{
+  color: black;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+}
 
 h5{
 color: black;
 letter-spacing: 0.2em;
 text-transform: uppercase;
+font-size: 1.0rem;
 }
 body{
   background-color:white;
+  font-size: 10px;
 }
 div.container1 {
-  width: 1600px;
+/*  width: 1600px;*/
 }
 div.container.content{
-  width: 1770px;
+/*  width: 1770px;*/
   padding-left: 1px;
 }
 div.container{
-  width: 1600px;
+/*  width: 1600px;*/
 }
 .field{
   padding-top: 10px;
 }
 .panel-body {
-padding-left: 40px;
 }
 
 .btn {
   display: inline-block;
-  padding: 6px 12px;
-  margin-top: 10;
-  font-size: 14px;
+  padding: 4px 5px;
+  margin-top: 1px;
+  font-size: 10px;
   font-weight: 400;
   line-height: 1.42857143;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
-  margin-top: 15px;
   cursor: pointer;
   letter-spacing: .1em;
   background-image: none;
@@ -69,32 +75,57 @@ a#txt{
   font-weight: 500;
 }
 div#top.panel-body>img{
-  margin-right: 28px;
+  width: 25%;
+  height: auto;
+
 }
 div#bottom.panel-body>img{
-  margin-right: 33px;
+   width: 25%;
+  height: auto;
 }
 div#shoes.panel-body>img{
-  margin-right: 23px;
+  width: 25%;
+  height: auto;
 }
+div#accessory1.panel-body>img{
+  width: 25%;
+  height: auto;
+}
+div#accessory2.panel-body>img{
+  width: 25%;
+  height: auto;
+}
+.panel-default>.panel-heading{
+height: 25px;
+}
+.panel-title>a{
+  font-size: 0.90rem;
+}
+.panel-title{
+  margin-top:-5px;
+}
+/*#suggestedStyle img{
+  width: 20%;
+  height: auto;
+}*/
 .navbar-default .navbar-nav>li>a {
   color:white;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  font-size: 12px;
+  font-size: 9px;
   font-weight: 500;
-  padding-top: 40px;
-  height: 90px;
-}
-h1 {
+  padding-top: 15px;
+/*  height: 90px;
+*/}
+/*h1 {
   font-family: "acta-display";
-}
+}*/
 .navbar {
   border:none;
 }
 .container-fluid {
 background-color: black;
-height: 90px;
+height: 50px;
 
 }
 
@@ -102,7 +133,7 @@ a.txt{
   color:white;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  font-size: 20px;
+  font-size: 11px;
   font-weight: 500;
 }
 
@@ -114,12 +145,13 @@ a.txt{
 
 .navbar-default .navbar-text {
   color: white;
-  padding-top: 21px;
-  font-size: 20px;
+  font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.2em;
+
 }
 nav.navbar.navbar-default{
+height: 30px;
 margin-bottom: 0;
 }
 .carousel-control.left, .carousel-control.right {
@@ -153,10 +185,16 @@ div .styleHeader {
   color: white;
 }
 .rowstyle1{
-  height: 374px;
+  height: 200px;
 }
  #style2{
   height: 200px;
+  margin-top: 40px;
+}
+div#style2.row>img{
+  display: inline;
+  height:100px;
+
 }
 
 .shoesize{
@@ -169,18 +207,30 @@ div .styleHeader {
   padding-left: 95px;
 }
 div#selectedTop.col-md-6{
-  height: 373px;
 
 }
 
 .topbottomsize{
-  height: 360px;
+  height: 200px;
+}
+.accshoesize{
+  height: 100px;
+  text-align:center;
+  margin-left: 15px;
+}
+.accshoesize2{
+  height: 100px;
+}
+#selectedShoes{
+
 }
 
 div#login{
 margin-left: 30px;
 }
-
+/*div#selectedShoes{
+  margin-right: 30px;
+}*/
 
 /*flash*/
 div.alert.alert-notice{
@@ -225,7 +275,7 @@ input{
     text-align: center;
 
  }
- 
+
 #saveStyle {
   display: none;
   float: right;

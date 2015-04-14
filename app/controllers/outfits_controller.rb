@@ -5,36 +5,39 @@ class OutfitsController < ApplicationController
 
   def index
     @user = current_user
-    @outfits = Outfit.all
+    @outfits = @user.outfits.order('id DESC')
+    # @outfit.env_data = @env_data
     @env_data = EnvData.all
   end
 
   def new
     # @user = User.find(params[:user_id])
-    @outfit = Outfit.new    
+    @outfit = Outfit.new
   end
 
   def create
     # env_params["date"]  = Date.today
     @env_data = EnvData.new env_params
     @env_data.save
-    
+
     # outfit_params["env_data_id"] = @env_id
     @outfit = Outfit.new outfit_params
     @outfit.env_data = EnvData.last
-    if @outfit.save 
+    if @outfit.save
       redirect_to outfits_path, notice: 'Outfit was created successfully.'
     else
       redirect_to styles_path
-    end 
+    end
   end
 
   def show
   end
 
   def destroy
-    @outfit.destroy
-    redirect_to outfits_index_path
+    user = current_user
+    outfits = user.outfits
+    outfits.delete(params[:id])
+    redirect_to :back
   end
 
   private
