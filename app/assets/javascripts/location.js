@@ -55,6 +55,11 @@ $(document).ready(function () {
   var femaleShoeBrand = ["b13293", "b2333", "b1077", "b3510", "b15611"];
   var maleShoeBrand = ["b321", "b812", "b4089", "b4486", "b14", "b422"];
 
+     var femaleBagBrand = ["b316", "b2333", "b2139", "b1171", "b4089", "b2098", "b1890", "b379", "b391"];
+   var maleWatchBrand = ["b2098", "b372", "b172", "b31043", "b2331", "b2380", "b5715", "b1242"];
+
+   // var maleSunKeys = ["ray ban square", "ray ban original", "tom ford" ];
+
   var getRandomFTS = function(arr){
   var index = Math.floor(Math.random() * arr.length);
       return arr[index];
@@ -63,12 +68,16 @@ $(document).ready(function () {
     if (sex === 'M'){
       fl = getRandomFTS(maleBrand1);
       flshoe = getRandomFTS(maleShoeBrand);
+      accessory1_fl = getRandomFTS(maleWatchBrand);
+
     } else {
       fl = getRandomFTS(femaleBrand1);
       flshoe = getRandomFTS(femaleShoeBrand);
+      accessory1_fl = getRandomFTS(femaleBagBrand);
+
     }
 
-    var dressfts = "", dresscat = "", counter = 0;
+var dressfts = "", dresscat = "", counter = 0;
 
     if (sex === "F"){
       if (todayTemp >= 90 ) {
@@ -163,25 +172,29 @@ $(document).ready(function () {
           dressfts ="";
         }
       }
+
       var dressURL = "http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat=" + dresscat + "&fts=" + dressfts + "&fl=" + fl + "&offset=0&limit=30&sort=Popular";
      $.getJSON(dressURL, function(data) {
         $("#dress").text('');
-        $("#dress").append("<img src="+data.products[0].image.sizes.Large.url+">");
-        $("#dress").append("<img src="+data.products[1].image.sizes.Large.url+">");
-        $("#dress").append("<img src="+data.products[2].image.sizes.Large.url+">");
-        $("#dress").append("<img src="+data.products[3].image.sizes.Large.url+">");
+        $("#dress").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
+        $("#dress").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
+        $("#dress").append("<img src="+data.products[2].image.sizes.Large.url+" alt="+ data.products[2].id +">");
+        $("#dress").append("<img src="+data.products[3].image.sizes.Large.url+" alt="+ data.products[3].id +">");
         counter = 4;
-        $("#dress").on("click","img", function(e){
-          var productIdx = data.products[counter];
-          counter++;
-          $("#dress").append("<img src="+productIdx.image.sizes.Large.url+">");
-          $("#selectedDress").html("");
-          $("#selectedTop").html("");
-          $("#selectedBottom").html(""); //Also append to the ruby hidden field
-          $("#selectedDress").append("<br><h3>Dress</h3><br>");
-          $("#selectedDress").append(this);
-          $("#saveStyle").show();
-        });
+        // $("#dress").on("click","img", function(e){
+        //   var productIdx = data.products[counter];
+        //   counter++;
+        //    console.log("productIdx", productIdx);
+        //   $("#dress").append("<img src="+productIdx.image.sizes.Large.url+">");
+        //   $("#selectedDress").html("");
+        //   $("#selectedTop").html("");
+        //   $("#selectedTop").hide();
+        //   $("#selectedBottom").html(""); //Also append to the ruby hidden field
+        //   $("#selectedDress").show();
+        //   $("#selectedDress").append(this);
+        //   $("#selectedDress").children().addClass("topbottomsize");
+        //   $("#saveStyle").show();
+        // });
       });
     }
 
@@ -301,27 +314,32 @@ $(document).ready(function () {
 
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ topcat + "&fl=" + fl +"&fts=" + topfts + "&offset=0&limit=30", function(data) {
       $("#top").text('');
-      $("#top").append("<img src="+data.products[0].image.sizes.Large.url+">");
-      $("#top").append("<img src="+data.products[1].image.sizes.Large.url+">");
-      $("#top").append("<img src="+data.products[2].image.sizes.Large.url+">");
-      $("#top").append("<img src="+data.products[3].image.sizes.Large.url+">");
+      $("#top").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
+      $("#top").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
+      $("#top").append("<img src="+data.products[2].image.sizes.Large.url+" alt="+ data.products[2].id +">");
+      $("#top").append("<img src="+data.products[3].image.sizes.Large.url+" alt="+ data.products[3].id +">");
+
 
       counter = 4;
 
-      $("#top").on("click","img", function(e){
-        var productIdx = data.products[counter];
+      // $("#top").on("click","img", function(e){
+      //   var productIdx = data.products[counter];
+      //   counter++;
+      //    console.log("productIdx", productIdx);
+      //   $("#top").append("<img src="+productIdx.image.sizes.Large.url+" alt="+ productIdx.id +">");
+      //   $("#selectedDress").html("");
+      //   // $("#selectedDress").hide();
+      //   $("#selectedTop").html("");
 
-        counter++;
-        $("#top").append("<img src="+productIdx.image.sizes.Large.url+">");
-        $("#selectedDress").html("");
-        $("#selectedTop").html("");
-        // $("#selectedTop").append("<br><h3>Top</h3>");
-        $("#selectedTop").append(this);
-        $("#selectedTop").children().addClass("topbottomsize");
-        $("#saveStyle").show();
-      });
+      //   // $("#selectedTop").append("<br><h3>Top</h3>");
+      //   $("#selectedTop").show();
+      //   $("#selectedTop").append(this);
+      //   $("#selectedTop").children().addClass("topbottomsize");
+      //   $("#saveStyle").show();
+      // });
    });
- var bottomcat = "", bottomfts = "";
+
+    var bottomcat = "", bottomfts = "";
     if (todayTemp >= 90 ) {
       if (sex === "F"){
           bottomcat = "shorts";
@@ -395,6 +413,13 @@ $(document).ready(function () {
       } else if (sex === "M"){
         bottomcat = "mens-jeans";
         bottomfts = "classic";
+        if (fl === "b2446" || fl === "b29798" || fl==="b3471" || fl === "b2363" || fl === "b2329"){
+            bottomfts = "";
+          }
+        if (fl ==="b462"){
+        bottomcat = "mens-jeans";
+        bottomfts = "slim";
+        }
       }
     } else if (todayTemp > 50) {
       if (sex === "F"){
@@ -411,8 +436,6 @@ $(document).ready(function () {
           bottomcat = "mens-jeans";
           if (fl === "b2446" || fl === "b29798" || fl==="b3471" || fl === "b2363"){
             bottomfts = "";
-          } else {
-            bottomfts = "classic";
           }
         }
       }
@@ -436,25 +459,36 @@ $(document).ready(function () {
     }
 
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ bottomcat +"&fts=" + bottomfts + "&fl=" + fl + "&offset=0&limit=30&sort=Popular", function(data) {
+      console.log("bottomdata:", data);
+      console.log("bottomkeywords:", bottomfts, bottomcat, fl);
       $("#bottom").text('');
-      $("#bottom").append("<img src="+data.products[0].image.sizes.Large.url+">");
-      $("#bottom").append("<img src="+data.products[1].image.sizes.Large.url+">");
-      $("#bottom").append("<img src="+data.products[2].image.sizes.Large.url+">");
-      $("#bottom").append("<img src="+data.products[3].image.sizes.Large.url+">");
+      $("#bottom").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
+      $("#bottom").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
+      $("#bottom").append("<img src="+data.products[2].image.sizes.Large.url+" alt="+ data.products[2].id +">");
+      $("#bottom").append("<img src="+data.products[3].image.sizes.Large.url+" alt="+ data.products[3].id +">");
+
       counter = 4;
-      $("#bottom").on("click","img", function(e){
-        var productIdx = data.products[counter];
-        counter++;
-        $("#bottom").append("<img src="+productIdx.image.sizes.Large.url+">");
-        $("#selectedDress").html("");
-        $("#selectedBottom").html("");
-        // $("#selectedBottom").append("<h3>Bottom</h3>");
-        $("#selectedBottom").append(this);
-        $("#selectedBottom").children().addClass("topbottomsize");
-      });
+
+      // $("#bottom").on("click","img", function(e){
+      //   var productIdx = data.products[counter];
+      //   counter++;
+      //     console.log("productIdx", productIdx);
+      //   $("#selectedDress").html("");
+      //   $("#selectedDress").hide();
+      //   $("#selectedBottom").show();
+      //   $("#bottom").append("<img src="+productIdx.image.sizes.Large.url+">");
+      //   $("#selectedBottom").html("");
+      //   // $("#selectedBottom").append("<h3>Bottom</h3>");
+      //   $("#selectedBottom").show();
+      //   $("#selectedBottom").append(this);
+      //   $("#selectedBottom").children().addClass("topbottomsize");
+
+      //   // console.log("bottomInfo:",$("#selectedBottom").html());
+
+      // });
     });
 
- var shoescat = "", shoesfts = ""; //SHOES ALGORITHM
+  var shoescat = "", shoesfts = ""; //SHOES ALGORITHM
 
     if (todayTemp >= 90 ) { //done with 90
       if (sex === "F"){
@@ -537,7 +571,7 @@ $(document).ready(function () {
         }
         if (flshoe === "b812"){ //Men's 70 degree
           shoescat = "mens-shoes";
-          shoesfts ="london";
+          shoesfts ="";
         }
         if (flshoe === "b321"){ //Men's 70 degree
           shoescat = "mens-shoes";
@@ -546,6 +580,10 @@ $(document).ready(function () {
         if (flshoe === "b422"){ //Men's 70 degree
           shoescat = "mens-shoes";
           shoesfts ="line";
+        }
+        if (flshoe === "b4089"){ //Men's 70 degree
+          shoescat = "mens-shoes";
+          shoesfts ="";
         }
       }
     } else if (todayTemp > 50) { //snflsknf TEST
@@ -611,28 +649,27 @@ $(document).ready(function () {
     }
 
     $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ shoescat +"&fts=" + shoesfts + "&fl=" + flshoe + "&offset=0&limit=30&sort=Popular", function(data) {
-      console.log(data);
-      console.log("todayTemp:", todayTemp);
-      console.log("flshoe2:", flshoe + " " + shoescat + " " + shoesfts);
-
+      console.log("fsakdba:", shoescat, shoesfts, flshoe);
+      console.log("todaytemp UNCHANGED", todayTemp);
+      console.log("shoedata", data);
       $("#shoes").text('');
-      $("#shoes").append("<img src="+data.products[0].image.sizes.Large.url+">");
-      $("#shoes").append("<img src="+data.products[1].image.sizes.Large.url+">");
-      $("#shoes").append("<img src="+data.products[2].image.sizes.Large.url+">");
-      $("#shoes").append("<img src="+data.products[3].image.sizes.Large.url+">");
+      $("#shoes").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
+      $("#shoes").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
+      $("#shoes").append("<img src="+data.products[2].image.sizes.Large.url+" alt="+ data.products[2].id +">");
+      $("#shoes").append("<img src="+data.products[3].image.sizes.Large.url+" alt="+ data.products[3].id +">");
       counter = 4;
 
-      $("#shoes").on("click","img", function(e){
-        var productIdx = data.products[counter];
-        counter++;
-        $("#shoes").append("<img src="+productIdx.image.sizes.Large.url+">");
-        $("#selectedShoes").html("");
-        // $("#selectedShoes").append("<h3>Shoes</h3>");
-        $("#selectedShoes").append(this);
-        $("#selectedShoes").children().addClass("accshoesize");
-      });
+      // $("#shoes").on("click","img", function(e){
+      //   var productIdx = data.products[counter];
+      //   counter++;
+      //    console.log("productIdx", productIdx);
+      //   $("#shoes").append("<img src="+productIdx.image.sizes.Large.url+">");
+      //   $("#selectedShoes").html("");
+      //   // $("#selectedShoes").append("<h3>Shoes</h3>");
+      //   $("#selectedShoes").append(this);
+      //   $("#selectedShoes").children().addClass("accshoesize");
+      // });
     });
-
 
   var accessory1_cat = "", accessory1_fts = "";
   curCondition = curCondition.trim();
@@ -674,24 +711,27 @@ $(document).ready(function () {
     }
   }
 
-   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory1_cat +"&fts=" + accessory1_fts + "&offset=0&limit=30&sort=Popular", function(data) {
+   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory1_cat +"&fts=" + accessory1_fts + "&fl=" + accessory1_fl +  "&offset=0&limit=30&sort=Popular", function(data) {
     $("#accessory1").text('');
-    $("#accessory1").append("<img src="+data.products[0].image.sizes.Large.url+">");
-    $("#accessory1").append("<img src="+data.products[1].image.sizes.Large.url+">");
-    $("#accessory1").append("<img src="+data.products[2].image.sizes.Large.url+">");
-    $("#accessory1").append("<img src="+data.products[3].image.sizes.Large.url+">");
+    $("#accessory1").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
+    $("#accessory1").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
+    $("#accessory1").append("<img src="+data.products[2].image.sizes.Large.url+" alt="+ data.products[2].id +">");
+    $("#accessory1").append("<img src="+data.products[3].image.sizes.Large.url+" alt="+ data.products[3].id +">");
     counter = 4;
 
-    $("#accessory1").on("click","img", function(e){
-      var productIdx = data.products[counter];
-      counter++;
-      $("#accessory1").append("<img src="+productIdx.image.sizes.Large.url+">");
-      $("#selectedAccessory1").html("");
-      // $("#selectedAccessory1").append("<h3>Accessory</h3>");
-      $("#selectedAccessory1").append(this);
-      $("#selectedAccessory1").children().addClass("accshoesize");
-    });
+    // $("#accessory1").on("click","img", function(e){
+    //   var productIdx = data.products[counter];
+    //   counter++;
+    //   $("#accessory1").append("<img src="+productIdx.image.sizes.Large.url+">");
+    //   $("#selectedAccessory1").html("");
+    //   // $("#selectedAccessory1").append("<h3>Accessory</h3>");
+    //   $("#selectedAccessory1").append(this);
+    //   $("#selectedAccessory1").children().addClass("accshoesize1");
+
+    // });
   });
+  var maleHatKeys = ["urban outfitters snapback", "norse", "marc jacobs", "porter"];
+  var maleSunKeys = ["ray ban square", "", "tom ford", "urban outfitters classic", "ray ban wayfarer"];
   var accessory2_cat = "", accessory2_fts = "";
   curCondition = curCondition.trim();
   if (curCondition === "Clear"){
@@ -700,7 +740,7 @@ $(document).ready(function () {
       accessory2_fts = "asos";
     } else if (sex === "M"){
       accessory2_cat = "mens-sunglasses";
-      accessory2_fts = "ray ban square";
+      accessory2_fts = getRandomFTS(maleSunKeys);
     }
   } else if (curCondition === "Light Rain" || curCondition === "Light Showers Rain" || curCondition === "Rain"){
     if (sex === "F"){
@@ -720,33 +760,33 @@ $(document).ready(function () {
     }
   } else {
     if (sex === "F"){
-      accessory2_cat = "womens-tech-accessories";
+      accessory2_cat = "hats";
       accessory2_fts = "urban outfitters";
     } else if (sex === "M"){
       accessory2_cat = "mens-hats";
-      accessory2_fts = "urban outfitters snapback";
+      accessory2_fts = getRandomFTS(maleHatKeys);
     }
   }
 
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory2_cat +"&fts=" + accessory2_fts + "&offset=0&limit=30&sort=Popular", function(data) {
-        console.log("accessory2:", accessory2_cat, accessory2_fts, curCondition);
-        console.log("accessory!data:", data);
+    console.log("accessory2:", accessory2_cat, accessory2_fts, curCondition);
     $("#accessory2").text('');
-    $("#accessory2").append("<img src="+data.products[0].image.sizes.Large.url+">");
-    $("#accessory2").append("<img src="+data.products[1].image.sizes.Large.url+">");
-    $("#accessory2").append("<img src="+data.products[2].image.sizes.Large.url+">");
-    $("#accessory2").append("<img src="+data.products[3].image.sizes.Large.url+">");
+    $("#accessory2").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
+    $("#accessory2").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
+    $("#accessory2").append("<img src="+data.products[2].image.sizes.Large.url+" alt="+ data.products[2].id +">");
+    $("#accessory2").append("<img src="+data.products[3].image.sizes.Large.url+" alt="+ data.products[3].id +">");
     counter = 4;
 
-    $("#accessory2").on("click","img", function(e){
-      var productIdx = data.products[counter];
-      counter++;
-      $("#accessory2").append("<img src="+productIdx.image.sizes.Large.url+">");
-      $("#selectedAccessory2").html("");
-      // $("#selectedAccessory2").append("<h3>Accessory</h3>");
-      $("#selectedAccessory2").append(this);
-      $("#selectedAccessory2").children().addClass("accshoesize");
-    });
+    // $("#accessory2").on("click","img", function(e){
+    //   var productIdx = data.products[counter];
+    //   counter++;
+    //    console.log("productIdx", productIdx);
+    //   $("#accessory2").append("<img src="+productIdx.image.sizes.Large.url+">");
+    //   $("#selectedAccessory2").html("");
+    //   // $("#selectedAccessory2").append("<h3>Accessory</h3>");
+    //   $("#selectedAccessory2").append(this);
+    //   $("#selectedAccessory2").children().addClass("accshoesize2");
+    // });
   });
 
 
