@@ -29,6 +29,12 @@
          <% if outfit.access_2_url != "" %>
           <img src="<%= outfit.access_2_url %>" alt="<%= outfit.access_2 %>">
          <% end %>
+        <div>
+          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+            Show Info
+          </button>
+        </div>
+
        </div>
  
         <!-- MODAL STARTS -->
@@ -40,24 +46,47 @@
                   <h4 class="modal-title" id="myModalLabel"><%= env_data.date %></h4>
                 </div>
                 <div class="modal-body">
-                 <% if outfit.top_url != "" %>
-                  <span class="modalTop" data-topid="<%= outfit.top %>"></span>
-                 <% end %>
-                 <% if outfit.dress_url != "" %>
-                  <span class="modalDress" data-dressid="<%= outfit.dress %>"></span>
-                 <% end %>
-                 <% if outfit.bottom_url != "" %>
-                  <span class="modalBottom" data-bottomid="<%= outfit.bottom %>"></span>
-                 <% end %>
-                 <% if outfit.shoe_url != "" %>
-                  <span class="modalShoe" data-shoeid="<%= outfit.shoe %>"></span>
-                 <% end  %>
-                 <% if outfit.access_1_url != "" %>
-                  <span class="modalAccess1" data-access_1id="<%= outfit.access_1 %>"></span>
-                 <% end %>
-                 <% if outfit.access_2_url != "" %>
-                  <span class="modalAccess2" data-access_2id="<%= outfit.access_2 %>"></span>
-                 <% end %>
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-md-6">
+                       <% if outfit.top_url != "" %>
+                        <div class="modalTop" data-topid="<%= outfit.top %>"></div>
+                        <!-- <span class="modalTop" data-topid="<%= outfit.top %>"></span> -->
+                       <% end %>
+                       <% if outfit.dress_url != "" %>
+                        <div class="modalDress" data-dressid="<%= outfit.dress %>"></div>
+                        <!-- <span class="modalDress" data-dressid="<%= outfit.dress %>"></span> -->
+                       <% end %>                        
+                      </div>
+                      <div class="col-md-6">
+                       <% if outfit.bottom_url != "" %>
+                        <div class="modalBottom" data-bottomid="<%= outfit.bottom %>"></div>
+                        <!-- <span class="modalBottom" data-bottomid="<%= outfit.bottom %>"></span> -->
+                       <% end %>                        
+                      </div>
+                    </div>  
+                    <div class="row">
+                      <div class="col-md-4">
+                       <% if outfit.shoe_url != "" %>
+                        <div class="modalShoe" data-shoeid="<%= outfit.shoe %>"></div>
+                        <!-- <span class="modalShoe" data-shoeid="<%= outfit.shoe %>"></span> -->
+                       <% end  %>                        
+                      </div>
+                      <div class="col-md-4">
+                       <% if outfit.access_1_url != "" %>
+                        <div class="modalAccess1" data-access_1id="<%= outfit.access_1 %>"></div>
+                        <!-- <span class="modalAccess1" data-access_1id="<%= outfit.access_1 %>"></span> -->
+                       <% end %>                        
+                      </div>
+                      <% if outfit.access_2_url != "" %>
+                      <div class="col-md-4">
+                       
+                        <div class="modalAccess2" data-access_2id="<%= outfit.access_2 %>"></div>
+                        <!-- <span class="modalAccess2" data-access_2id="<%= outfit.access_2 %>"></span> -->                    
+                      </div>
+                       <% end %>                      
+                    </div>
+                  </div> <!--end of container fluid-->
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -65,9 +94,7 @@
               </div>
             </div>
           </div>
-
-        <!-- MODAL Ends -->         
-
+        <!-- MODAL Ends -->   
 
 
 
@@ -76,4 +103,3 @@
      <% end %>
    </div>
  </div>
-

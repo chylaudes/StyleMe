@@ -124,7 +124,11 @@ height: 25px;
 .navbar {
   border:none;
 }
-.container-fluid {
+/*.container-fluid {
+background-color: black;
+height: 50px;
+}*/
+nav.navbar.navbar-default>.container-fluid {
 background-color: black;
 height: 50px;
 }
@@ -157,6 +161,10 @@ margin-bottom: 0;
 }
 .carousel-control.left, .carousel-control.right {
     background-image: none
+}
+div#carousel-example-generic.carousel.slide{
+  width: 1280px;
+  margin-left: -56px;
 }
 .navbar-fixed-top {
 top: 0;
@@ -244,8 +252,6 @@ margin-left: 30px;
 
 /*flash*/
 div.alert.alert-notice{
-  width: 1400px;
-  margin-left: 150px;
   position: absolute;
   z-index: 1;
 }
