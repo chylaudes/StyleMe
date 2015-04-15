@@ -7,12 +7,13 @@ Devise.setup do |config|
   # config.secret_key = '8445debbe4277e00f376cafb888f330bbbdf04316cb9c82b1f7c5f95da4a0e28d7e386687dc7a39e283e644a6461be680b5f3e63104ee9f895e46a7f5efbb6ae'
   config.secret_key = '1ead783cedd10ebeeccdf460ec4fdf0c3a729fb4af1729cb9047f731feabe2473b0d0b935275ad96b97669bda4cd4f0a0a6fb8335ee0c384908ac9758202b6df'
 
+
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
-
+  # config.assets.initialize_on_precompile = false
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 
