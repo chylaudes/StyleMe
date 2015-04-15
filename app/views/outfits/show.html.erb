@@ -1,2 +1,13 @@
 <h1>Outfits#show</h1>
-<p>Find me in app/views/outfits/show.html.erb</p>
+
+<% env_data = @outfit.env_data %>
+<%= env_data.date %> || <%= env_data.location %> ||  <%= env_data.weather_temp %> || <%= env_data.weather_state %> 
+<br>
+<%= @outfit.top %> - <img src="<%= @outfit.top_url %>" alt="">
+  <%= @outfit.dress %> - <img src="<%= @outfit.dress_url %>" alt="">
+  <%= @outfit.bottom %> - <img src="<%= @outfit.bottom_url %>" alt="">
+  <%= @outfit.shoe %> - <img src="<%= @outfit.shoe_url %>" alt="">
+<%= @outfit.access_1 %> - <img src="<%= @outfit.access_1_url %>" alt="">
+<%= @outfit.access_2 %> - <img src="<%= @outfit.access_2_url %>" alt="">
+
+<%= link_to "Remove", outfits_delete_path(@outfit), method: :delete, class: "btn btn-primary" %>

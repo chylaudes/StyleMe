@@ -162,6 +162,7 @@ $(document).ready(function () {
           dressfts ="";
         }
       }
+
       var dressURL = "http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat=" + dresscat + "&fts=" + dressfts + "&fl=" + fl + "&offset=0&limit=30&sort=Popular";
      $.getJSON(dressURL, function(data) {
         $("#dress").text('');

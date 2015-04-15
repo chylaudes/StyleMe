@@ -24,7 +24,7 @@ class OutfitsController < ApplicationController
     @outfit = Outfit.new outfit_params
     @outfit.env_data = EnvData.last
     if @outfit.save
-      redirect_to outfits_path, notice: 'Outfit was created successfully.'
+      redirect_to styles_path, notice: 'Outfit was created successfully.'
     else
       redirect_to styles_path
     end
@@ -37,7 +37,7 @@ class OutfitsController < ApplicationController
     user = current_user
     outfits = user.outfits
     outfits.delete(params[:id])
-    redirect_to :back
+    redirect_to outfits_path
   end
 
   private
