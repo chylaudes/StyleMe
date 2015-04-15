@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+  
   var dressId = $(".modalDress").attr("data-drssid");
   var topId = $(".modalTop").attr("data-topid");
   var bottomId = $(".modalBottom").attr("data-bottomid");
@@ -38,6 +38,8 @@ $(document).ready(function () {
   if (shoeId !== undefined && shoeId !== null) {
     var modalShoeURL = "http://api.shopstyle.com/api/v2/products/"+shoeId+"?pid=uid2100-27524390-36";
     $.getJSON(modalShoeURL, function(data) {
+      console.log("what is this?");
+      console.log(data);
       $('.modalShoe').append("<img src="+data.image.sizes.Large.url+"><br>");
       $('.modalShoe').append("<p>"+data.brand.name+"</p>");
       $('.modalShoe').append("<p>"+data.unbrandedName+"</p>");

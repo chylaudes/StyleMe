@@ -47,11 +47,11 @@ $(document).ready(function () {
       e.preventDefault();
       var $newCity = $("#user_location").val();
 
-      var index, $newState;
+      var index, $newState, $userCity;
       console.log($newCity);
       if ($newCity.indexOf(',') != -1) {
         index = $newCity.indexOf(',');
-        var $userCity = $newCity.slice(0, index);
+        $userCity = $newCity.slice(0, index);
         $newState = $newCity.slice(index+1, index+4);
         $newState = $newState.trim();
       }
@@ -75,7 +75,7 @@ $(document).ready(function () {
 
       $('#curCond').append(data.forecast.simpleforecast.forecastday[0].conditions);
       curCondition = data.forecast.simpleforecast.forecastday[0].conditions;
-      $('#hiTemp').append(data.forecast.simpleforecast.forecastday[0].high.fahrenheit + " &#8457;");
+      // $('#hiTemp').append(data.forecast.simpleforecast.forecastday[0].high.fahrenheit + " &#8457;");
       todayTemp = data.forecast.simpleforecast.forecastday[0].high.fahrenheit;
       $('#loTemp').append(data.forecast.simpleforecast.forecastday[0].low.fahrenheit + " &#8457;");
       var $weatherIcon = data.forecast.simpleforecast.forecastday[0].icon_url;
