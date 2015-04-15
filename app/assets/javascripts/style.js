@@ -174,6 +174,7 @@ $(document).ready(function () {
         $("#dress").on("click","img", function(e){
           var productIdx = data.products[counter];
           counter++;
+           console.log("productIdx", productIdx);
           $("#dress").append("<img src="+productIdx.image.sizes.Large.url+">");
           $("#selectedDress").html("");
           $("#selectedTop").html("");
@@ -313,8 +314,8 @@ $(document).ready(function () {
 
       $("#top").on("click","img", function(e){
         var productIdx = data.products[counter];
-
         counter++;
+         console.log("productIdx", productIdx);
         $("#top").append("<img src="+productIdx.image.sizes.Large.url+" alt="+ productIdx.id +">");
         $("#selectedDress").html("");
         // $("#selectedDress").hide();
@@ -461,6 +462,7 @@ $(document).ready(function () {
       $("#bottom").on("click","img", function(e){
         var productIdx = data.products[counter];
         counter++;
+          console.log("productIdx", productIdx);
         $("#selectedDress").html("");
         $("#selectedDress").hide();
         $("#selectedBottom").show();
@@ -651,6 +653,7 @@ $(document).ready(function () {
       $("#shoes").on("click","img", function(e){
         var productIdx = data.products[counter];
         counter++;
+         console.log("productIdx", productIdx);
         $("#shoes").append("<img src="+productIdx.image.sizes.Large.url+">");
         $("#selectedShoes").html("");
         // $("#selectedShoes").append("<h3>Shoes</h3>");
@@ -768,6 +771,7 @@ $(document).ready(function () {
     $("#accessory2").on("click","img", function(e){
       var productIdx = data.products[counter];
       counter++;
+       console.log("productIdx", productIdx);
       $("#accessory2").append("<img src="+productIdx.image.sizes.Large.url+">");
       $("#selectedAccessory2").html("");
       // $("#selectedAccessory2").append("<h3>Accessory</h3>");
