@@ -4,7 +4,7 @@ $(document).ready(function () {
   setTimeout(function(){
     $('.alert').slideUp(500);
   }, 1000);
- if (window.location.href==="http://localhost:3000/styles") {
+ // if (window.location.href==="http://localhost:3000/styles") {
 
 
 
@@ -890,5 +890,5 @@ $(document).ready(function () {
    }); //end of forecast api call
 
 
-  }//window.location.href
+  // }//window.location.href
 }); //end of document load
