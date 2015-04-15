@@ -2,7 +2,7 @@ $(document).ready(function () {
 
 //======== Change location only ========================//
 
- if (window.location.href==="http://localhost:3000/styles") {
+ // if (window.location.href==="http://localhost:3000/styles") {
 
    var todayTemp = $("#hiTemp").val();
    var sex = $("#gender").text().trim();
@@ -753,7 +753,7 @@ $(document).ready(function () {
    }); //end of ON CLICK
 });//forecast api
 
-  } //end of window.location.href
+  // } //end of window.location.href
 
 
 });//end of document.ready

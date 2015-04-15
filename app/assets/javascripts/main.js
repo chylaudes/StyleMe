@@ -13,7 +13,7 @@ $('#myModal').on('shown.bs.modal', function () {
 //   });
 
 //=================== GET CITY/STATE BY GOOGLE PLACE API =====================//
- if ( (window.location.href==="http://localhost:3000/styles") || (window.location.href==="http://localhost:3000/users/sign_up") ) {
+ // if ( (window.location.href==="http://localhost:3000/styles") || (window.location.href==="http://localhost:3000/users/sign_up") ) {
   var geocoder;
   function initialize() {
     var input = document.getElementById('user_location');
@@ -24,7 +24,8 @@ $('#myModal').on('shown.bs.modal', function () {
       geocoder = new google.maps.Geocoder();
     }
     google.maps.event.addDomListener(window, 'load', initialize);
-  }//end of location
+  
+  // }//end of location
 
 
 
