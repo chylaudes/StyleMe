@@ -1,16 +1,19 @@
 $(document).ready(function () {
 
-//========= Get weather data from user database ===========================//
-  setTimeout(function(){
-    $('.alert').slideUp(500);
+  console.log("HAPPPY");
+    setTimeout(function(){
+    console.log("ALERT");
+  $('.alert').slideUp(500);
   }, 1000);
- // if (window.location.href==="http://localhost:3000/styles") {
+
+//========= Get weather data from user database ===========================//
+ if (window.location.href==="http://localhost:3000/styles") {
 
 
 
-    var userLocation = $("div #curLocation").text();
-    var todayTemp, curCondition;
-    var sex = $("#gender").text().trim();
+   var userLocation = $("div #curLocation").text();
+   var todayTemp, curCondition;
+   var sex = $("#gender").text().trim();
 
    var femaleBrand1 = ["b4493","b2333","b728","b284","b18563"];
    var maleBrand1 = ["b284","b2446","b29798","b462","b2329"];
@@ -894,5 +897,5 @@ $(document).ready(function () {
    }); //end of forecast api call
 
 
-  // }//window.location.href
+  }//window.location.href
 }); //end of document load
