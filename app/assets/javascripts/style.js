@@ -53,9 +53,9 @@ $(document).ready(function () {
 
    $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/geolookup/conditions/q/"+ $newState +"/"+ $userCity +".json", function(data) {
     $("div #curLocation").text('');
+    $('#curTemp').text('');
     $('#curTemp').append(data.current_observation.temp_f + " &#8457;");
     $('#curLocation').append("<strong>" + data.current_observation.display_location.full + "</strong>");
-
    });
 
    $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/forecast/q/"+ $newState +"/"+ $userCity +".json", function(data) {
