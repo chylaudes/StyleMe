@@ -8,9 +8,9 @@ $(document).ready(function () {
 
 //========= Get weather data from user database ===========================//
 //if (window.location.href==="http://localhost:3000/styles")
-if (window.location.href==="https://stylem.herokuapp.com/styles")
+// if (window.location.href==="https://stylem.herokuapp.com/styles")
 
- {
+//  {
    var userLocation = $("div #curLocation").text();
    var todayTemp, curCondition;
    var sex = $("#gender").text().trim();
@@ -897,5 +897,5 @@ if (window.location.href==="https://stylem.herokuapp.com/styles")
    }); //end of forecast api call
 
 
-  }//window.location.href
+  // }//window.location.href
 }); //end of document load
