@@ -1,15 +1,11 @@
 $(document).ready(function () {
-
-  console.log("HAPPPY");
     setTimeout(function(){
-    console.log("ALERT");
-  $('.alert').slideUp(500);
-  }, 1000);
+      $('.alert').slideUp(500);
+    }, 1000);
 
 //========= Get weather data from user database ===========================//
- if (window.location.href==="http://localhost:3000/styles") {
-
-
+//if (window.location.href==="http://localhost:3000/styles")
+// if (window.location.href==="https://stylem.herokuapp.com/styles")
 
    var userLocation = $("div #curLocation").text();
    var todayTemp, curCondition;
@@ -55,6 +51,7 @@ $(document).ready(function () {
     }
 
    $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/geolookup/conditions/q/"+ $newState +"/"+ $userCity +".json", function(data) {
+    console.log("I AM HERE!!");
     $("div #curLocation").text('');
     $('#curTemp').text('');
     $('#curTemp').append(data.current_observation.temp_f + " &#8457;");
@@ -480,7 +477,6 @@ $(document).ready(function () {
 
       });
     });
-
 
     var shoescat = "", shoesfts = ""; //SHOES ALGORITHM
 
