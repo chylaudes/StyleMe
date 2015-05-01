@@ -7,10 +7,10 @@ $(document).ready(function () {
   }, 1000);
 
 //========= Get weather data from user database ===========================//
- if (window.location.href==="http://localhost:3000/styles") {
+//if (window.location.href==="http://localhost:3000/styles")
+if (window.location.href==="https://stylem.herokuapp.com/styles")
 
-
-
+ {
    var userLocation = $("div #curLocation").text();
    var todayTemp, curCondition;
    var sex = $("#gender").text().trim();
