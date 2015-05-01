@@ -55,6 +55,7 @@ $(document).ready(function () {
     }
 
    $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/geolookup/conditions/q/"+ $newState +"/"+ $userCity +".json", function(data) {
+    console.log("I AM HERE!!");
     $("div #curLocation").text('');
     $('#curTemp').text('');
     $('#curTemp').append(data.current_observation.temp_f + " &#8457;");
