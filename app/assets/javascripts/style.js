@@ -1,16 +1,19 @@
 $(document).ready(function () {
 
-//========= Get weather data from user database ===========================//
-  setTimeout(function(){
-    $('.alert').slideUp(500);
+  console.log("HAPPPY");
+    setTimeout(function(){
+    console.log("ALERT");
+  $('.alert').slideUp(500);
   }, 1000);
- // if (window.location.href==="http://localhost:3000/styles") {
+
+//========= Get weather data from user database ===========================//
+ if (window.location.href==="http://localhost:3000/styles") {
 
 
 
-    var userLocation = $("div #curLocation").text();
-    var todayTemp, curCondition;
-    var sex = $("#gender").text().trim();
+   var userLocation = $("div #curLocation").text();
+   var todayTemp, curCondition;
+   var sex = $("#gender").text().trim();
 
    var femaleBrand1 = ["b4493","b2333","b728","b284","b18563"];
    var maleBrand1 = ["b284","b2446","b29798","b462","b2329"];
@@ -174,6 +177,7 @@ $(document).ready(function () {
         $("#dress").on("click","img", function(e){
           var productIdx = data.products[counter];
           counter++;
+           console.log("productIdx", productIdx);
           $("#dress").append("<img src="+productIdx.image.sizes.Large.url+">");
           $("#selectedDress").html("");
           $("#selectedTop").html("");
@@ -313,8 +317,8 @@ $(document).ready(function () {
 
       $("#top").on("click","img", function(e){
         var productIdx = data.products[counter];
-
         counter++;
+         console.log("productIdx", productIdx);
         $("#top").append("<img src="+productIdx.image.sizes.Large.url+" alt="+ productIdx.id +">");
         $("#selectedDress").html("");
         // $("#selectedDress").hide();
@@ -461,6 +465,7 @@ $(document).ready(function () {
       $("#bottom").on("click","img", function(e){
         var productIdx = data.products[counter];
         counter++;
+          console.log("productIdx", productIdx);
         $("#selectedDress").html("");
         $("#selectedDress").hide();
         $("#selectedBottom").show();
@@ -651,6 +656,7 @@ $(document).ready(function () {
       $("#shoes").on("click","img", function(e){
         var productIdx = data.products[counter];
         counter++;
+         console.log("productIdx", productIdx);
         $("#shoes").append("<img src="+productIdx.image.sizes.Large.url+">");
         $("#selectedShoes").html("");
         // $("#selectedShoes").append("<h3>Shoes</h3>");
@@ -768,6 +774,7 @@ $(document).ready(function () {
     $("#accessory2").on("click","img", function(e){
       var productIdx = data.products[counter];
       counter++;
+       console.log("productIdx", productIdx);
       $("#accessory2").append("<img src="+productIdx.image.sizes.Large.url+">");
       $("#selectedAccessory2").html("");
       // $("#selectedAccessory2").append("<h3>Accessory</h3>");
@@ -890,5 +897,5 @@ $(document).ready(function () {
    }); //end of forecast api call
 
 
-  // }//window.location.href
+  }//window.location.href
 }); //end of document load
