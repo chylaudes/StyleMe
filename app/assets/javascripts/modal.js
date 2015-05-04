@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  
   var dressId = $(".modalDress").attr("data-drssid");
   var topId = $(".modalTop").attr("data-topid");
   var bottomId = $(".modalBottom").attr("data-bottomid");
@@ -20,6 +19,7 @@ $(document).ready(function () {
   if (topId !== undefined && topId !== null) {
     var modalTopURL = "http://api.shopstyle.com/api/v2/products/"+topId+"?pid=uid2100-27524390-36";
     $.getJSON(modalTopURL, function(data) {
+      $('.modalTop').append("XXXX");
       $('.modalTop').append("<img src="+data.image.sizes.Large.url+"><br>");
       $('.modalTop').append("<p>"+data.brand.name+"</p>");
       $('.modalTop').append("<p>"+data.unbrandedName+"</p>");

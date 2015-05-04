@@ -51,7 +51,6 @@ $(document).ready(function () {
     }
 
    $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/geolookup/conditions/q/"+ $newState +"/"+ $userCity +".json", function(data) {
-    console.log("I AM HERE!!");
     $("div #curLocation").text('');
     $('#curTemp').text('');
     $('#curTemp').append(data.current_observation.temp_f + " &#8457;");
@@ -174,7 +173,6 @@ $(document).ready(function () {
         $("#dress").on("click","img", function(e){
           var productIdx = data.products[counter];
           counter++;
-           console.log("productIdx", productIdx);
           $("#dress").append("<img src="+productIdx.image.sizes.Large.url+">");
           $("#selectedDress").html("");
           $("#selectedTop").html("");
@@ -309,13 +307,11 @@ $(document).ready(function () {
       $("#top").append("<img src="+data.products[2].image.sizes.Large.url+" alt="+ data.products[2].id +">");
       $("#top").append("<img src="+data.products[3].image.sizes.Large.url+" alt="+ data.products[3].id +">");
 
-
       counter = 4;
 
       $("#top").on("click","img", function(e){
         var productIdx = data.products[counter];
         counter++;
-         console.log("productIdx", productIdx);
         $("#top").append("<img src="+productIdx.image.sizes.Large.url+" alt="+ productIdx.id +">");
         $("#selectedDress").html("");
         // $("#selectedDress").hide();
@@ -449,8 +445,6 @@ $(document).ready(function () {
     }
 
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ bottomcat +"&fts=" + bottomfts + "&fl=" + fl + "&offset=0&limit=30&sort=Popular", function(data) {
-      console.log("bottomdata:", data);
-      console.log("bottomkeywords:", bottomfts, bottomcat, fl);
       $("#bottom").text('');
       $("#bottom").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
       $("#bottom").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
@@ -462,7 +456,6 @@ $(document).ready(function () {
       $("#bottom").on("click","img", function(e){
         var productIdx = data.products[counter];
         counter++;
-          console.log("productIdx", productIdx);
         $("#selectedDress").html("");
         $("#selectedDress").hide();
         $("#selectedBottom").show();
@@ -472,9 +465,6 @@ $(document).ready(function () {
         $("#selectedBottom").show();
         $("#selectedBottom").append(this);
         $("#selectedBottom").children().addClass("topbottomsize");
-
-        // console.log("bottomInfo:",$("#selectedBottom").html());
-
       });
     });
 
@@ -639,9 +629,6 @@ $(document).ready(function () {
     }
 
     $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ shoescat +"&fts=" + shoesfts + "&fl=" + flshoe + "&offset=0&limit=30&sort=Popular", function(data) {
-      console.log("fsakdba:", shoescat, shoesfts, flshoe);
-      console.log("todaytemp UNCHANGED", todayTemp);
-      console.log("shoedata", data);
       $("#shoes").text('');
       $("#shoes").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
       $("#shoes").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
@@ -652,7 +639,6 @@ $(document).ready(function () {
       $("#shoes").on("click","img", function(e){
         var productIdx = data.products[counter];
         counter++;
-         console.log("productIdx", productIdx);
         $("#shoes").append("<img src="+productIdx.image.sizes.Large.url+">");
         $("#selectedShoes").html("");
         // $("#selectedShoes").append("<h3>Shoes</h3>");
@@ -759,7 +745,6 @@ $(document).ready(function () {
   }
 
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory2_cat +"&fts=" + accessory2_fts + "&offset=0&limit=30&sort=Popular", function(data) {
-    console.log("accessory2:", accessory2_cat, accessory2_fts, curCondition);
     $("#accessory2").text('');
     $("#accessory2").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
     $("#accessory2").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
@@ -770,7 +755,6 @@ $(document).ready(function () {
     $("#accessory2").on("click","img", function(e){
       var productIdx = data.products[counter];
       counter++;
-       console.log("productIdx", productIdx);
       $("#accessory2").append("<img src="+productIdx.image.sizes.Large.url+">");
       $("#selectedAccessory2").html("");
       // $("#selectedAccessory2").append("<h3>Accessory</h3>");
@@ -893,5 +877,5 @@ $(document).ready(function () {
    }); //end of forecast api call
 
 
-  }//window.location.href
+  // }//window.location.href
 }); //end of document load
