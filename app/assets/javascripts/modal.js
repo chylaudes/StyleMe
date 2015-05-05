@@ -5,26 +5,26 @@ $(document).ready(function () {
   var detailsDiv = $(this).prev();
   var dressId, topId, bottomId, shoeId, access_1Id, access_2Id;
 
-  console.log("tail ", detailsDiv.find("#dressId").html);
+  console.log("tail ", detailsDiv.find("#dressId").length);
 
-  if (detailsDiv.find("#dressId").children("img")[0].alt !==null || detailsDiv.find("#dressId").children("img")[0].alt !== undefined)
+  if (detailsDiv.find("#dressId").length !== 0)
    dressId= detailsDiv.find("#dressId").children("img")[0].alt;
 
- if (detailsDiv.find("#topId")!==null)
+ if (detailsDiv.find("#topId").length !== 0)
   topId = detailsDiv.find("#topId").children("img")[0].alt;
 
- if (detailsDiv.find("#bottomId")!==null)
+ if (detailsDiv.find("#bottomId").length !== 0)
   bottomId = detailsDiv.find("#bottomId").children("img")[0].alt;
 
 
   // var bottomId = detailsDiv.find("#bottomId").children("img")[0].alt;
- if (detailsDiv.find("#shoeId")!==null)
+ if (detailsDiv.find("#shoeId").length !== 0)
     shoeId = detailsDiv.find("#shoeId").children("img")[0].alt;
 
- if (detailsDiv.find("#access_1Id")!==null)
+ if (detailsDiv.find("#access_1Id").length !== 0)
     access_1Id = detailsDiv.find("#access_1Id").children("img")[0].alt;
 
- if (detailsDiv.find("#access_2Id")!==null)
+ if (detailsDiv.find("#access_2Id").length !== 0)
     access_2Id = detailsDiv.find("#access_2Id").children("img")[0].alt;
 
 
