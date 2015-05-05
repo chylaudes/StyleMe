@@ -1,10 +1,31 @@
 $(document).ready(function () {
-  var dressId = $(".modalDress").attr("data-drssid");
-  var topId = $(".modalTop").attr("data-topid");
-  var bottomId = $(".modalBottom").attr("data-bottomid");
-  var shoeId = $(".modalShoe").attr("data-shoeid");
-  var access_1Id = $(".modalAccess1").attr("data-access_1id");
-  var access_2Id = $(".modalAccess2").attr("data-access_2id");
+
+  $(".showInfo").click(function(){
+
+  var detailsDiv = $(this).prev();
+  var dressId, topId, bottomId, shoeId, access_1Id, access_2Id;
+
+  console.log("tail ", detailsDiv.find("#dressId").html);
+
+  if (detailsDiv.find("#dressId").children("img")[0].alt !==null || detailsDiv.find("#dressId").children("img")[0].alt !== undefined)
+   dressId= detailsDiv.find("#dressId").children("img")[0].alt;
+
+ if (detailsDiv.find("#topId")!==null)
+  topId = detailsDiv.find("#topId").children("img")[0].alt;
+
+ if (detailsDiv.find("#bottomId")!==null)
+  bottomId = detailsDiv.find("#bottomId").children("img")[0].alt;
+
+
+  // var bottomId = detailsDiv.find("#bottomId").children("img")[0].alt;
+ if (detailsDiv.find("#shoeId")!==null)
+    shoeId = detailsDiv.find("#shoeId").children("img")[0].alt;
+
+ if (detailsDiv.find("#access_1Id")!==null)
+    access_1Id = detailsDiv.find("#access_1Id").children("img")[0].alt;
+
+ if (detailsDiv.find("#access_2Id")!==null)
+    access_2Id = detailsDiv.find("#access_2Id").children("img")[0].alt;
 
 
   if (dressId !== undefined && dressId !== null) {
@@ -19,7 +40,6 @@ $(document).ready(function () {
   if (topId !== undefined && topId !== null) {
     var modalTopURL = "http://api.shopstyle.com/api/v2/products/"+topId+"?pid=uid2100-27524390-36";
     $.getJSON(modalTopURL, function(data) {
-      $('.modalTop').append("XXXX");
       $('.modalTop').append("<img src="+data.image.sizes.Large.url+"><br>");
       $('.modalTop').append("<p>"+data.brand.name+"</p>");
       $('.modalTop').append("<p>"+data.unbrandedName+"</p>");
@@ -64,5 +84,6 @@ console.log('access_1Id',access_1Id);
       $('.modalAccess2').append("<p>"+data.unbrandedName+"</p>");
     });
   }
+   });
 
 });
