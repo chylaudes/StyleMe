@@ -13,6 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= stub modal
 //= require_tree .
 

@@ -13,9 +13,13 @@
          <br>
          <% if outfit.top_url != "" %>
           <img src="<%= outfit.top_url %>" alt="<%= outfit.top %>">
+          <br>
+          top<%= outfit.top %>
          <% end %>
          <% if outfit.dress_url != "" %>
           <img src="<%= outfit.dress_url %>" alt="<%= outfit.dress %>">
+          <br>
+          <%= outfit.dress %>
          <% end %>
          <% if outfit.bottom_url != "" %>
           <img src="<%= outfit.bottom_url %>" alt="<%= outfit.bottom %>">
@@ -29,11 +33,10 @@
          <% if outfit.access_2_url != "" %>
           <img src="<%= outfit.access_2_url %>" alt="<%= outfit.access_2 %>">
          <% end %>
-        <div>
-          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+        <br><br>
+          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" id="showModal">
             Show Info
           </button>
-        </div>
 
        </div>
 
