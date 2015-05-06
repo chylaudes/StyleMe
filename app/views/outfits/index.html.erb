@@ -10,34 +10,41 @@
         <div class="caption"><h4>
          <% env_data = outfit.env_data %>
          <%= env_data.date.to_formatted_s(:long) %> || <%= env_data.location %>, <%= env_data.weather_state %> ||  <%= env_data.weather_temp %> &#8457  <%= link_to "Remove", outfits_delete_path(outfit), method: :delete, class: "btn btn-default" %></h4> </div>
-         <br>
+          <br>
+          <div>
          <% if outfit.top_url != "" %>
+         <span id= "topId">
           <img src="<%= outfit.top_url %>" alt="<%= outfit.top %>">
-          <br>
-          top<%= outfit.top %>
-         <% end %>
+         <% end %></span>
          <% if outfit.dress_url != "" %>
+          <span id= "dressId">
           <img src="<%= outfit.dress_url %>" alt="<%= outfit.dress %>">
-          <br>
-          <%= outfit.dress %>
-         <% end %>
+         <% end %></span>
          <% if outfit.bottom_url != "" %>
+         <span id= "bottomId" >
           <img src="<%= outfit.bottom_url %>" alt="<%= outfit.bottom %>">
-         <% end %>
+         <% end %></span>
          <% if outfit.shoe_url != "" %>
+         <span id= "shoeId">
           <img src="<%= outfit.shoe_url %>" alt="<%= outfit.shoe %>">
          <% end  %>
+         </span>
          <% if outfit.access_1_url != "" %>
+         <span id= "access_1Id">
           <img src="<%= outfit.access_1_url %>" alt="<%= outfit.access_1 %>">
          <% end %>
+         </span>
          <% if outfit.access_2_url != "" %>
+         <span id= "access_2Id">
           <img src="<%= outfit.access_2_url %>" alt="<%= outfit.access_2 %>">
          <% end %>
-        <br><br>
-          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" id="showModal">
+         </span>
+
+         <br>
+        </div>
+          <button type="button" class="btn btn-default showInfo" data-toggle="modal" data-target="#myModal">
             Show Info
           </button>
-
        </div>
 
         <!-- MODAL STARTS -->
@@ -50,45 +57,25 @@
                 </div>
                 <div class="modal-body">
                   <div class="container-fluid">
-                  THIS IS CURRENTLY NOT WORKING. <br><br> PLEASE COME BACK LATER. 
                     <div class="row">
                       <div class="col-md-6">
-                       <% if outfit.top_url != "" %>
                         <div class="modalTop" data-topid="<%= outfit.top %>"></div>
-                        <!-- <span class="modalTop" data-topid="<%= outfit.top %>"></span> -->
-                       <% end %>
-                       <% if outfit.dress_url != "" %>
                         <div class="modalDress" data-dressid="<%= outfit.dress %>"></div>
-                        <!-- <span class="modalDress" data-dressid="<%= outfit.dress %>"></span> -->
-                       <% end %>
                       </div>
                       <div class="col-md-6">
-                       <% if outfit.bottom_url != "" %>
                         <div class="modalBottom" data-bottomid="<%= outfit.bottom %>"></div>
-                        <!-- <span class="modalBottom" data-bottomid="<%= outfit.bottom %>"></span> -->
-                       <% end %>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-4">
-                       <% if outfit.shoe_url != "" %>
                         <div class="modalShoe" data-shoeid="<%= outfit.shoe %>"></div>
-                        <!-- <span class="modalShoe" data-shoeid="<%= outfit.shoe %>"></span> -->
-                       <% end  %>
                       </div>
                       <div class="col-md-4">
-                       <% if outfit.access_1_url != "" %>
                         <div class="modalAccess1" data-access_1id="<%= outfit.access_1 %>"></div>
-                        <!-- <span class="modalAccess1" data-access_1id="<%= outfit.access_1 %>"></span> -->
-                       <% end %>
                       </div>
-                      <% if outfit.access_2_url != "" %>
                       <div class="col-md-4">
-
                         <div class="modalAccess2" data-access_2id="<%= outfit.access_2 %>"></div>
-                        <!-- <span class="modalAccess2" data-access_2id="<%= outfit.access_2 %>"></span> -->
                       </div>
-                       <% end %>
                     </div>
                   </div> <!--end of container fluid-->
                 </div>
@@ -99,8 +86,6 @@
             </div>
           </div>
         <!-- MODAL Ends -->
-
-
 
      </div>
      <% end %>

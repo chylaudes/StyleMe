@@ -1,22 +1,37 @@
 $(document).ready(function () {
-  $("showModal").on("click", function(){
-    console.log("hello");
-  });
-  console.log("Modal");
-  var dressId = $(".modalDress").attr("data-drssid");
-  console.log("dressId",dressId);
-  var topId = $(".modalTop").attr("data-topid");
-  console.log("topId",topId);
-  var bottomId = $(".modalBottom").attr("data-bottomid");
-  var shoeId = $(".modalShoe").attr("data-shoeid");
-  var access_1Id = $(".modalAccess1").attr("data-access_1id");
-  console.log("access_1Id",access_1Id);
-  var access_2Id = $(".modalAccess2").attr("data-access_2id");
+
+  $(".showInfo").click(function(){
+
+  var detailsDiv = $(this).prev();
+  var dressId, topId, bottomId, shoeId, access_1Id, access_2Id;
+  $('.modalDress').html("");
+  $('.modalTop').html("");
+  $('.modalBottom').html("");
+  $('.modalShoe').html("");
+  $('.modalAccess1').html("");
+  $('.modalAccess2').html("");
+
+  if (detailsDiv.find("#dressId").length !== 0)
+   dressId = detailsDiv.find("#dressId").children("img")[0].alt;
+
+ if (detailsDiv.find("#topId").length !== 0)
+  topId = detailsDiv.find("#topId").children("img")[0].alt;
+
+ if (detailsDiv.find("#bottomId").length !== 0)
+  bottomId = detailsDiv.find("#bottomId").children("img")[0].alt;
+
+ if (detailsDiv.find("#shoeId").length !== 0)
+    shoeId = detailsDiv.find("#shoeId").children("img")[0].alt;
+
+ if (detailsDiv.find("#access_1Id").length > 0)
+    access_1Id = detailsDiv.find("#access_1Id").children("img")[0].alt;
+
+ if (detailsDiv.find("#access_2Id").length !== 0)
+    access_2Id = detailsDiv.find("#access_2Id").children("img")[0].alt;
 
   if (dressId !== undefined && dressId !== null) {
-    console.log("thisxxxx",this);
     var modalDressURL = "http://api.shopstyle.com/api/v2/products/"+dressId+"?pid=uid2100-27524390-36";
-    $.getJSON(modalDressURL, function(data) {
+    $.getJSON(modalDressURL, function(data) {      
       $('.modalDress').append("<img src="+data.image.sizes.Large.url+"><br>");
       $('.modalDress').append("<p>"+data.brand.name+"</p>");
       $('.modalDress').append("<p>"+data.unbrandedName+"</p>");
@@ -24,7 +39,6 @@ $(document).ready(function () {
   }
 
   if (topId !== undefined && topId !== null) {
-    // console.log("thisyyyy",this.parent().children());
     var modalTopURL = "http://api.shopstyle.com/api/v2/products/"+topId+"?pid=uid2100-27524390-36";
     $.getJSON(modalTopURL, function(data) {
       $('.modalTop').append("<img src="+data.image.sizes.Large.url+"><br>");
@@ -45,8 +59,6 @@ $(document).ready(function () {
   if (shoeId !== undefined && shoeId !== null) {
     var modalShoeURL = "http://api.shopstyle.com/api/v2/products/"+shoeId+"?pid=uid2100-27524390-36";
     $.getJSON(modalShoeURL, function(data) {
-      console.log("what is this?");
-      console.log(data);
       $('.modalShoe').append("<img src="+data.image.sizes.Large.url+"><br>");
       $('.modalShoe').append("<p>"+data.brand.name+"</p>");
       $('.modalShoe').append("<p>"+data.unbrandedName+"</p>");
@@ -54,7 +66,6 @@ $(document).ready(function () {
   }
 
   if (access_1Id !== undefined && access_1Id !== null) {
-
     var modalAccess1URL = "http://api.shopstyle.com/api/v2/products/"+access_1Id+"?pid=uid2100-27524390-36";
     $.getJSON(modalAccess1URL, function(data) {
       $('.modalAccess1').append("<img src="+data.image.sizes.Large.url+"><br>");
@@ -71,5 +82,6 @@ $(document).ready(function () {
       $('.modalAccess2').append("<p>"+data.unbrandedName+"</p>");
     });
   }
+   });
 
 });
