@@ -1,16 +1,9 @@
-
-
 $(document).ready(function() {
 
-// $('#myModal').on('shown.bs.modal', function () {
-//     console.log("HAPPPY");
-//     setTimeout(function(){
-//     console.log("ALERT");
-//   $('.alert').slideUp(5000);
-//   }, 10000);
+setTimeout(function(){
+  $('.alert').slideUp(500);
+}, 1000);
 
-
-// });
 
 //=================== GET CITY/STATE BY GOOGLE PLACE API =====================//
  // if ( (window.location.href==="http://localhost:3000/styles") || (window.location.href==="http://localhost:3000/users/sign_up") ) {
