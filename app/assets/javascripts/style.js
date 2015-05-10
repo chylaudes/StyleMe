@@ -482,14 +482,10 @@ $(document).ready(function () {
       });
     });
 
-
-  
     var shoescat = "", shoesfts = ""; //SHOES ALGORITHM
     getShoeCondition(todayTemp, sex, shoescat, shoesfts, flshoe);
     shoescat = shoeArry[0].shoescat;
     shoesfts = shoeArry[0].shoesfts;
-    
-  
 
     // if (todayTemp >= 90 ) { //done with 90
     //   if (sex === "F"){
@@ -670,43 +666,47 @@ $(document).ready(function () {
 
   var accessory1_cat = "", accessory1_fts = "";
   curCondition = curCondition.trim();
-  if (curCondition === "Clear"){
-    if (sex === "F"){
-      accessory1_cat = "shoulder-bags";
-      accessory1_fts = "";
-    } else if (sex === "M"){
-      accessory1_cat = "mens-watches";
-      accessory1_fts = "";
-    }
-  } else if (curCondition === "Light Rain" || curCondition === "Light Showers Rain" || curCondition === "Rain"){
-    if (sex === "F"){
-      accessory1_cat = "tote-bags";
-      accessory1_fts = "";
-    } else if (sex === "M"){
-      accessory1_cat = "mens-watches";
-      accessory1_fts = "";
-    }
-  } else if (curCondition === "Snow" || curCondition === "Light Snow" || curCondition === "Overcast"){
-    if (sex === "F"){
-      accessory1_cat = "tote-bags";
-      accessory1_fts = "";
-    } else if (sex === "M"){
-      accessory1_cat = "mens-watches";
-      accessory1_fts = "";
-    }
-  } else {
-    if (sex === "F"){
-      accessory1_cat = "satchels";
-      accessory1_fts = "";
-      if(accessory1_fl === "b2098"){
-      accessory1_cat = "clutches";
-      accessory1_fts = "";
-      }
-    } else if (sex === "M"){
-      accessory1_cat = "mens-watches";
-      accessory1_fts = "";
-    }
-  }
+  getAccessory1Condition(curCondition,sex,accessory1_cat,accessory1_fts);
+  accessory1_cat = accessory1Arry[0].accessory1_cat;
+  accessory1_fts = accessory1Arry[0].accessory1_fts;
+
+  // if (curCondition === "Clear"){
+  //   if (sex === "F"){
+  //     accessory1_cat = "shoulder-bags";
+  //     accessory1_fts = "";
+  //   } else if (sex === "M"){
+  //     accessory1_cat = "mens-watches";
+  //     accessory1_fts = "";
+  //   }
+  // } else if (curCondition === "Light Rain" || curCondition === "Light Showers Rain" || curCondition === "Rain"){
+  //   if (sex === "F"){
+  //     accessory1_cat = "tote-bags";
+  //     accessory1_fts = "";
+  //   } else if (sex === "M"){
+  //     accessory1_cat = "mens-watches";
+  //     accessory1_fts = "";
+  //   }
+  // } else if (curCondition === "Snow" || curCondition === "Light Snow" || curCondition === "Overcast"){
+  //   if (sex === "F"){
+  //     accessory1_cat = "tote-bags";
+  //     accessory1_fts = "";
+  //   } else if (sex === "M"){
+  //     accessory1_cat = "mens-watches";
+  //     accessory1_fts = "";
+  //   }
+  // } else {
+  //   if (sex === "F"){
+  //     accessory1_cat = "satchels";
+  //     accessory1_fts = "";
+  //     if(accessory1_fl === "b2098"){
+  //     accessory1_cat = "clutches";
+  //     accessory1_fts = "";
+  //     }
+  //   } else if (sex === "M"){
+  //     accessory1_cat = "mens-watches";
+  //     accessory1_fts = "";
+  //   }
+  // }
 
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory1_cat +"&fts=" + accessory1_fts + "&fl=" + accessory1_fl +  "&offset=0&limit=30&sort=Popular", function(data) {
     $("#accessory1").text('');
@@ -731,39 +731,43 @@ $(document).ready(function () {
   var maleSunKeys = ["ray ban square", "", "tom ford", "urban outfitters classic", "ray ban wayfarer"];
   var accessory2_cat = "", accessory2_fts = "";
   curCondition = curCondition.trim();
-  if (curCondition === "Clear"){
-    if (sex === "F"){
-      accessory2_cat = "sunglasses";
-      accessory2_fts = "asos";
-    } else if (sex === "M"){
-      accessory2_cat = "mens-sunglasses";
-      accessory2_fts = getRandomFTS(maleSunKeys);
-    }
-  } else if (curCondition === "Light Rain" || curCondition === "Light Showers Rain" || curCondition === "Rain"){
-    if (sex === "F"){
-      accessory2_cat = "womens-umbrellas";
-      accessory2_fts = "marc";
-    } else if (sex === "M"){
-      accessory2_cat = "mens-umbrellas";
-      accessory2_fts = "totes";
-    }
-  } else if (curCondition === "Snow" || curCondition === "Light Snow" || curCondition === "Overcast"){
-    if (sex === "F"){
-      accessory2_cat = "scarves";
-      accessory2_fts = "asos collection";
-    } else if (sex === "M"){
-      accessory2_cat = "mens-gloves-and-scarves";
-      accessory2_fts = "barneys knit";
-    }
-  } else {
-    if (sex === "F"){
-      accessory2_cat = "hats";
-      accessory2_fts = "urban outfitters";
-    } else if (sex === "M"){
-      accessory2_cat = "mens-hats";
-      accessory2_fts = getRandomFTS(maleHatKeys);
-    }
-  }
+  getAccessory2Condition(curCondition,sex,accessory2_cat,accessory2_fts);
+  accessory2_cat = accessory2Arry[0].accessory2_cat;
+  accessory2_fts = accessory2Arry[0].accessory2_fts;
+
+  // if (curCondition === "Clear"){
+  //   if (sex === "F"){
+  //     accessory2_cat = "sunglasses";
+  //     accessory2_fts = "asos";
+  //   } else if (sex === "M"){
+  //     accessory2_cat = "mens-sunglasses";
+  //     accessory2_fts = getRandomFTS(maleSunKeys);
+  //   }
+  // } else if (curCondition === "Light Rain" || curCondition === "Light Showers Rain" || curCondition === "Rain"){
+  //   if (sex === "F"){
+  //     accessory2_cat = "womens-umbrellas";
+  //     accessory2_fts = "marc";
+  //   } else if (sex === "M"){
+  //     accessory2_cat = "mens-umbrellas";
+  //     accessory2_fts = "totes";
+  //   }
+  // } else if (curCondition === "Snow" || curCondition === "Light Snow" || curCondition === "Overcast"){
+  //   if (sex === "F"){
+  //     accessory2_cat = "scarves";
+  //     accessory2_fts = "asos collection";
+  //   } else if (sex === "M"){
+  //     accessory2_cat = "mens-gloves-and-scarves";
+  //     accessory2_fts = "barneys knit";
+  //   }
+  // } else {
+  //   if (sex === "F"){
+  //     accessory2_cat = "hats";
+  //     accessory2_fts = "urban outfitters";
+  //   } else if (sex === "M"){
+  //     accessory2_cat = "mens-hats";
+  //     accessory2_fts = getRandomFTS(maleHatKeys);
+  //   }
+  // }
 
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory2_cat +"&fts=" + accessory2_fts + "&offset=0&limit=30&sort=Popular", function(data) {
     $("#accessory2").text('');
@@ -866,17 +870,6 @@ $(document).ready(function () {
         });
       });
   //---------- end of save outfit --------------------------
-
-// EnvData
-//   id: integer
-//   location: string
-//   weather_temp: integer
-//   weather_state: string
-//   date: date
-//   occasion: string
-//   user_id: integer
-
-
    }); //end of forecast api call
 
 
