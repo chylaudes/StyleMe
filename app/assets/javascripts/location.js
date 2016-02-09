@@ -2,7 +2,8 @@ $(document).ready(function () {
 
 //======== Change location only ========================//
 
- if (window.location.href==="https://localhost:3000/styles") {
+ // if (window.location.href==="https://localhost:3000/styles") {
+   if (window.location.href==="https://stylem.herokuapp.com/styles") {
 
    var todayTemp = $("#hiTemp").val();
    var sex = $("#gender").text().trim();
