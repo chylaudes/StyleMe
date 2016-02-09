@@ -4,7 +4,7 @@ $(document).ready(function () {
     }, 1000);
 
 //========= Get weather data from user database ===========================//
-//if (window.location.href==="http://localhost:3000/styles")
+//if (window.location.href==="https://localhost:3000/styles")
 if (window.location.href==="https://stylem.herokuapp.com/styles") {
 
    var userLocation = $("div #curLocation").text();
@@ -50,14 +50,14 @@ if (window.location.href==="https://stylem.herokuapp.com/styles") {
       $newState = "CA";
     }
 
-   $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/geolookup/conditions/q/"+ $newState +"/"+ $userCity +".json", function(data) {
+   $.getJSON("https://api.wunderground.com/api/014d16d943fa6477/geolookup/conditions/q/"+ $newState +"/"+ $userCity +".json", function(data) {
     $("div #curLocation").text('');
     $('#curTemp').text('');
     $('#curTemp').append(data.current_observation.temp_f + " &#8457;");
     $('#curLocation').append("<strong>" + data.current_observation.display_location.full + "</strong>");
    });
 
-   $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/forecast/q/"+ $newState +"/"+ $userCity +".json", function(data) {
+   $.getJSON("https://api.wunderground.com/api/014d16d943fa6477/forecast/q/"+ $newState +"/"+ $userCity +".json", function(data) {
     $('#curCond').append(data.forecast.simpleforecast.forecastday[0].conditions);
     curCondition = data.forecast.simpleforecast.forecastday[0].conditions;
     $('#hiTemp').append(data.forecast.simpleforecast.forecastday[0].high.fahrenheit + " &#8457;");
@@ -72,7 +72,7 @@ if (window.location.href==="https://stylem.herokuapp.com/styles") {
       getDressCondition(todayTemp, sex, dressfts, dresscat, fl);
       dresscat = dressArry[0].dresscat;
       dressfts = dressArry[0].dressfts;
-      var dressURL = "http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat=" + dresscat + "&fts=" + dressfts + "&fl=" + fl + "&offset=0&limit=30&sort=Popular";
+      var dressURL = "https://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat=" + dresscat + "&fts=" + dressfts + "&fl=" + fl + "&offset=0&limit=30&sort=Popular";
      $.getJSON(dressURL, function(data) {
         $("#dress").text('');
         $("#dress").append("<span class='img-crop'><img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +"></span>");
@@ -102,7 +102,7 @@ if (window.location.href==="https://stylem.herokuapp.com/styles") {
     topcat = topArry[0].topcat;
     topfts = topArry[0].topfts;
 
-   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ topcat + "&fl=" + fl +"&fts=" + topfts + "&offset=0&limit=30", function(data) {
+   $.getJSON("https://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ topcat + "&fl=" + fl +"&fts=" + topfts + "&offset=0&limit=30", function(data) {
       $("#top").text('');
       $("#top").append("<span class='img-crop'><img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +"></span>");
       $("#top").append("<span class='img-crop'><img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +"></span>");
@@ -132,7 +132,7 @@ if (window.location.href==="https://stylem.herokuapp.com/styles") {
     bottomcat = bottomArry[0].bottomcat;
     bottomfts = bottomArry[0].bottomfts;
 
-   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ bottomcat +"&fts=" + bottomfts + "&fl=" + fl + "&offset=0&limit=30&sort=Popular", function(data) {
+   $.getJSON("https://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ bottomcat +"&fts=" + bottomfts + "&fl=" + fl + "&offset=0&limit=30&sort=Popular", function(data) {
       $("#bottom").text('');
       $("#bottom").append("<span class='img-crop'><img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +"></span>");
       $("#bottom").append("<span class='img-crop'><img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +"></span>");
@@ -161,7 +161,7 @@ if (window.location.href==="https://stylem.herokuapp.com/styles") {
     shoescat = shoeArry[0].shoescat;
     shoesfts = shoeArry[0].shoesfts;
 
-    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ shoescat +"&fts=" + shoesfts + "&fl=" + flshoe + "&offset=0&limit=30&sort=Popular", function(data) {
+    $.getJSON("https://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ shoescat +"&fts=" + shoesfts + "&fl=" + flshoe + "&offset=0&limit=30&sort=Popular", function(data) {
       $("#shoes").text('');
       $("#shoes").append("<span class='img-crop'><img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +"></span>");
       $("#shoes").append("<span class='img-crop'><img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +"></span>");
@@ -186,7 +186,7 @@ if (window.location.href==="https://stylem.herokuapp.com/styles") {
   accessory1_cat = accessory1Arry[0].accessory1_cat;
   accessory1_fts = accessory1Arry[0].accessory1_fts;
 
-   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory1_cat +"&fts=" + accessory1_fts + "&fl=" + accessory1_fl +  "&offset=0&limit=30&sort=Popular", function(data) {
+   $.getJSON("https://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory1_cat +"&fts=" + accessory1_fts + "&fl=" + accessory1_fl +  "&offset=0&limit=30&sort=Popular", function(data) {
     $("#accessory1").text('');
     $("#accessory1").append("<span class='img-crop'><img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +"></span>");
     $("#accessory1").append("<span class='img-crop'><img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +"></span>");
@@ -213,7 +213,7 @@ if (window.location.href==="https://stylem.herokuapp.com/styles") {
   accessory2_cat = accessory2Arry[0].accessory2_cat;
   accessory2_fts = accessory2Arry[0].accessory2_fts;
 
-   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory2_cat +"&fts=" + accessory2_fts + "&offset=0&limit=30&sort=Popular", function(data) {
+   $.getJSON("https://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory2_cat +"&fts=" + accessory2_fts + "&offset=0&limit=30&sort=Popular", function(data) {
     $("#accessory2").text('');
     $("#accessory2").append("<span class='img-crop'><img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
     $("#accessory2").append("<span class='img-crop'><img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
