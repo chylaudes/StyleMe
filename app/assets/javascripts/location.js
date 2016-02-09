@@ -2,7 +2,7 @@ $(document).ready(function () {
 
 //======== Change location only ========================//
 
- // if (window.location.href==="http://localhost:3000/styles") {
+ if (window.location.href==="https://localhost:3000/styles") {
 
    var todayTemp = $("#hiTemp").val();
    var sex = $("#gender").text().trim();
@@ -27,14 +27,14 @@ $(document).ready(function () {
         $newState = "CA";
       }
 
-     $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/geolookup/conditions/q/"+ $newState +"/"+ $userCity +".json", function(data) {
+     $.getJSON("https://api.wunderground.com/api/014d16d943fa6477/geolookup/conditions/q/"+ $newState +"/"+ $userCity +".json", function(data) {
       $("div #curLocation").text('');
       $('#curTemp').text('');
       $('#curTemp').append(data.current_observation.temp_f + " &#8457;");
       $('#curLocation').append("<strong>" + data.current_observation.display_location.full + "</strong>");
      });
 
-     $.getJSON("http://api.wunderground.com/api/014d16d943fa6477/forecast/q/"+ $newState +"/"+ $userCity +".json", function(data) {
+     $.getJSON("https://api.wunderground.com/api/014d16d943fa6477/forecast/q/"+ $newState +"/"+ $userCity +".json", function(data) {
       $('#curCond').text('');
       $('#hiTemp').text('');
       $('#loTemp').text('');
@@ -76,9 +76,9 @@ $(document).ready(function () {
     if (sex === "F"){
       getDressCondition(todayTemp, sex, dressfts, dresscat, fl);
       dresscat = dressArry[0].dresscat;
-      dressfts = dressArry[0].dressfts;      
+      dressfts = dressArry[0].dressfts;
 
-      var dressURL = "http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat=" + dresscat + "&fts=" + dressfts + "&fl=" + fl + "&offset=0&limit=30&sort=Popular";
+      var dressURL = "https://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat=" + dresscat + "&fts=" + dressfts + "&fl=" + fl + "&offset=0&limit=30&sort=Popular";
      $.getJSON(dressURL, function(data) {
         $("#dress").text('');
         $("#dress").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
@@ -94,7 +94,7 @@ $(document).ready(function () {
     topcat = topArry[0].topcat;
     topfts = topArry[0].topfts;
 
-   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ topcat + "&fl=" + fl +"&fts=" + topfts + "&offset=0&limit=30", function(data) {
+   $.getJSON("https://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ topcat + "&fl=" + fl +"&fts=" + topfts + "&offset=0&limit=30", function(data) {
       $("#top").text('');
       $("#top").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
       $("#top").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
@@ -108,7 +108,7 @@ $(document).ready(function () {
     bottomcat = bottomArry[0].bottomcat;
     bottomfts = bottomArry[0].bottomfts;
 
-   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ bottomcat +"&fts=" + bottomfts + "&fl=" + fl + "&offset=0&limit=30&sort=Popular", function(data) {
+   $.getJSON("https://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ bottomcat +"&fts=" + bottomfts + "&fl=" + fl + "&offset=0&limit=30&sort=Popular", function(data) {
       $("#bottom").text('');
       $("#bottom").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
       $("#bottom").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
@@ -123,7 +123,7 @@ $(document).ready(function () {
     shoescat = shoeArry[0].shoescat;
     shoesfts = shoeArry[0].shoesfts;
 
-    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ shoescat +"&fts=" + shoesfts + "&fl=" + flshoe + "&offset=0&limit=30&sort=Popular", function(data) {
+    $.getJSON("https://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ shoescat +"&fts=" + shoesfts + "&fl=" + flshoe + "&offset=0&limit=30&sort=Popular", function(data) {
       $("#shoes").text('');
       $("#shoes").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
       $("#shoes").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
@@ -138,7 +138,7 @@ $(document).ready(function () {
   accessory1_cat = accessory1Arry[0].accessory1_cat;
   accessory1_fts = accessory1Arry[0].accessory1_fts;
 
-   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory1_cat +"&fts=" + accessory1_fts + "&fl=" + accessory1_fl +  "&offset=0&limit=30&sort=Popular", function(data) {
+   $.getJSON("https://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory1_cat +"&fts=" + accessory1_fts + "&fl=" + accessory1_fl +  "&offset=0&limit=30&sort=Popular", function(data) {
     $("#accessory1").text('');
     $("#accessory1").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
     $("#accessory1").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
@@ -154,7 +154,7 @@ $(document).ready(function () {
   accessory2_cat = accessory2Arry[0].accessory2_cat;
   accessory2_fts = accessory2Arry[0].accessory2_fts;
 
-   $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory2_cat +"&fts=" + accessory2_fts + "&offset=0&limit=30&sort=Popular", function(data) {
+   $.getJSON("https://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory2_cat +"&fts=" + accessory2_fts + "&offset=0&limit=30&sort=Popular", function(data) {
     $("#accessory2").text('');
     $("#accessory2").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
     $("#accessory2").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
@@ -167,6 +167,6 @@ $(document).ready(function () {
    }); //end of ON CLICK
 });//forecast api
 
-  // } //end of window.location.href
+ } //end of window.location.href
 
 });//end of document.ready
