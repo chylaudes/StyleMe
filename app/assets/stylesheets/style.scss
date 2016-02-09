@@ -66,7 +66,6 @@ div.container{
 }
 
 /*NAV BAR */
-
 a#txt{
   color:white;
   text-transform: uppercase;
@@ -116,11 +115,8 @@ height: 25px;
   font-size: 9px;
   font-weight: 500;
   padding-top: 15px;
-/*  height: 90px;
-*/}
-/*h1 {
-  font-family: "acta-display";
-}*/
+}
+
 .navbar {
   border:none;
 }
@@ -243,9 +239,6 @@ margin-bottom: 25px;
 div#login{
 margin-left: 30px;
 }
-/*div#selectedShoes{
-  margin-right: 30px;
-}*/
 
 /*flash*/
 div.alert.alert-notice{
@@ -355,3 +348,18 @@ font-size: 1.20rem;
   font-weight: 900;
 }
 
+span.img-crop {
+// display: inline-block;
+position: relative;
+width: 150px;
+height: 210px;
+overflow: hidden;
+}
+span.img-crop_outfits{
+// display: inline-block;
+position: relative;
+width: 80px;
+height: 80px;
+overflow: hidden;
+
+}

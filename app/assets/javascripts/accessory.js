@@ -1,4 +1,10 @@
-var getAccessory1Condition = function(curCondition,sex,accessory1_cat,accessory1_fts) {  
+var getRandomFTS = function(arr){
+  var index = Math.floor(Math.random() * arr.length);
+  return arr[index];
+};
+var maleHatKeys = ["urban outfitters snapback", "norse", "marc jacobs", "porter"];
+
+var getAccessory1Condition = function(curCondition,sex,accessory1_cat,accessory1_fts) {
   // curCondition = curCondition.trim();
   if (curCondition === "Clear"){
     if (sex === "F"){
@@ -39,11 +45,11 @@ var getAccessory1Condition = function(curCondition,sex,accessory1_cat,accessory1
   }
 
   accessory1Arry = [{accessory1_cat:accessory1_cat, accessory1_fts:accessory1_fts}];
-  return accessory1Arry;   
+  return accessory1Arry;
 };
 
 //---- Accessory2 -------//
-var getAccessory2Condition = function(curCondition,sex,accessory2_cat,accessory2_fts) { 
+var getAccessory2Condition = function(curCondition,sex,accessory2_cat,accessory2_fts) {
   if (curCondition === "Clear"){
     if (sex === "F"){
       accessory2_cat = "sunglasses";
@@ -79,5 +85,5 @@ var getAccessory2Condition = function(curCondition,sex,accessory2_cat,accessory2
   }
 
   accessory2Arry = [{accessory2_cat:accessory2_cat, accessory2_fts:accessory2_fts}];
-  return accessory2Arry;  
+  return accessory2Arry;
 };

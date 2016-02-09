@@ -5,7 +5,7 @@ $(document).ready(function () {
 
 //========= Get weather data from user database ===========================//
 //if (window.location.href==="http://localhost:3000/styles")
-// if (window.location.href==="https://stylem.herokuapp.com/styles")
+if (window.location.href==="https://stylem.herokuapp.com/styles") {
 
    var userLocation = $("div #curLocation").text();
    var todayTemp, curCondition;
@@ -75,15 +75,16 @@ $(document).ready(function () {
       var dressURL = "http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat=" + dresscat + "&fts=" + dressfts + "&fl=" + fl + "&offset=0&limit=30&sort=Popular";
      $.getJSON(dressURL, function(data) {
         $("#dress").text('');
-        $("#dress").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
-        $("#dress").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
-        $("#dress").append("<img src="+data.products[2].image.sizes.Large.url+" alt="+ data.products[2].id +">");
-        $("#dress").append("<img src="+data.products[3].image.sizes.Large.url+" alt="+ data.products[3].id +">");
+        $("#dress").append("<span class='img-crop'><img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +"></span>");
+        $("#dress").append("<span class='img-crop'><img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +"></span>");
+        $("#dress").append("<span class='img-crop'><img src="+data.products[2].image.sizes.Large.url+" alt="+ data.products[2].id +"></span>");
+        $("#dress").append("<span class='img-crop'><img src="+data.products[3].image.sizes.Large.url+" alt="+ data.products[3].id +"></span>");
         counter = 4;
-        $("#dress").on("click","img", function(e){
+        $("#dress").on("click","span", function(e){
           var productIdx = data.products[counter];
           counter++;
-          $("#dress").append("<img src="+productIdx.image.sizes.Large.url+">");
+          $("#dress").append("<span class='img-crop'><img src="+productIdx.image.sizes.Large.url+"></span>");
+          $(this).removeClass();
           $("#selectedDress").html("");
           $("#selectedTop").html("");
           $("#selectedTop").hide();
@@ -103,17 +104,17 @@ $(document).ready(function () {
 
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ topcat + "&fl=" + fl +"&fts=" + topfts + "&offset=0&limit=30", function(data) {
       $("#top").text('');
-      $("#top").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
-      $("#top").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
-      $("#top").append("<img src="+data.products[2].image.sizes.Large.url+" alt="+ data.products[2].id +">");
-      $("#top").append("<img src="+data.products[3].image.sizes.Large.url+" alt="+ data.products[3].id +">");
+      $("#top").append("<span class='img-crop'><img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +"></span>");
+      $("#top").append("<span class='img-crop'><img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +"></span>");
+      $("#top").append("<span class='img-crop'><img src="+data.products[2].image.sizes.Large.url+" alt="+ data.products[2].id +"></span>");
+      $("#top").append("<span class='img-crop'><img src="+data.products[3].image.sizes.Large.url+" alt="+ data.products[3].id +"></span>");
 
       counter = 4;
 
-      $("#top").on("click","img", function(e){
+      $("#top").on("click","span", function(e){
         var productIdx = data.products[counter];
         counter++;
-        $("#top").append("<img src="+productIdx.image.sizes.Large.url+" alt="+ productIdx.id +">");
+        $("#top").append("<span class='img-crop'><img src="+productIdx.image.sizes.Large.url+" alt="+ productIdx.id +"></span>");
         $("#selectedDress").html("");
         // $("#selectedDress").hide();
         $("#selectedTop").html("");
@@ -133,10 +134,10 @@ $(document).ready(function () {
 
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ bottomcat +"&fts=" + bottomfts + "&fl=" + fl + "&offset=0&limit=30&sort=Popular", function(data) {
       $("#bottom").text('');
-      $("#bottom").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
-      $("#bottom").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
-      $("#bottom").append("<img src="+data.products[2].image.sizes.Large.url+" alt="+ data.products[2].id +">");
-      $("#bottom").append("<img src="+data.products[3].image.sizes.Large.url+" alt="+ data.products[3].id +">");
+      $("#bottom").append("<span class='img-crop'><img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +"></span>");
+      $("#bottom").append("<span class='img-crop'><img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +"></span>");
+      $("#bottom").append("<span class='img-crop'><img src="+data.products[2].image.sizes.Large.url+" alt="+ data.products[2].id +"></span>");
+      $("#bottom").append("<span class='img-crop'><img src="+data.products[3].image.sizes.Large.url+" alt="+ data.products[3].id +"></span>");
 
       counter = 4;
 
@@ -146,7 +147,7 @@ $(document).ready(function () {
         $("#selectedDress").html("");
         $("#selectedDress").hide();
         $("#selectedBottom").show();
-        $("#bottom").append("<img src="+productIdx.image.sizes.Large.url+">");
+        $("#bottom").append("<span class='img-crop'><img src="+productIdx.image.sizes.Large.url+"></span>");
         $("#selectedBottom").html("");
         // $("#selectedBottom").append("<h3>Bottom</h3>");
         $("#selectedBottom").show();
@@ -162,16 +163,16 @@ $(document).ready(function () {
 
     $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ shoescat +"&fts=" + shoesfts + "&fl=" + flshoe + "&offset=0&limit=30&sort=Popular", function(data) {
       $("#shoes").text('');
-      $("#shoes").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
-      $("#shoes").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
-      $("#shoes").append("<img src="+data.products[2].image.sizes.Large.url+" alt="+ data.products[2].id +">");
-      $("#shoes").append("<img src="+data.products[3].image.sizes.Large.url+" alt="+ data.products[3].id +">");
+      $("#shoes").append("<span class='img-crop'><img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +"></span>");
+      $("#shoes").append("<span class='img-crop'><img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +"></span>");
+      $("#shoes").append("<span class='img-crop'><img src="+data.products[2].image.sizes.Large.url+" alt="+ data.products[2].id +"></span>");
+      $("#shoes").append("<span class='img-crop'><img src="+data.products[3].image.sizes.Large.url+" alt="+ data.products[3].id +"></span>");
       counter = 4;
 
       $("#shoes").on("click","img", function(e){
         var productIdx = data.products[counter];
         counter++;
-        $("#shoes").append("<img src="+productIdx.image.sizes.Large.url+">");
+        $("#shoes").append("<span class='img-crop'><img src="+productIdx.image.sizes.Large.url+"></span>");
         $("#selectedShoes").html("");
         // $("#selectedShoes").append("<h3>Shoes</h3>");
         $("#selectedShoes").append(this);
@@ -187,16 +188,16 @@ $(document).ready(function () {
 
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory1_cat +"&fts=" + accessory1_fts + "&fl=" + accessory1_fl +  "&offset=0&limit=30&sort=Popular", function(data) {
     $("#accessory1").text('');
-    $("#accessory1").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
-    $("#accessory1").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
-    $("#accessory1").append("<img src="+data.products[2].image.sizes.Large.url+" alt="+ data.products[2].id +">");
-    $("#accessory1").append("<img src="+data.products[3].image.sizes.Large.url+" alt="+ data.products[3].id +">");
+    $("#accessory1").append("<span class='img-crop'><img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +"></span>");
+    $("#accessory1").append("<span class='img-crop'><img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +"></span>");
+    $("#accessory1").append("<span class='img-crop'><img src="+data.products[2].image.sizes.Large.url+" alt="+ data.products[2].id +"></span>");
+    $("#accessory1").append("<span class='img-crop'><img src="+data.products[3].image.sizes.Large.url+" alt="+ data.products[3].id +"></span>");
     counter = 4;
 
     $("#accessory1").on("click","img", function(e){
       var productIdx = data.products[counter];
       counter++;
-      $("#accessory1").append("<img src="+productIdx.image.sizes.Large.url+">");
+      $("#accessory1").append("<span class='img-crop'><img src="+productIdx.image.sizes.Large.url+"></span>");
       $("#selectedAccessory1").html("");
       // $("#selectedAccessory1").append("<h3>Accessory</h3>");
       $("#selectedAccessory1").append(this);
@@ -214,10 +215,10 @@ $(document).ready(function () {
 
    $.getJSON("http://api.shopstyle.com/api/v2/products?pid=uid2100-27524390-36&format=json&cat="+ accessory2_cat +"&fts=" + accessory2_fts + "&offset=0&limit=30&sort=Popular", function(data) {
     $("#accessory2").text('');
-    $("#accessory2").append("<img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
-    $("#accessory2").append("<img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
-    $("#accessory2").append("<img src="+data.products[2].image.sizes.Large.url+" alt="+ data.products[2].id +">");
-    $("#accessory2").append("<img src="+data.products[3].image.sizes.Large.url+" alt="+ data.products[3].id +">");
+    $("#accessory2").append("<span class='img-crop'><img src="+data.products[0].image.sizes.Large.url+" alt="+ data.products[0].id +">");
+    $("#accessory2").append("<span class='img-crop'><img src="+data.products[1].image.sizes.Large.url+" alt="+ data.products[1].id +">");
+    $("#accessory2").append("<span class='img-crop'><img src="+data.products[2].image.sizes.Large.url+" alt="+ data.products[2].id +">");
+    $("#accessory2").append("<span class='img-crop'><img src="+data.products[3].image.sizes.Large.url+" alt="+ data.products[3].id +">");
     counter = 4;
 
     $("#accessory2").on("click","img", function(e){
@@ -316,5 +317,5 @@ $(document).ready(function () {
    }); //end of forecast api call
 
 
-  // }//window.location.href
+  }//window.location.href
 }); //end of document load

@@ -59,17 +59,6 @@
     <div id="selectedAccessory1" class="col-md-4"></div>
       <div id="selectedAccessory2" class="col-md-4"></div>
   </div>
-
-  <!-- <div class="text-center" id="saveStyle"> -->
-
-  <%#= form_for(@outfit, @style) do |f|  %>
-    <%#= form_for(@outfit, url: style_path) do |f|  %>
-    <%#= f.hidden_field :top_url, value: "" %>
-    <%#= f.hidden_field :top, value: "" %>
-    <%#= f.submit("Save outfit", class: "btn btn-primary save_outfit") %>
-    <%# end %>
-  <!--   <button class="btn btn-primary save_outfit">Save outfit</button>
-  </div> -->
 </div>
 <!-- suggested style below -->
 <div class=" col-sm-6 col-md-6 col-lg-6" id="suggestedStyle">
@@ -80,23 +69,16 @@
   <br>
   <div class="drop-down"><!--  top accordian  -->
     <div class="panel-group" id="accordion">
-
-
       <div class="panel panel-default">
-
         <div class="panel-heading">
-
           <h4 class="panel-title" >
             <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">TOPS</a>
           </h4>
-
         </div> <!-- end of dress collapse up -->
-
         <div id="collapseOne" class="panel-collapse collapse in">
          <div class="panel-body" id="top">
          </div>
        </div>
-
      </div> <!-- end of top collapse down -->
      <br>
 
