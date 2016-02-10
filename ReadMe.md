@@ -14,4 +14,4 @@ Built on Ruby on Rails, with Postgresql DB.  Used wunderground API, Shopsense AP
 
 <br>
 
-![Style Me](http://i.imgur.com/aZDSAxX.jpg =600x)
+![Style Me](http://i.imgur.com/EuqHFt7.png =575x)
