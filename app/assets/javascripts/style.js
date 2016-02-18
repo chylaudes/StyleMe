@@ -5,7 +5,7 @@ $(document).ready(function () {
 
 //========= Get weather data from user database ===========================//
 //if (window.location.href==="https://localhost:3000/styles")
-if (window.location.href==="https://stylem.herokuapp.com/styles" || window.location.href==="stylem.herokuapp.com/styles") {
+if ((window.location.href==="https://stylem.herokuapp.com/styles") || (window.location.href==="stylem.herokuapp.com/styles")) {
 
    var userLocation = $("div #curLocation").text();
    var todayTemp, curCondition;
